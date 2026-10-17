@@ -1,0 +1,1415 @@
+{
+  "project": "NeuroSync",
+  "datasetVersion": "1.0",
+  "purpose": "Experimental reading-related behavioral task dataset for accessibility personalization",
+  "totalQuestions": 250,
+  "categoryCounts": {
+    "word_recognition": 50,
+    "comprehension": 50,
+    "sequencing": 50,
+    "sentence_understanding": 50,
+    "attention_to_detail": 50
+  },
+  "questions": [
+    {
+      "id": "WR001",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'bread' has two letters swapped?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bread"
+        },
+        {
+          "id": "B",
+          "text": "braed"
+        },
+        {
+          "id": "C",
+          "text": "bred"
+        },
+        {
+          "id": "D",
+          "text": "breed"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Braed swaps the e and a. Bred omits a letter, breed replaces a letter, and bread is correct."
+    },
+    {
+      "id": "WR002",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'quite'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "quiet"
+        },
+        {
+          "id": "B",
+          "text": "quit"
+        },
+        {
+          "id": "C",
+          "text": "quite"
+        },
+        {
+          "id": "D",
+          "text": "quote"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Quite is spelled q-u-i-t-e. Quiet swaps the last two letters, quit drops a letter, and quote replaces letters."
+    },
+    {
+      "id": "WR003",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "one_letter_difference",
+      "questionType": "multiple_choice",
+      "question": "Which word differs from 'stare' by exactly one letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "storm"
+        },
+        {
+          "id": "B",
+          "text": "share"
+        },
+        {
+          "id": "C",
+          "text": "sheer"
+        },
+        {
+          "id": "D",
+          "text": "plate"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Share changes only the second letter (t to h); the other options differ in two or more positions."
+    },
+    {
+      "id": "WR004",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "accomodate"
+        },
+        {
+          "id": "B",
+          "text": "acommodate"
+        },
+        {
+          "id": "C",
+          "text": "accommodate"
+        },
+        {
+          "id": "D",
+          "text": "accommodete"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Accommodate has double c and double m: a-c-c-o-m-m-o-d-a-t-e."
+    },
+    {
+      "id": "WR005",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "letter_substitution_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'government' has one letter replaced by a different letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "govornment"
+        },
+        {
+          "id": "B",
+          "text": "government"
+        },
+        {
+          "id": "C",
+          "text": "goverment"
+        },
+        {
+          "id": "D",
+          "text": "governnment"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Govornment replaces the second e with o. Goverment omits the n, governnment adds a letter, and government is correct."
+    },
+    {
+      "id": "WR006",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "letter_omission_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'environment' is missing a letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "environment"
+        },
+        {
+          "id": "B",
+          "text": "enviornment"
+        },
+        {
+          "id": "C",
+          "text": "environmant"
+        },
+        {
+          "id": "D",
+          "text": "enviroment"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Enviroment is missing the n before ment. Enviornment swaps letters, environmant replaces one, and environment is correct."
+    },
+    {
+      "id": "WR007",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "beautiful"
+        },
+        {
+          "id": "B",
+          "text": "beutiful"
+        },
+        {
+          "id": "C",
+          "text": "beautifull"
+        },
+        {
+          "id": "D",
+          "text": "beatiful"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Beautiful is spelled b-e-a-u-t-i-f-u-l; the other forms omit a letter or add an extra l."
+    },
+    {
+      "id": "WR008",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "tabel"
+        },
+        {
+          "id": "B",
+          "text": "table"
+        },
+        {
+          "id": "C",
+          "text": "tbale"
+        },
+        {
+          "id": "D",
+          "text": "talbe"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Table is spelled t-a-b-l-e; the other forms have letters out of order."
+    },
+    {
+      "id": "WR009",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "freind"
+        },
+        {
+          "id": "B",
+          "text": "frend"
+        },
+        {
+          "id": "C",
+          "text": "friend"
+        },
+        {
+          "id": "D",
+          "text": "firend"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Friend is spelled f-r-i-e-n-d; the other forms have a wrong letter order or a missing letter."
+    },
+    {
+      "id": "WR010",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "pseudohomophone_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is a real English word, not a made-up spelling of a word that sounds like it?",
+      "options": [
+        {
+          "id": "A",
+          "text": "frase"
+        },
+        {
+          "id": "B",
+          "text": "phraze"
+        },
+        {
+          "id": "C",
+          "text": "phrase"
+        },
+        {
+          "id": "D",
+          "text": "frayz"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Phrase is the standard spelling; the other three are made-up spellings that sound like it."
+    },
+    {
+      "id": "WR011",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'trail'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "trial"
+        },
+        {
+          "id": "B",
+          "text": "trait"
+        },
+        {
+          "id": "C",
+          "text": "train"
+        },
+        {
+          "id": "D",
+          "text": "trail"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Trail is spelled t-r-a-i-l; trial swaps two letters, and trait and train end in different letters."
+    },
+    {
+      "id": "WR012",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "seperate"
+        },
+        {
+          "id": "B",
+          "text": "separete"
+        },
+        {
+          "id": "C",
+          "text": "seperete"
+        },
+        {
+          "id": "D",
+          "text": "separate"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Separate is spelled s-e-p-a-r-a-t-e; the other forms replace an a with an e."
+    },
+    {
+      "id": "WR013",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_omission_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling is missing a letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "people"
+        },
+        {
+          "id": "B",
+          "text": "paper"
+        },
+        {
+          "id": "C",
+          "text": "peple"
+        },
+        {
+          "id": "D",
+          "text": "pencil"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Peple is missing the letter o; the other three are complete, correctly spelled words."
+    },
+    {
+      "id": "WR014",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "one_letter_difference",
+      "questionType": "multiple_choice",
+      "question": "Which word differs from 'cold' by exactly one letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "cord"
+        },
+        {
+          "id": "B",
+          "text": "melt"
+        },
+        {
+          "id": "C",
+          "text": "calm"
+        },
+        {
+          "id": "D",
+          "text": "wind"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Cord changes only the third letter (l to r); the other options differ in two or more positions."
+    },
+    {
+      "id": "WR015",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "real_word_vs_nonword",
+      "questionType": "multiple_choice",
+      "question": "Which of these is a real English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "shrimp"
+        },
+        {
+          "id": "B",
+          "text": "shremp"
+        },
+        {
+          "id": "C",
+          "text": "shrump"
+        },
+        {
+          "id": "D",
+          "text": "shrimt"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Shrimp is a real word; the other three are pronounceable made-up strings."
+    },
+    {
+      "id": "WR016",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "occurence"
+        },
+        {
+          "id": "B",
+          "text": "ocurrence"
+        },
+        {
+          "id": "C",
+          "text": "occurrance"
+        },
+        {
+          "id": "D",
+          "text": "occurrence"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Occurrence has double c and double r, and ends in -ence."
+    },
+    {
+      "id": "WR017",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "orthographic_legality_judgement",
+      "questionType": "multiple_choice",
+      "question": "Which letter string follows English spelling patterns and could be an English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "srcund"
+        },
+        {
+          "id": "B",
+          "text": "scrund"
+        },
+        {
+          "id": "C",
+          "text": "csrund"
+        },
+        {
+          "id": "D",
+          "text": "scrnud"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Scrund begins with the legal cluster 'scr' followed by a vowel; the others contain letter sequences that do not occur in English."
+    },
+    {
+      "id": "WR018",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'principal'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "principal"
+        },
+        {
+          "id": "B",
+          "text": "principle"
+        },
+        {
+          "id": "C",
+          "text": "principel"
+        },
+        {
+          "id": "D",
+          "text": "prinicpal"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Principal is spelled p-r-i-n-c-i-p-a-l. Principle is a different word, principel replaces a letter, and prinicpal swaps two letters."
+    },
+    {
+      "id": "WR019",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'though'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "tough"
+        },
+        {
+          "id": "B",
+          "text": "though"
+        },
+        {
+          "id": "C",
+          "text": "thought"
+        },
+        {
+          "id": "D",
+          "text": "through"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Though is spelled t-h-o-u-g-h; the other three are different words with similar letters."
+    },
+    {
+      "id": "WR020",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_pattern_recognition",
+      "questionType": "multiple_choice",
+      "question": "Which word begins with the letters 'kn'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "neat"
+        },
+        {
+          "id": "B",
+          "text": "need"
+        },
+        {
+          "id": "C",
+          "text": "nest"
+        },
+        {
+          "id": "D",
+          "text": "knee"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Knee starts with k-n; the other words start with n."
+    },
+    {
+      "id": "WR021",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_substitution_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'mountain' has one letter replaced by a different letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "mountain"
+        },
+        {
+          "id": "B",
+          "text": "mountin"
+        },
+        {
+          "id": "C",
+          "text": "mountiain"
+        },
+        {
+          "id": "D",
+          "text": "mountein"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Mountein replaces a with e. Mountin omits a letter, mountiain adds one, and mountain is correct."
+    },
+    {
+      "id": "WR022",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_pattern_completion",
+      "questionType": "multiple_choice",
+      "question": "Which letters complete the word 'sh__p' to make a real word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ea"
+        },
+        {
+          "id": "B",
+          "text": "ee"
+        },
+        {
+          "id": "C",
+          "text": "ie"
+        },
+        {
+          "id": "D",
+          "text": "oo"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Sh + ee + p spells 'sheep'; the other combinations are not real words."
+    },
+    {
+      "id": "WR023",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "becuase"
+        },
+        {
+          "id": "B",
+          "text": "becase"
+        },
+        {
+          "id": "C",
+          "text": "becouse"
+        },
+        {
+          "id": "D",
+          "text": "because"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Because is spelled b-e-c-a-u-s-e; the other forms swap, drop or replace letters."
+    },
+    {
+      "id": "WR024",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_order_reversal",
+      "questionType": "multiple_choice",
+      "question": "Which word reads 'stop' when its letters are read backwards?",
+      "options": [
+        {
+          "id": "A",
+          "text": "pots"
+        },
+        {
+          "id": "B",
+          "text": "tops"
+        },
+        {
+          "id": "C",
+          "text": "spot"
+        },
+        {
+          "id": "D",
+          "text": "post"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Reading p-o-t-s from right to left gives s-t-o-p. The other words rearrange the letters but do not reverse them."
+    },
+    {
+      "id": "WR025",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'glass' has two letters swapped?",
+      "options": [
+        {
+          "id": "A",
+          "text": "glass"
+        },
+        {
+          "id": "B",
+          "text": "gass"
+        },
+        {
+          "id": "C",
+          "text": "glasss"
+        },
+        {
+          "id": "D",
+          "text": "galss"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Galss swaps the l and a. Gass omits a letter, glasss adds one, and glass is correct."
+    },
+    {
+      "id": "WR026",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "real_word_vs_nonword",
+      "questionType": "multiple_choice",
+      "question": "Which one is NOT a real English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "plant"
+        },
+        {
+          "id": "B",
+          "text": "flonk"
+        },
+        {
+          "id": "C",
+          "text": "river"
+        },
+        {
+          "id": "D",
+          "text": "cloud"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Flonk is a made-up string; plant, river and cloud are real words."
+    },
+    {
+      "id": "WR027",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_pattern_recognition",
+      "questionType": "multiple_choice",
+      "question": "Which word contains the letter pattern 'igh'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "lift"
+        },
+        {
+          "id": "B",
+          "text": "lint"
+        },
+        {
+          "id": "C",
+          "text": "light"
+        },
+        {
+          "id": "D",
+          "text": "left"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Light contains i-g-h in sequence; the other words do not."
+    },
+    {
+      "id": "WR028",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "real_word_vs_nonword",
+      "questionType": "multiple_choice",
+      "question": "Which of these is a real English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "spoon"
+        },
+        {
+          "id": "B",
+          "text": "blorp"
+        },
+        {
+          "id": "C",
+          "text": "grelt"
+        },
+        {
+          "id": "D",
+          "text": "kimble"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Spoon is a real word; the other three are made-up letter strings."
+    },
+    {
+      "id": "WR029",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_substitution_detection",
+      "questionType": "multiple_choice",
+      "question": "Which is a misspelling of 'water' where one letter has been replaced by a different letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "water"
+        },
+        {
+          "id": "B",
+          "text": "wtaer"
+        },
+        {
+          "id": "C",
+          "text": "wate"
+        },
+        {
+          "id": "D",
+          "text": "wator"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Wator replaces the e with o. Wtaer swaps letters, wate omits a letter, and water is the correct spelling."
+    },
+    {
+      "id": "WR030",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_insertion_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'doctor' has an extra letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "doctor"
+        },
+        {
+          "id": "B",
+          "text": "docttor"
+        },
+        {
+          "id": "C",
+          "text": "docter"
+        },
+        {
+          "id": "D",
+          "text": "docor"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Docttor has an extra t. Docter replaces a letter, docor omits one, and doctor is correct."
+    },
+    {
+      "id": "WR031",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'animal' has two letters swapped?",
+      "options": [
+        {
+          "id": "A",
+          "text": "animal"
+        },
+        {
+          "id": "B",
+          "text": "anmal"
+        },
+        {
+          "id": "C",
+          "text": "aminal"
+        },
+        {
+          "id": "D",
+          "text": "animall"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Aminal swaps the n and i. Anmal omits a letter, animall adds one, and animal is correct."
+    },
+    {
+      "id": "WR032",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "word_difference_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair shows two different words?",
+      "options": [
+        {
+          "id": "A",
+          "text": "plant – plant"
+        },
+        {
+          "id": "B",
+          "text": "trial – trail"
+        },
+        {
+          "id": "C",
+          "text": "quiet – quiet"
+        },
+        {
+          "id": "D",
+          "text": "form – form"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Trial and trail use the same letters in a different order, so they are two different words; the other pairs repeat one word."
+    },
+    {
+      "id": "WR033",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "real_word_vs_nonword",
+      "questionType": "multiple_choice",
+      "question": "Which of these is a real English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bunkle"
+        },
+        {
+          "id": "B",
+          "text": "thrimp"
+        },
+        {
+          "id": "C",
+          "text": "slopt"
+        },
+        {
+          "id": "D",
+          "text": "window"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Window is a real word; the other three are pronounceable but made-up strings."
+    },
+    {
+      "id": "WR034",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_pattern_recognition",
+      "questionType": "multiple_choice",
+      "question": "Which word begins with the letters 'ph'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "pine"
+        },
+        {
+          "id": "B",
+          "text": "pond"
+        },
+        {
+          "id": "C",
+          "text": "phone"
+        },
+        {
+          "id": "D",
+          "text": "plan"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Phone starts with p-h; the other words begin with pi, po or pl."
+    },
+    {
+      "id": "WR035",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'dessert'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "desert"
+        },
+        {
+          "id": "B",
+          "text": "dessart"
+        },
+        {
+          "id": "C",
+          "text": "dessert"
+        },
+        {
+          "id": "D",
+          "text": "desort"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Dessert is spelled with double s: d-e-s-s-e-r-t. Desert has one s, and the other two replace a letter."
+    },
+    {
+      "id": "WR036",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "one_letter_difference",
+      "questionType": "multiple_choice",
+      "question": "Which word differs from 'stranger' by exactly one letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "stringer"
+        },
+        {
+          "id": "B",
+          "text": "strangle"
+        },
+        {
+          "id": "C",
+          "text": "arranger"
+        },
+        {
+          "id": "D",
+          "text": "stranded"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Stringer changes only the fourth letter (a to i); the other options differ in two or more positions."
+    },
+    {
+      "id": "WR037",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "orthographic_distractor_discrimination",
+      "questionType": "multiple_choice",
+      "question": "Which of these is the word 'angle'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "angle"
+        },
+        {
+          "id": "B",
+          "text": "angel"
+        },
+        {
+          "id": "C",
+          "text": "ankle"
+        },
+        {
+          "id": "D",
+          "text": "anger"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Angle is spelled a-n-g-l-e; angel swaps the last two letters, ankle changes g to k, and anger changes l to r."
+    },
+    {
+      "id": "WR038",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "correct_spelling_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is spelled correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "neccessary"
+        },
+        {
+          "id": "B",
+          "text": "necessary"
+        },
+        {
+          "id": "C",
+          "text": "necesary"
+        },
+        {
+          "id": "D",
+          "text": "necessery"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Necessary has one c followed by double s: n-e-c-e-s-s-a-r-y."
+    },
+    {
+      "id": "WR039",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "orthographic_legality_judgement",
+      "questionType": "multiple_choice",
+      "question": "Which letter string follows English spelling patterns and could be an English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bnilt"
+        },
+        {
+          "id": "B",
+          "text": "lbint"
+        },
+        {
+          "id": "C",
+          "text": "blint"
+        },
+        {
+          "id": "D",
+          "text": "tnibl"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Blint begins with a common consonant cluster (bl) and has a normal vowel position; the others contain letter sequences that do not occur in English."
+    },
+    {
+      "id": "WR040",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_pattern_recognition",
+      "questionType": "multiple_choice",
+      "question": "Which word ends with the letters 'tion'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "stating"
+        },
+        {
+          "id": "B",
+          "text": "stalling"
+        },
+        {
+          "id": "C",
+          "text": "stately"
+        },
+        {
+          "id": "D",
+          "text": "station"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Station ends with t-i-o-n; the other words end differently."
+    },
+    {
+      "id": "WR041",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "one_letter_difference",
+      "questionType": "multiple_choice",
+      "question": "Which word differs from 'bridge' by exactly one letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bright"
+        },
+        {
+          "id": "B",
+          "text": "ridged"
+        },
+        {
+          "id": "C",
+          "text": "bridle"
+        },
+        {
+          "id": "D",
+          "text": "bridal"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Bridle changes only the fifth letter (g to l); bridal differs in two letters, and bright and ridged differ in more."
+    },
+    {
+      "id": "WR042",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_pattern_completion",
+      "questionType": "multiple_choice",
+      "question": "Which letters complete the word 'fl__er' to make a real word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "ou"
+        },
+        {
+          "id": "B",
+          "text": "ow"
+        },
+        {
+          "id": "C",
+          "text": "oa"
+        },
+        {
+          "id": "D",
+          "text": "ai"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Fl + ow + er spells 'flower'; the other letter pairs do not form a real word."
+    },
+    {
+      "id": "WR043",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_substitution_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'window' has one letter replaced by a different letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "windew"
+        },
+        {
+          "id": "B",
+          "text": "window"
+        },
+        {
+          "id": "C",
+          "text": "widow"
+        },
+        {
+          "id": "D",
+          "text": "winndow"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Windew replaces o with e. Widow omits letters and is itself a real word, winndow adds a letter, and window is correct."
+    },
+    {
+      "id": "WR044",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "identical_pair_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair shows the same word twice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "dog – dig"
+        },
+        {
+          "id": "B",
+          "text": "bad – bed"
+        },
+        {
+          "id": "C",
+          "text": "cat – cat"
+        },
+        {
+          "id": "D",
+          "text": "pen – pin"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Only 'cat – cat' repeats the same word; each other pair differs by one letter."
+    },
+    {
+      "id": "WR045",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "real_word_vs_nonword",
+      "questionType": "multiple_choice",
+      "question": "Which of these is a real English word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "pillow"
+        },
+        {
+          "id": "B",
+          "text": "pillew"
+        },
+        {
+          "id": "C",
+          "text": "pellow"
+        },
+        {
+          "id": "D",
+          "text": "pilloe"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Pillow is a real word; the other three are near-miss spellings that are not words."
+    },
+    {
+      "id": "WR046",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "one_letter_difference",
+      "questionType": "multiple_choice",
+      "question": "Which word differs from 'line' by exactly one letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "lane"
+        },
+        {
+          "id": "B",
+          "text": "fork"
+        },
+        {
+          "id": "C",
+          "text": "stand"
+        },
+        {
+          "id": "D",
+          "text": "plum"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Lane changes only the middle vowel (i to a); the other options differ in several positions or in length."
+    },
+    {
+      "id": "WR047",
+      "category": "word_recognition",
+      "difficulty": "hard",
+      "skill": "letter_transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'receive' has two letters swapped?",
+      "options": [
+        {
+          "id": "A",
+          "text": "receive"
+        },
+        {
+          "id": "B",
+          "text": "receeve"
+        },
+        {
+          "id": "C",
+          "text": "receve"
+        },
+        {
+          "id": "D",
+          "text": "recieve"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Recieve swaps the e and i. Receeve replaces a letter, receve omits one, and receive is correct."
+    },
+    {
+      "id": "WR048",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_pattern_completion",
+      "questionType": "multiple_choice",
+      "question": "Which letters complete the word 'ni__t' to make a real word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "hg"
+        },
+        {
+          "id": "B",
+          "text": "gh"
+        },
+        {
+          "id": "C",
+          "text": "gt"
+        },
+        {
+          "id": "D",
+          "text": "ht"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Ni + gh + t spells 'night'; the other letter pairs do not form a real word."
+    },
+    {
+      "id": "WR049",
+      "category": "word_recognition",
+      "difficulty": "easy",
+      "skill": "letter_insertion_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling has an extra letter added?",
+      "options": [
+        {
+          "id": "A",
+          "text": "scchool"
+        },
+        {
+          "id": "B",
+          "text": "school"
+        },
+        {
+          "id": "C",
+          "text": "spool"
+        },
+        {
+          "id": "D",
+          "text": "stool"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Scchool has a doubled c that does not belong; the other options are correctly spelled words."
+    },
+    {
+      "id": "WR050",
+      "category": "word_recognition",
+      "difficulty": "medium",
+      "skill": "letter_omission_detection",
+      "questionType": "multiple_choice",
+      "question": "Which spelling of 'library' is missing a letter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "library"
+        },
+        {
+          "id": "B",
+          "text": "libray"
+        },
+        {
+          "id": "C",
+          "text": "librery"
+        },
+        {
+          "id": "D",
+          "text": "liberary"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Libray is missing the second r. Librery replaces a letter, liberary adds one, and library is correct."
+    }
+  ]
+}

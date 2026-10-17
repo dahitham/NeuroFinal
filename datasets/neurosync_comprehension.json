@@ -1,0 +1,1415 @@
+{
+  "project": "NeuroSync",
+  "datasetVersion": "1.0",
+  "purpose": "Experimental reading-related behavioral task dataset for accessibility personalization",
+  "totalQuestions": 250,
+  "categoryCounts": {
+    "word_recognition": 50,
+    "comprehension": 50,
+    "sequencing": 50,
+    "sentence_understanding": 50,
+    "attention_to_detail": 50
+  },
+  "questions": [
+    {
+      "id": "CO001",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "negation_paraphrase",
+      "questionType": "multiple_choice",
+      "question": "Which sentence has the same meaning as 'The door is not open'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The door is broken"
+        },
+        {
+          "id": "B",
+          "text": "The door is closed"
+        },
+        {
+          "id": "C",
+          "text": "The door is new"
+        },
+        {
+          "id": "D",
+          "text": "The door is painted"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A door that is not open is closed."
+    },
+    {
+      "id": "CO002",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "concession_inference",
+      "questionType": "multiple_choice",
+      "question": "Despite the warning signs, the hikers continued up the trail. What does this tell us?",
+      "options": [
+        {
+          "id": "A",
+          "text": "They ignored the warning signs"
+        },
+        {
+          "id": "B",
+          "text": "They turned back at the signs"
+        },
+        {
+          "id": "C",
+          "text": "They helped put up the signs"
+        },
+        {
+          "id": "D",
+          "text": "They never reached the trail"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Despite' shows they carried on in spite of the warnings."
+    },
+    {
+      "id": "CO003",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "semantic_analogy",
+      "questionType": "multiple_choice",
+      "question": "Hand is to glove as foot is to what?",
+      "options": [
+        {
+          "id": "A",
+          "text": "shirt"
+        },
+        {
+          "id": "B",
+          "text": "sock"
+        },
+        {
+          "id": "C",
+          "text": "hat"
+        },
+        {
+          "id": "D",
+          "text": "belt"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A glove covers a hand in the same way a sock covers a foot."
+    },
+    {
+      "id": "CO004",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "central_meaning_identification",
+      "questionType": "multiple_choice",
+      "question": "Which choice gives the main idea of 'Fish live in water and breathe through gills'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Fish cannot swim"
+        },
+        {
+          "id": "B",
+          "text": "Fish live in water and have gills"
+        },
+        {
+          "id": "C",
+          "text": "Fish eat only plants"
+        },
+        {
+          "id": "D",
+          "text": "Fish are the biggest animals"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The sentence tells where fish live and how they breathe."
+    },
+    {
+      "id": "CO005",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "cause_effect_identification",
+      "questionType": "multiple_choice",
+      "question": "Because a fallen tree blocked the road, the bus took a longer route. Why did the bus take a longer route?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The bus was full"
+        },
+        {
+          "id": "B",
+          "text": "The driver wanted a view of the trees"
+        },
+        {
+          "id": "C",
+          "text": "The bus was late"
+        },
+        {
+          "id": "D",
+          "text": "The road was blocked"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The sentence gives the blocked road as the reason."
+    },
+    {
+      "id": "CO006",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "contrast_understanding",
+      "questionType": "multiple_choice",
+      "question": "Ben likes tea but does not like coffee. Which drink does Ben like?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Coffee"
+        },
+        {
+          "id": "B",
+          "text": "Both"
+        },
+        {
+          "id": "C",
+          "text": "Tea"
+        },
+        {
+          "id": "D",
+          "text": "Neither"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'But' contrasts the two drinks: Ben likes tea and does not like coffee."
+    },
+    {
+      "id": "CO007",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "double_negation_understanding",
+      "questionType": "multiple_choice",
+      "question": "It is not true that the museum is never open on Mondays. Which statement matches?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The museum is always open on Mondays"
+        },
+        {
+          "id": "B",
+          "text": "The museum is never open on Mondays"
+        },
+        {
+          "id": "C",
+          "text": "The museum is closed all week"
+        },
+        {
+          "id": "D",
+          "text": "The museum is sometimes open on Mondays"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Denying 'never open' means it is open at least sometimes."
+    },
+    {
+      "id": "CO008",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "cause_effect_identification",
+      "questionType": "multiple_choice",
+      "question": "Because it rained all night, the grass was wet. Why was the grass wet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "It rained all night"
+        },
+        {
+          "id": "B",
+          "text": "The sun was hot"
+        },
+        {
+          "id": "C",
+          "text": "Someone cut it"
+        },
+        {
+          "id": "D",
+          "text": "It was windy"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The sentence states the rain as the reason, using 'because'."
+    },
+    {
+      "id": "CO009",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "supported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "Only members may use the pool, and Rita used the pool today. Which conclusion is supported?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Rita is a member"
+        },
+        {
+          "id": "B",
+          "text": "Rita swims every day"
+        },
+        {
+          "id": "C",
+          "text": "Rita owns the pool"
+        },
+        {
+          "id": "D",
+          "text": "The pool was crowded"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "If only members may use the pool, anyone who used it must be a member."
+    },
+    {
+      "id": "CO010",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "supported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "The recipe says to add salt only after the water boils, and the water has not boiled yet. What should be done now?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Wait before adding salt"
+        },
+        {
+          "id": "B",
+          "text": "Add the salt now"
+        },
+        {
+          "id": "C",
+          "text": "Pour the water out"
+        },
+        {
+          "id": "D",
+          "text": "Add more water"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Salt must wait until the water boils, which has not happened yet."
+    },
+    {
+      "id": "CO011",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "synonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is closest in meaning to 'scarce'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "plentiful"
+        },
+        {
+          "id": "B",
+          "text": "sharp"
+        },
+        {
+          "id": "C",
+          "text": "rare"
+        },
+        {
+          "id": "D",
+          "text": "nearby"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Scarce means hard to find or in short supply, like rare."
+    },
+    {
+      "id": "CO012",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "emotional_inference",
+      "questionType": "multiple_choice",
+      "question": "After the announcement, the room filled with groans, and several people crumpled their papers. How did people probably react?",
+      "options": [
+        {
+          "id": "A",
+          "text": "With excitement"
+        },
+        {
+          "id": "B",
+          "text": "With disappointment"
+        },
+        {
+          "id": "C",
+          "text": "With amusement"
+        },
+        {
+          "id": "D",
+          "text": "With indifference"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Groans and crumpled papers suggest displeasure."
+    },
+    {
+      "id": "CO013",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "The manager's praise was sincere, not just polite words. What does 'sincere' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Quickly given"
+        },
+        {
+          "id": "B",
+          "text": "Honestly meant"
+        },
+        {
+          "id": "C",
+          "text": "Carefully hidden"
+        },
+        {
+          "id": "D",
+          "text": "Rarely heard"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Sincere is contrasted with merely polite words, so it means genuinely meant."
+    },
+    {
+      "id": "CO014",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "The scientist's explanation was clear and concise. What does 'concise' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Long and detailed"
+        },
+        {
+          "id": "B",
+          "text": "Short but complete"
+        },
+        {
+          "id": "C",
+          "text": "Full of mistakes"
+        },
+        {
+          "id": "D",
+          "text": "Very loud"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Concise describes saying what is needed in few words."
+    },
+    {
+      "id": "CO015",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "effect_identification",
+      "questionType": "multiple_choice",
+      "question": "The river rose after three days of heavy rain. What was the result of the heavy rain?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The rain stopped"
+        },
+        {
+          "id": "B",
+          "text": "The bridge opened"
+        },
+        {
+          "id": "C",
+          "text": "The days got longer"
+        },
+        {
+          "id": "D",
+          "text": "The river rose"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The river rising is the outcome that followed the rain."
+    },
+    {
+      "id": "CO016",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "sentence_paraphrase_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence has the same meaning as 'The shop is open every day'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The shop is open only at weekends"
+        },
+        {
+          "id": "B",
+          "text": "You can visit the shop on any day"
+        },
+        {
+          "id": "C",
+          "text": "The shop is closed on Sundays"
+        },
+        {
+          "id": "D",
+          "text": "The shop opens once a week"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Open every day means any day of the week works."
+    },
+    {
+      "id": "CO017",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "category_membership",
+      "questionType": "multiple_choice",
+      "question": "Which word belongs with 'apple', 'pear' and 'plum'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "grape"
+        },
+        {
+          "id": "B",
+          "text": "carrot"
+        },
+        {
+          "id": "C",
+          "text": "bread"
+        },
+        {
+          "id": "D",
+          "text": "chair"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Apple, pear, plum and grape are all fruits."
+    },
+    {
+      "id": "CO018",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "sentence_paraphrase_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means the same as 'The meeting was postponed until Friday'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The meeting was cancelled on Friday"
+        },
+        {
+          "id": "B",
+          "text": "The meeting ended on Friday"
+        },
+        {
+          "id": "C",
+          "text": "The meeting started before Friday"
+        },
+        {
+          "id": "D",
+          "text": "The meeting will now take place on Friday"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Postponed until Friday means moved to a later time, namely Friday."
+    },
+    {
+      "id": "CO019",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "synonym_in_context",
+      "questionType": "multiple_choice",
+      "question": "Which word is closest in meaning to 'reluctant' in 'She was reluctant to jump into the cold lake'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "eager"
+        },
+        {
+          "id": "B",
+          "text": "excited"
+        },
+        {
+          "id": "C",
+          "text": "unwilling"
+        },
+        {
+          "id": "D",
+          "text": "skilled"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Reluctant means not wanting to do something; unwilling is closest."
+    },
+    {
+      "id": "CO020",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "single_sentence_inference",
+      "questionType": "multiple_choice",
+      "question": "The dog wagged its tail when Lee came home. How did the dog probably feel?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Happy to see Lee"
+        },
+        {
+          "id": "B",
+          "text": "Afraid of Lee"
+        },
+        {
+          "id": "C",
+          "text": "Hungry for lunch"
+        },
+        {
+          "id": "D",
+          "text": "Angry at Lee"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A wagging tail on seeing someone usually shows happiness."
+    },
+    {
+      "id": "CO021",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "category_membership",
+      "questionType": "multiple_choice",
+      "question": "Which word names a kind of vehicle?",
+      "options": [
+        {
+          "id": "A",
+          "text": "garage"
+        },
+        {
+          "id": "B",
+          "text": "fuel"
+        },
+        {
+          "id": "C",
+          "text": "driver"
+        },
+        {
+          "id": "D",
+          "text": "tractor"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A tractor is a vehicle; a garage is a place, fuel is a substance and a driver is a person."
+    },
+    {
+      "id": "CO022",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "Jo was thrilled to win the game. What does 'thrilled' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Quite angry"
+        },
+        {
+          "id": "B",
+          "text": "Very excited and happy"
+        },
+        {
+          "id": "C",
+          "text": "A little bored"
+        },
+        {
+          "id": "D",
+          "text": "Very tired"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Winning a game is a happy event, and thrilled means very excited."
+    },
+    {
+      "id": "CO023",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "synonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word means almost the same as 'begin'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "start"
+        },
+        {
+          "id": "B",
+          "text": "finish"
+        },
+        {
+          "id": "C",
+          "text": "wait"
+        },
+        {
+          "id": "D",
+          "text": "hide"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Begin and start have nearly the same meaning."
+    },
+    {
+      "id": "CO024",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "contrast_understanding",
+      "questionType": "multiple_choice",
+      "question": "Although the film was long, most viewers thought it was worth watching. What did most viewers think?",
+      "options": [
+        {
+          "id": "A",
+          "text": "It was too short"
+        },
+        {
+          "id": "B",
+          "text": "It was not worth watching"
+        },
+        {
+          "id": "C",
+          "text": "It was worth watching"
+        },
+        {
+          "id": "D",
+          "text": "It was too difficult"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Although' sets the long length against the positive opinion."
+    },
+    {
+      "id": "CO025",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "unsupported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "Which conclusion is NOT supported by 'The lights were off and the doors were locked'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The building seemed closed"
+        },
+        {
+          "id": "B",
+          "text": "Nobody could easily enter"
+        },
+        {
+          "id": "C",
+          "text": "The building was full of people"
+        },
+        {
+          "id": "D",
+          "text": "The lights were not on"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Locked doors and no lights suggest a closed building, not a crowded one."
+    },
+    {
+      "id": "CO026",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "supported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "The library closes at six, and Dara arrived at seven. Which conclusion is supported?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dara borrowed a book"
+        },
+        {
+          "id": "B",
+          "text": "The library closed early"
+        },
+        {
+          "id": "C",
+          "text": "The library was closed when Dara arrived"
+        },
+        {
+          "id": "D",
+          "text": "Dara works at the library"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Seven is after the six o'clock closing time."
+    },
+    {
+      "id": "CO027",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "valid_conclusion",
+      "questionType": "multiple_choice",
+      "question": "Which conclusion follows from 'Every bus on route 9 stops at the park, and this bus is on route 9'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Every bus stops at the park"
+        },
+        {
+          "id": "B",
+          "text": "This bus is the only route 9 bus"
+        },
+        {
+          "id": "C",
+          "text": "This bus is late"
+        },
+        {
+          "id": "D",
+          "text": "This bus stops at the park"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The rule for all route 9 buses applies to this bus."
+    },
+    {
+      "id": "CO028",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "The old bridge was fragile, so only one person could cross at a time. What does 'fragile' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Very long"
+        },
+        {
+          "id": "B",
+          "text": "Easily broken"
+        },
+        {
+          "id": "C",
+          "text": "Very bright"
+        },
+        {
+          "id": "D",
+          "text": "Newly built"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Limiting use to one person at a time suggests it could break easily."
+    },
+    {
+      "id": "CO029",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "central_meaning_identification",
+      "questionType": "multiple_choice",
+      "question": "Which choice best states the main idea of 'Bees visit flowers to collect nectar, and in doing so they carry pollen from plant to plant'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Bees live only inside flowers"
+        },
+        {
+          "id": "B",
+          "text": "Bees help plants by moving pollen"
+        },
+        {
+          "id": "C",
+          "text": "Flowers make honey"
+        },
+        {
+          "id": "D",
+          "text": "Bees are afraid of plants"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The sentence's key point is that bees carry pollen between plants."
+    },
+    {
+      "id": "CO030",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "The room was silent. What does 'silent' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Very crowded"
+        },
+        {
+          "id": "B",
+          "text": "Without any sound"
+        },
+        {
+          "id": "C",
+          "text": "Full of light"
+        },
+        {
+          "id": "D",
+          "text": "Quite cold"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Silent means making no sound."
+    },
+    {
+      "id": "CO031",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "antonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word means the opposite of 'empty'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "clean"
+        },
+        {
+          "id": "B",
+          "text": "small"
+        },
+        {
+          "id": "C",
+          "text": "quiet"
+        },
+        {
+          "id": "D",
+          "text": "full"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Empty means holding nothing; full means holding as much as possible."
+    },
+    {
+      "id": "CO032",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "single_sentence_inference",
+      "questionType": "multiple_choice",
+      "question": "Mark checked his watch twice and then ran toward the station. What can you infer?",
+      "options": [
+        {
+          "id": "A",
+          "text": "He was in no hurry"
+        },
+        {
+          "id": "B",
+          "text": "He had just woken up"
+        },
+        {
+          "id": "C",
+          "text": "He was probably worried about being late"
+        },
+        {
+          "id": "D",
+          "text": "He wanted to buy a watch"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Checking the time and then running suggests he feared missing his train."
+    },
+    {
+      "id": "CO033",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "antonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is the opposite of 'generous'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "stingy"
+        },
+        {
+          "id": "B",
+          "text": "wealthy"
+        },
+        {
+          "id": "C",
+          "text": "polite"
+        },
+        {
+          "id": "D",
+          "text": "careful"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Generous means giving freely; stingy means unwilling to give."
+    },
+    {
+      "id": "CO034",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "sentence_paraphrase_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence matches 'The report was neither long nor difficult'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The report was brief and simple"
+        },
+        {
+          "id": "B",
+          "text": "The report was long but easy"
+        },
+        {
+          "id": "C",
+          "text": "The report was short but difficult"
+        },
+        {
+          "id": "D",
+          "text": "The report was long and difficult"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Neither long nor difficult means both not long and not difficult."
+    },
+    {
+      "id": "CO035",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "negation_understanding",
+      "questionType": "multiple_choice",
+      "question": "None of the students who took the test failed it. Which statement must be true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Every student who took the test passed"
+        },
+        {
+          "id": "B",
+          "text": "Only one student passed the test"
+        },
+        {
+          "id": "C",
+          "text": "No student took the test"
+        },
+        {
+          "id": "D",
+          "text": "Some students failed the test"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "If none failed, then all who took it passed."
+    },
+    {
+      "id": "CO036",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "negation_understanding",
+      "questionType": "multiple_choice",
+      "question": "The box is not empty. Which statement must be true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The box is broken"
+        },
+        {
+          "id": "B",
+          "text": "There is something in the box"
+        },
+        {
+          "id": "C",
+          "text": "The box is full"
+        },
+        {
+          "id": "D",
+          "text": "The box is new"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Not empty means the box holds at least something; it does not have to be full."
+    },
+    {
+      "id": "CO037",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "She had to bear the heavy box up the stairs. Here, 'bear' means:",
+      "options": [
+        {
+          "id": "A",
+          "text": "dislike"
+        },
+        {
+          "id": "B",
+          "text": "wait"
+        },
+        {
+          "id": "C",
+          "text": "hunt"
+        },
+        {
+          "id": "D",
+          "text": "carry"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "In this sentence, bear means to carry something."
+    },
+    {
+      "id": "CO038",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "cause_effect_identification",
+      "questionType": "multiple_choice",
+      "question": "Sam was tired, so he went to bed early. Why did Sam go to bed early?",
+      "options": [
+        {
+          "id": "A",
+          "text": "He was tired"
+        },
+        {
+          "id": "B",
+          "text": "He was hungry"
+        },
+        {
+          "id": "C",
+          "text": "He was late"
+        },
+        {
+          "id": "D",
+          "text": "He was cold"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The word 'so' links being tired to going to bed early."
+    },
+    {
+      "id": "CO039",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "synonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word means almost the same as 'big'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "tiny"
+        },
+        {
+          "id": "B",
+          "text": "quick"
+        },
+        {
+          "id": "C",
+          "text": "soft"
+        },
+        {
+          "id": "D",
+          "text": "large"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Large and big both describe something of great size."
+    },
+    {
+      "id": "CO040",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "A tiny ant crawled across the page. What does 'tiny' mean?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Very fast"
+        },
+        {
+          "id": "B",
+          "text": "Very old"
+        },
+        {
+          "id": "C",
+          "text": "Very loud"
+        },
+        {
+          "id": "D",
+          "text": "Very small"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Tiny means extremely small, which suits an ant."
+    },
+    {
+      "id": "CO041",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "sentence_paraphrase_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means the same as 'Few people attended the show'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Many people came to the show"
+        },
+        {
+          "id": "B",
+          "text": "Everyone came to the show"
+        },
+        {
+          "id": "C",
+          "text": "Hardly anyone came to the show"
+        },
+        {
+          "id": "D",
+          "text": "The show was held twice"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Few means a small number, close to hardly anyone."
+    },
+    {
+      "id": "CO042",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "supported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "The nest holds three tiny eggs. Which conclusion is supported?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The eggs are about to hatch"
+        },
+        {
+          "id": "B",
+          "text": "The eggs belong to a robin"
+        },
+        {
+          "id": "C",
+          "text": "The nest is in a tree"
+        },
+        {
+          "id": "D",
+          "text": "The nest contains eggs"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Only the presence of eggs is stated; the other options add facts not given."
+    },
+    {
+      "id": "CO043",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "word_meaning_in_context",
+      "questionType": "multiple_choice",
+      "question": "The tired hikers decided to rest in the shade. Here, 'shade' means:",
+      "options": [
+        {
+          "id": "A",
+          "text": "a cool area out of direct sunlight"
+        },
+        {
+          "id": "B",
+          "text": "a type of hat"
+        },
+        {
+          "id": "C",
+          "text": "a dark color of paint"
+        },
+        {
+          "id": "D",
+          "text": "a small hill"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Hikers resting from heat would choose a place out of the sun."
+    },
+    {
+      "id": "CO044",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "antonym_identification",
+      "questionType": "multiple_choice",
+      "question": "Which word is the opposite of 'ancient'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "modern"
+        },
+        {
+          "id": "B",
+          "text": "huge"
+        },
+        {
+          "id": "C",
+          "text": "broken"
+        },
+        {
+          "id": "D",
+          "text": "quiet"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Ancient means very old; modern means of the present time."
+    },
+    {
+      "id": "CO045",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "single_sentence_inference",
+      "questionType": "multiple_choice",
+      "question": "Ana put on her coat and gloves before going outside. What can you tell about the weather?",
+      "options": [
+        {
+          "id": "A",
+          "text": "It was probably hot"
+        },
+        {
+          "id": "B",
+          "text": "It was probably night"
+        },
+        {
+          "id": "C",
+          "text": "It was probably cold"
+        },
+        {
+          "id": "D",
+          "text": "It was probably crowded"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "People usually wear a coat and gloves when it is cold."
+    },
+    {
+      "id": "CO046",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "effect_identification",
+      "questionType": "multiple_choice",
+      "question": "Since the battery was dead, the phone would not turn on. What was the effect of the dead battery?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The phone was lost"
+        },
+        {
+          "id": "B",
+          "text": "The phone rang loudly"
+        },
+        {
+          "id": "C",
+          "text": "The phone would not turn on"
+        },
+        {
+          "id": "D",
+          "text": "The phone was new"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The sentence states the effect after the cause."
+    },
+    {
+      "id": "CO047",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "contrast_inference",
+      "questionType": "multiple_choice",
+      "question": "Unlike her brother, Nia dislikes spicy food. What is probably true about her brother?",
+      "options": [
+        {
+          "id": "A",
+          "text": "He dislikes spicy food too"
+        },
+        {
+          "id": "B",
+          "text": "He has never eaten any food"
+        },
+        {
+          "id": "C",
+          "text": "He is older than Nia"
+        },
+        {
+          "id": "D",
+          "text": "He does not dislike spicy food"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Unlike' signals a difference, so her brother does not share her dislike."
+    },
+    {
+      "id": "CO048",
+      "category": "comprehension",
+      "difficulty": "easy",
+      "skill": "cause_effect_identification",
+      "questionType": "multiple_choice",
+      "question": "The ice melted because the sun was strong. What caused the ice to melt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The cold wind"
+        },
+        {
+          "id": "B",
+          "text": "The wet floor"
+        },
+        {
+          "id": "C",
+          "text": "The strong sun"
+        },
+        {
+          "id": "D",
+          "text": "The heavy rain"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The sentence names the strong sun as the cause after 'because'."
+    },
+    {
+      "id": "CO049",
+      "category": "comprehension",
+      "difficulty": "hard",
+      "skill": "unsupported_conclusion",
+      "questionType": "multiple_choice",
+      "question": "Which conclusion is NOT supported by 'Kai's umbrella was dry when he got home'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Kai may not have needed the umbrella"
+        },
+        {
+          "id": "B",
+          "text": "It may not have rained while Kai was out"
+        },
+        {
+          "id": "C",
+          "text": "It rained heavily on Kai's walk home"
+        },
+        {
+          "id": "D",
+          "text": "Kai may not have opened the umbrella"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A dry umbrella does not fit heavy rain on the walk home, while the other options remain possible."
+    },
+    {
+      "id": "CO050",
+      "category": "comprehension",
+      "difficulty": "medium",
+      "skill": "part_whole_relationship",
+      "questionType": "multiple_choice",
+      "question": "Which word names a part of a book?",
+      "options": [
+        {
+          "id": "A",
+          "text": "kitchen"
+        },
+        {
+          "id": "B",
+          "text": "harbor"
+        },
+        {
+          "id": "C",
+          "text": "chapter"
+        },
+        {
+          "id": "D",
+          "text": "season"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A book is divided into chapters."
+    }
+  ]
+}

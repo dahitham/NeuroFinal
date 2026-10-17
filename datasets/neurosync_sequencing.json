@@ -1,0 +1,1415 @@
+{
+  "project": "NeuroSync",
+  "datasetVersion": "1.0",
+  "purpose": "Experimental reading-related behavioral task dataset for accessibility personalization",
+  "totalQuestions": 250,
+  "categoryCounts": {
+    "word_recognition": 50,
+    "comprehension": 50,
+    "sequencing": 50,
+    "sentence_understanding": 50,
+    "attention_to_detail": 50
+  },
+  "questions": [
+    {
+      "id": "SQ001",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "before_after_relationship",
+      "questionType": "multiple_choice",
+      "question": "Before the guests arrived, Lena set the table. After the guests left, she washed the dishes. What did Lena do last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Set the table"
+        },
+        {
+          "id": "B",
+          "text": "Welcomed the guests"
+        },
+        {
+          "id": "C",
+          "text": "Washed the dishes"
+        },
+        {
+          "id": "D",
+          "text": "Cooked dinner"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The washing happened after the guests left, which is the latest event named."
+    },
+    {
+      "id": "SQ002",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: morning, noon, afternoon, ____?",
+      "options": [
+        {
+          "id": "A",
+          "text": "evening"
+        },
+        {
+          "id": "B",
+          "text": "yesterday"
+        },
+        {
+          "id": "C",
+          "text": "sunrise"
+        },
+        {
+          "id": "D",
+          "text": "spring"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Evening follows afternoon in the parts of a day."
+    },
+    {
+      "id": "SQ003",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "four_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Which shows the correct order of the trip?",
+      "options": [
+        {
+          "id": "A",
+          "text": "arrived at the airport → packed her bag → boarded the plane → landed"
+        },
+        {
+          "id": "B",
+          "text": "packed her bag → boarded the plane → arrived at the airport → landed"
+        },
+        {
+          "id": "C",
+          "text": "packed her bag → arrived at the airport → boarded the plane → landed"
+        },
+        {
+          "id": "D",
+          "text": "packed her bag → arrived at the airport → landed → boarded the plane"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A traveler packs, reaches the airport, boards, and then lands."
+    },
+    {
+      "id": "SQ004",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "non_chronological_narration",
+      "questionType": "multiple_choice",
+      "question": "Sol drove to the coast on Saturday, having packed the day before and booked a hotel the week before. Which order is correct from first to last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "packed → booked the hotel → drove to the coast"
+        },
+        {
+          "id": "B",
+          "text": "drove to the coast → packed → booked the hotel"
+        },
+        {
+          "id": "C",
+          "text": "booked the hotel → drove to the coast → packed"
+        },
+        {
+          "id": "D",
+          "text": "booked the hotel → packed → drove to the coast"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The hotel was booked a week earlier, packing was the day before, and the drive was on Saturday."
+    },
+    {
+      "id": "SQ005",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "first_event_identification",
+      "questionType": "multiple_choice",
+      "question": "The water boiled before Max added the pasta. What happened first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The water boiled"
+        },
+        {
+          "id": "B",
+          "text": "Max added the pasta"
+        },
+        {
+          "id": "C",
+          "text": "Max drained the pasta"
+        },
+        {
+          "id": "D",
+          "text": "Max ate the pasta"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Before' places the water boiling earlier than adding the pasta."
+    },
+    {
+      "id": "SQ006",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "missing_event_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "The sun rose, then the day grew warm, then ____, and finally the stars appeared. Which event is missing?",
+      "options": [
+        {
+          "id": "A",
+          "text": "the sun set"
+        },
+        {
+          "id": "B",
+          "text": "the sun rose again"
+        },
+        {
+          "id": "C",
+          "text": "the stars faded"
+        },
+        {
+          "id": "D",
+          "text": "the dawn broke"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The sun sets before the stars appear in the evening."
+    },
+    {
+      "id": "SQ007",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "first_event_identification",
+      "questionType": "multiple_choice",
+      "question": "Mia put on her shoes and then went outside. What did Mia do first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Went outside"
+        },
+        {
+          "id": "B",
+          "text": "Closed the door"
+        },
+        {
+          "id": "C",
+          "text": "Put on her shoes"
+        },
+        {
+          "id": "D",
+          "text": "Called a friend"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'And then' shows that putting on shoes came before going outside."
+    },
+    {
+      "id": "SQ008",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Which shows the order from first to last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "plant → seed → flower"
+        },
+        {
+          "id": "B",
+          "text": "flower → plant → seed"
+        },
+        {
+          "id": "C",
+          "text": "seed → flower → plant"
+        },
+        {
+          "id": "D",
+          "text": "seed → plant → flower"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "A seed grows into a plant, which then produces a flower."
+    },
+    {
+      "id": "SQ009",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which letter is missing: A, B, C, ____, E?",
+      "options": [
+        {
+          "id": "A",
+          "text": "F"
+        },
+        {
+          "id": "B",
+          "text": "G"
+        },
+        {
+          "id": "C",
+          "text": "D"
+        },
+        {
+          "id": "D",
+          "text": "H"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "D comes between C and E in the alphabet."
+    },
+    {
+      "id": "SQ010",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "ordinal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "First, Omar washed the car. Then he dried it. Finally, he parked it in the garage. Which action happened between washing and parking?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Drying the car"
+        },
+        {
+          "id": "B",
+          "text": "Washing the car"
+        },
+        {
+          "id": "C",
+          "text": "Parking the car"
+        },
+        {
+          "id": "D",
+          "text": "Waxing the car"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Then' places drying after washing and before the final parking."
+    },
+    {
+      "id": "SQ011",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "before_after_relationship",
+      "questionType": "multiple_choice",
+      "question": "Tom ate dinner after he washed his hands. What did Tom do first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ate dinner"
+        },
+        {
+          "id": "B",
+          "text": "Set the table"
+        },
+        {
+          "id": "C",
+          "text": "Brushed his teeth"
+        },
+        {
+          "id": "D",
+          "text": "Washed his hands"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'After' places eating dinner later than washing his hands."
+    },
+    {
+      "id": "SQ012",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: first, second, third, ____, fifth?",
+      "options": [
+        {
+          "id": "A",
+          "text": "sixth"
+        },
+        {
+          "id": "B",
+          "text": "second"
+        },
+        {
+          "id": "C",
+          "text": "last"
+        },
+        {
+          "id": "D",
+          "text": "fourth"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Fourth comes between third and fifth."
+    },
+    {
+      "id": "SQ013",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "last_event_identification",
+      "questionType": "multiple_choice",
+      "question": "The bell rang after the lesson ended. The lesson ended after the quiz. Which happened last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The bell rang"
+        },
+        {
+          "id": "B",
+          "text": "The lesson ended"
+        },
+        {
+          "id": "C",
+          "text": "The quiz"
+        },
+        {
+          "id": "D",
+          "text": "The lesson began"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The quiz came first, then the lesson ended, then the bell rang."
+    },
+    {
+      "id": "SQ014",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "missing_event_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: egg, caterpillar, ____, butterfly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bird"
+        },
+        {
+          "id": "B",
+          "text": "flower"
+        },
+        {
+          "id": "C",
+          "text": "chrysalis"
+        },
+        {
+          "id": "D",
+          "text": "spider"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "A caterpillar forms a chrysalis before becoming a butterfly."
+    },
+    {
+      "id": "SQ015",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "temporal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "While Raj was cooking, Mina set the table. Then they ate. What did they do last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cooked"
+        },
+        {
+          "id": "B",
+          "text": "Set the table"
+        },
+        {
+          "id": "C",
+          "text": "Washed up"
+        },
+        {
+          "id": "D",
+          "text": "Ate"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Then' puts eating after the cooking and table setting."
+    },
+    {
+      "id": "SQ016",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "chained_conditions",
+      "questionType": "multiple_choice",
+      "question": "The gate opens only after the whistle blows, and the whistle blows only after the train stops. Which happens first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The gate opens"
+        },
+        {
+          "id": "B",
+          "text": "The whistle blows"
+        },
+        {
+          "id": "C",
+          "text": "The train leaves"
+        },
+        {
+          "id": "D",
+          "text": "The train stops"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The train stops, then the whistle blows, then the gate opens."
+    },
+    {
+      "id": "SQ017",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "ordinal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "The recipe says: first, chop the onion; next, fry it; then add the rice; finally, serve. What comes right after frying the onion?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Chop the onion"
+        },
+        {
+          "id": "B",
+          "text": "Serve the meal"
+        },
+        {
+          "id": "C",
+          "text": "Wash the rice"
+        },
+        {
+          "id": "D",
+          "text": "Add the rice"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Then' follows 'next', so adding the rice comes right after frying."
+    },
+    {
+      "id": "SQ018",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which day is missing: Friday, Saturday, ____, Monday?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tuesday"
+        },
+        {
+          "id": "B",
+          "text": "Sunday"
+        },
+        {
+          "id": "C",
+          "text": "Thursday"
+        },
+        {
+          "id": "D",
+          "text": "Wednesday"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Sunday comes between Saturday and Monday."
+    },
+    {
+      "id": "SQ019",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "last_event_identification",
+      "questionType": "multiple_choice",
+      "question": "Ravi finished his homework and then went to play. What did Ravi do last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Finished his homework"
+        },
+        {
+          "id": "B",
+          "text": "Started his homework"
+        },
+        {
+          "id": "C",
+          "text": "Packed his bag"
+        },
+        {
+          "id": "D",
+          "text": "Went to play"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'And then' puts going to play after finishing homework."
+    },
+    {
+      "id": "SQ020",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which day is missing: Monday, Tuesday, ____, Thursday?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Friday"
+        },
+        {
+          "id": "B",
+          "text": "Sunday"
+        },
+        {
+          "id": "C",
+          "text": "Wednesday"
+        },
+        {
+          "id": "D",
+          "text": "Saturday"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Wednesday comes between Tuesday and Thursday."
+    },
+    {
+      "id": "SQ021",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which month is missing: January, February, ____, April?",
+      "options": [
+        {
+          "id": "A",
+          "text": "May"
+        },
+        {
+          "id": "B",
+          "text": "June"
+        },
+        {
+          "id": "C",
+          "text": "March"
+        },
+        {
+          "id": "D",
+          "text": "December"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "March comes between February and April."
+    },
+    {
+      "id": "SQ022",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Which shows the correct order for a school morning?",
+      "options": [
+        {
+          "id": "A",
+          "text": "wake up → get dressed → leave for school"
+        },
+        {
+          "id": "B",
+          "text": "get dressed → wake up → leave for school"
+        },
+        {
+          "id": "C",
+          "text": "leave for school → wake up → get dressed"
+        },
+        {
+          "id": "D",
+          "text": "wake up → leave for school → get dressed"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "A person wakes up, then gets dressed, then leaves for school."
+    },
+    {
+      "id": "SQ023",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "temporal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "Jade did not call Sam until she had finished work. When did Jade call Sam?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Before she started work"
+        },
+        {
+          "id": "B",
+          "text": "While she was working"
+        },
+        {
+          "id": "C",
+          "text": "Instead of finishing work"
+        },
+        {
+          "id": "D",
+          "text": "After she finished work"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Not until' means the call happened only after work was finished."
+    },
+    {
+      "id": "SQ024",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "temporal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "Dev waited until the movie ended before he left the cinema. Which happened first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dev left the cinema"
+        },
+        {
+          "id": "B",
+          "text": "The movie ended"
+        },
+        {
+          "id": "C",
+          "text": "Dev went home"
+        },
+        {
+          "id": "D",
+          "text": "Dev bought a ticket"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Until' means Dev stayed through the end, then left."
+    },
+    {
+      "id": "SQ025",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: first, second, ____, fourth?",
+      "options": [
+        {
+          "id": "A",
+          "text": "fifth"
+        },
+        {
+          "id": "B",
+          "text": "third"
+        },
+        {
+          "id": "C",
+          "text": "last"
+        },
+        {
+          "id": "D",
+          "text": "middle"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Third comes between second and fourth."
+    },
+    {
+      "id": "SQ026",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which month is missing: June, July, ____, September?",
+      "options": [
+        {
+          "id": "A",
+          "text": "May"
+        },
+        {
+          "id": "B",
+          "text": "August"
+        },
+        {
+          "id": "C",
+          "text": "October"
+        },
+        {
+          "id": "D",
+          "text": "December"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "August comes between July and September."
+    },
+    {
+      "id": "SQ027",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "order_of_stated_actions",
+      "questionType": "multiple_choice",
+      "question": "Pour the milk into the bowl after adding the cereal. What should be put in the bowl first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The milk"
+        },
+        {
+          "id": "B",
+          "text": "The spoon"
+        },
+        {
+          "id": "C",
+          "text": "The cereal"
+        },
+        {
+          "id": "D",
+          "text": "The sugar"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'After' means the milk is poured only once the cereal is in."
+    },
+    {
+      "id": "SQ028",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "last_event_identification",
+      "questionType": "multiple_choice",
+      "question": "The concert started after the doors opened and before the rain began. Which of these happened last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The doors opened"
+        },
+        {
+          "id": "B",
+          "text": "The rain began"
+        },
+        {
+          "id": "C",
+          "text": "The concert started"
+        },
+        {
+          "id": "D",
+          "text": "The crowd arrived"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The doors opened, then the concert started, then the rain began."
+    },
+    {
+      "id": "SQ029",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Dan ate lunch after he washed his hands. He washed his hands after he came home. Which shows the order from first to last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "washed hands → came home → ate lunch"
+        },
+        {
+          "id": "B",
+          "text": "came home → washed hands → ate lunch"
+        },
+        {
+          "id": "C",
+          "text": "ate lunch → washed hands → came home"
+        },
+        {
+          "id": "D",
+          "text": "came home → ate lunch → washed hands"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Coming home came before washing hands, which came before eating lunch."
+    },
+    {
+      "id": "SQ030",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "sequence_repair",
+      "questionType": "multiple_choice",
+      "question": "Lucy woke up. She ate breakfast. She left for work. Which event should come right after 'Lucy woke up'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She went to sleep"
+        },
+        {
+          "id": "B",
+          "text": "She came home"
+        },
+        {
+          "id": "C",
+          "text": "She finished work"
+        },
+        {
+          "id": "D",
+          "text": "She got out of bed"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "After waking, a person gets out of bed before eating breakfast."
+    },
+    {
+      "id": "SQ031",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "past_perfect_interpretation",
+      "questionType": "multiple_choice",
+      "question": "By the time Joe arrived, the film had already started. Which happened first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The film started"
+        },
+        {
+          "id": "B",
+          "text": "Joe arrived"
+        },
+        {
+          "id": "C",
+          "text": "Joe bought a ticket"
+        },
+        {
+          "id": "D",
+          "text": "The film ended"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Had already started' shows the film began before Joe arrived."
+    },
+    {
+      "id": "SQ032",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "relative_order_of_people",
+      "questionType": "multiple_choice",
+      "question": "Anna arrived after Ben but before Cara. Who arrived last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cara"
+        },
+        {
+          "id": "B",
+          "text": "Anna"
+        },
+        {
+          "id": "C",
+          "text": "Ben"
+        },
+        {
+          "id": "D",
+          "text": "It cannot be known"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The order of arrival was Ben, then Anna, then Cara."
+    },
+    {
+      "id": "SQ033",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "middle_event_identification",
+      "questionType": "multiple_choice",
+      "question": "The play began before the intermission. The intermission began before the play ended. Which event happened in the middle?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The play began"
+        },
+        {
+          "id": "B",
+          "text": "The play ended"
+        },
+        {
+          "id": "C",
+          "text": "The audience arrived"
+        },
+        {
+          "id": "D",
+          "text": "The intermission began"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The intermission came after the start and before the end of the play."
+    },
+    {
+      "id": "SQ034",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "wrong_order_detection",
+      "questionType": "multiple_choice",
+      "question": "'The seed was planted. The plant flowered. The seed sprouted. The flower faded.' Which two events should swap places?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The seed was planted and the flower faded"
+        },
+        {
+          "id": "B",
+          "text": "The seed was planted and the plant flowered"
+        },
+        {
+          "id": "C",
+          "text": "The plant flowered and the seed sprouted"
+        },
+        {
+          "id": "D",
+          "text": "The seed sprouted and the flower faded"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Sprouting must happen before flowering."
+    },
+    {
+      "id": "SQ035",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "order_of_stated_actions",
+      "questionType": "multiple_choice",
+      "question": "Lia put on her socks, then her shoes. What did Lia put on after her socks?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Her coat"
+        },
+        {
+          "id": "B",
+          "text": "Her shoes"
+        },
+        {
+          "id": "C",
+          "text": "Her hat"
+        },
+        {
+          "id": "D",
+          "text": "Her gloves"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Then' shows that shoes followed socks."
+    },
+    {
+      "id": "SQ036",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "last_event_identification",
+      "questionType": "multiple_choice",
+      "question": "Lea left the house before the rain started. Which event happened last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The rain started"
+        },
+        {
+          "id": "B",
+          "text": "Lea left the house"
+        },
+        {
+          "id": "C",
+          "text": "Lea came back home"
+        },
+        {
+          "id": "D",
+          "text": "The rain stopped"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Leaving happened before the rain began, so the rain starting came last of the stated events."
+    },
+    {
+      "id": "SQ037",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "wrong_order_detection",
+      "questionType": "multiple_choice",
+      "question": "Monday, Wednesday, Tuesday, Thursday, Friday. Which pair of days is in the wrong order?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Monday and Wednesday"
+        },
+        {
+          "id": "B",
+          "text": "Thursday and Friday"
+        },
+        {
+          "id": "C",
+          "text": "Wednesday and Tuesday"
+        },
+        {
+          "id": "D",
+          "text": "Monday and Friday"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Tuesday should come before Wednesday."
+    },
+    {
+      "id": "SQ038",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "ordinal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "First, Kai opened the box. Next, he took out a book. Finally, he closed the box. What did Kai do next?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Opened the box"
+        },
+        {
+          "id": "B",
+          "text": "Took out a book"
+        },
+        {
+          "id": "C",
+          "text": "Closed the box"
+        },
+        {
+          "id": "D",
+          "text": "Read the book"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Next' follows 'first', so taking out a book is the second action."
+    },
+    {
+      "id": "SQ039",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "missing_position_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: spring, summer, ____, winter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "sunrise"
+        },
+        {
+          "id": "B",
+          "text": "autumn"
+        },
+        {
+          "id": "C",
+          "text": "January"
+        },
+        {
+          "id": "D",
+          "text": "midnight"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Autumn is the season between summer and winter."
+    },
+    {
+      "id": "SQ040",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "ordinal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "First, Ana filled the glass. Then she drank the water. Finally, she washed the glass. What did Ana do last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Washed the glass"
+        },
+        {
+          "id": "B",
+          "text": "Filled the glass"
+        },
+        {
+          "id": "C",
+          "text": "Drank the water"
+        },
+        {
+          "id": "D",
+          "text": "Dried the glass"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Finally' marks the last action, which was washing the glass."
+    },
+    {
+      "id": "SQ041",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "temporal_word_interpretation",
+      "questionType": "multiple_choice",
+      "question": "Rina left after the movie began and before it ended. When did Rina leave?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Before the movie began"
+        },
+        {
+          "id": "B",
+          "text": "During the movie"
+        },
+        {
+          "id": "C",
+          "text": "After the movie ended"
+        },
+        {
+          "id": "D",
+          "text": "Before she arrived"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "She left between the start and the end of the movie."
+    },
+    {
+      "id": "SQ042",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "before_after_relationship",
+      "questionType": "multiple_choice",
+      "question": "After the bell rang, the students went home. Which event happened before the students went home?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The students slept"
+        },
+        {
+          "id": "B",
+          "text": "The school opened"
+        },
+        {
+          "id": "C",
+          "text": "The bell rang"
+        },
+        {
+          "id": "D",
+          "text": "The teacher left"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The sentence states that the bell rang first."
+    },
+    {
+      "id": "SQ043",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "order_of_stated_actions",
+      "questionType": "multiple_choice",
+      "question": "Sara locked the door, then turned off the light, then went upstairs. Which action was second?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Locked the door"
+        },
+        {
+          "id": "B",
+          "text": "Turned off the light"
+        },
+        {
+          "id": "C",
+          "text": "Went upstairs"
+        },
+        {
+          "id": "D",
+          "text": "Fed the cat"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The order was locking, turning off the light, then going upstairs."
+    },
+    {
+      "id": "SQ044",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Eva rode the bus after she finished class. She went to the library after she rode the bus. Which order is correct from first to last?",
+      "options": [
+        {
+          "id": "A",
+          "text": "rode the bus → finished class → went to the library"
+        },
+        {
+          "id": "B",
+          "text": "went to the library → finished class → rode the bus"
+        },
+        {
+          "id": "C",
+          "text": "finished class → rode the bus → went to the library"
+        },
+        {
+          "id": "D",
+          "text": "finished class → went to the library → rode the bus"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Each 'after' clause chains the events: class, then the bus, then the library."
+    },
+    {
+      "id": "SQ045",
+      "category": "sequencing",
+      "difficulty": "medium",
+      "skill": "missing_event_in_sequence",
+      "questionType": "multiple_choice",
+      "question": "Which word is missing: seed, sprout, ____, flower?",
+      "options": [
+        {
+          "id": "A",
+          "text": "soil"
+        },
+        {
+          "id": "B",
+          "text": "plant"
+        },
+        {
+          "id": "C",
+          "text": "water"
+        },
+        {
+          "id": "D",
+          "text": "fruit"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "A sprout grows into a plant before it flowers."
+    },
+    {
+      "id": "SQ046",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "four_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Having finished the report, Mia emailed it. Her boss read it before the meeting. Which order from first to last is correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mia emailed it → Mia finished the report → her boss read it → the meeting"
+        },
+        {
+          "id": "B",
+          "text": "Mia finished the report → her boss read it → Mia emailed it → the meeting"
+        },
+        {
+          "id": "C",
+          "text": "Mia finished the report → Mia emailed it → the meeting → her boss read it"
+        },
+        {
+          "id": "D",
+          "text": "Mia finished the report → Mia emailed it → her boss read it → the meeting"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The report was finished, emailed, read, and only then came the meeting."
+    },
+    {
+      "id": "SQ047",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "first_event_identification",
+      "questionType": "multiple_choice",
+      "question": "Before Nora planted the seed, she dug a small hole. What did Nora do first?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dug a small hole"
+        },
+        {
+          "id": "B",
+          "text": "Planted the seed"
+        },
+        {
+          "id": "C",
+          "text": "Watered the seed"
+        },
+        {
+          "id": "D",
+          "text": "Picked a flower"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Before' shows that digging the hole came earlier than planting."
+    },
+    {
+      "id": "SQ048",
+      "category": "sequencing",
+      "difficulty": "easy",
+      "skill": "out_of_place_event_detection",
+      "questionType": "multiple_choice",
+      "question": "Wake up, eat breakfast, go to bed, leave for work. Which event does not belong in this morning order?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Go to bed"
+        },
+        {
+          "id": "B",
+          "text": "Wake up"
+        },
+        {
+          "id": "C",
+          "text": "Eat breakfast"
+        },
+        {
+          "id": "D",
+          "text": "Leave for work"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Going to bed belongs at night, not in a morning routine."
+    },
+    {
+      "id": "SQ049",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "Tess did not start the engine until she had fastened her seat belt, and she did not fasten it until she had sat down. Which order is correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "fastened seat belt → sat down → started engine"
+        },
+        {
+          "id": "B",
+          "text": "sat down → fastened seat belt → started engine"
+        },
+        {
+          "id": "C",
+          "text": "started engine → fastened seat belt → sat down"
+        },
+        {
+          "id": "D",
+          "text": "sat down → started engine → fastened seat belt"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Each 'not until' clause places the later action after the earlier one."
+    },
+    {
+      "id": "SQ050",
+      "category": "sequencing",
+      "difficulty": "hard",
+      "skill": "three_event_ordering",
+      "questionType": "multiple_choice",
+      "question": "The speech came after the song and before the dinner. Which order is correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "speech → song → dinner"
+        },
+        {
+          "id": "B",
+          "text": "dinner → song → speech"
+        },
+        {
+          "id": "C",
+          "text": "song → dinner → speech"
+        },
+        {
+          "id": "D",
+          "text": "song → speech → dinner"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The speech sits between the song and the dinner."
+    }
+  ]
+}

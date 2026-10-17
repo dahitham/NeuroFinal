@@ -4,7 +4,7 @@
  * Shows "Simplify / Summarize / Explain Word / Listen" next to selected text.
  * Only the text the user selected is ever sent anywhere, and only after a click.
  *
- * Word help is LOCAL FIRST (vocabulary derived from datasets/Word_Difficulty_Test.json).
+ * Word help is LOCAL FIRST (using the standalone bundled vocabulary resource).
  * The remote AI is only used when the word is not found locally, and the
  * request is debounced, cached and de-duplicated.
  */

@@ -47,11 +47,11 @@ export async function withServer(fn, { fetchImpl = async () => completion('ok'),
   }
 }
 
-const findBy = (list, pred) => list.find(pred);
+const findQuestion = (id) => Object.values(datasets.categories).flat().find((item) => item.id === id);
 
 /**
  * Answers every question of a core assessment through the real API.
- * strategy "best": correct answers, fast reading, "never" on focus.  "worst": wrong answers, slow reading, worst focus answers.
+ * "best" selects the correct option; "worst" selects a different option.
  */
 export async function runCoreAssessment(api, token, strategy = 'best', { mode } = {}) {
   let r = mode ? await api.post('/assessment/start', { part: 'core', mode }, { token }) : await api.get('/assessment/questions', { token });
@@ -60,23 +60,14 @@ export async function runCoreAssessment(api, token, strategy = 'best', { mode } 
   while (guard++ < 60) {
     const step = r.data.step;
     seen.push(step);
-    let body;
-    if (step.kind === 'passage') {
-      const item = findBy(datasets.readingPassages, (p) => p.passage === step.passage);
-      body = { stepId: step.id, part: 'core', timeMs: Math.round((item.wordCount / (strategy === 'best' ? 250 : 50)) * 60000) };
-    } else if (step.kind === 'mcq') {
-      const item = step.sentence
-        ? findBy(datasets.wordDifficulty, (w) => w.contextSentence === step.sentence)
-        : findBy(datasets.readingPassages, (p) => p.passage === step.passage && p.question === step.prompt);
-      const wrong = step.options.find((o) => o !== item.correctAnswer);
-      body = { stepId: step.id, part: 'core', value: strategy === 'best' ? item.correctAnswer : wrong, timeMs: 1500 };
-    } else if (step.kind === 'self_report') {
-      const item = findBy(datasets.focus.items, (f) => f.question === step.prompt);
-      const sorted = [...item.options].sort((a, b) => a.scoreImpact - b.scoreImpact);
-      body = { stepId: step.id, part: 'core', value: (strategy === 'best' ? sorted[0] : sorted[sorted.length - 1]).text };
-    } else {
-      body = { stepId: step.id, part: 'core', value: step.options[0] };
-    }
+    const item = findQuestion(step.questionId);
+    const wrong = step.options.find((option) => option.id !== item.correctAnswer);
+    const body = {
+      stepId: step.id,
+      part: 'core',
+      value: strategy === 'best' ? item.correctAnswer : wrong.id,
+      timeMs: 1500,
+    };
     const a = await api.post('/assessment/answer', body, { token });
     if (a.status !== 200) throw new Error(`answer failed ${a.status} ${a.text}`);
     if (a.data.complete) break;

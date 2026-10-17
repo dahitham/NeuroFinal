@@ -4,7 +4,7 @@ import { CORE } from '../data/assessmentConfig.js';
 
 /** Aggregates exactly what the Dashboard page shows. Nothing here is invented – missing data stays null. */
 export function createDashboardController({ assessment, datasets }) {
-  const prefLabel = new Map(datasets.preferences.items.map((p) => [p.id, p.category])); // 'PREF-FONT-01' → 'Font Preference'
+  const questionCount = Object.values(datasets.categories).reduce((total, items) => total + Math.min(CORE.questionsPerCategory, items.length), 0);
   return {
     get(req, res) {
       const u = req.user;
@@ -35,11 +35,9 @@ export function createDashboardController({ assessment, datasets }) {
         accessibility: { saved, summary: saved ? describeSettings(settings) : null, settings },
         quickControls: { focusMode: settings.focusMode, readingRuler: settings.readingRuler },
         extension: { connected: u.extension.connected, connectedAt: u.extension.connectedAt, lastSeenAt: u.extension.lastSeenAt },
-        preferences: result
-          ? { items: Object.entries(result.preferences.answers).map(([id, choice]) => ({ category: prefLabel.get(id) || id, choice })), congruence: result.preferences.congruence.score }
-          : null,
+        preferences: null,
         cognitive: cog ? { completed: true, overallPercent: cog.overallPercent } : { completed: false },
-        estimatedMinutes: Math.ceil(((CORE.readingPassages * 2 + CORE.wordDifficultyCount + 12) * CORE.secondsPerStep) / 60),
+        estimatedMinutes: Math.ceil((questionCount * CORE.secondsPerStep) / 60),
       });
     },
   };

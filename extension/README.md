@@ -22,6 +22,6 @@ Edit `manifest.json › host_permissions` and the default `DEFAULT_API` in `back
 
 ## Files
 
-`content/neurosync-engine.js` (shared accessibility engine) · `content/neurosync-selection.js` (Simplify / Summarize / Explain Word toolbar) · `content/content.js` · `background.js` · `popup/` · `data/vocabulary.json` (generated from `datasets/Word_Difficulty_Test.json`) · `assets/fonts/` (Lexend, Atkinson Hyperlegible, OpenDyslexic – bundled, work offline).
+`content/neurosync-engine.js` (shared accessibility engine) · `content/neurosync-selection.js` (Simplify / Summarize / Explain Word toolbar) · `content/content.js` · `background.js` · `popup/` · `data/vocabulary.json` (standalone local word-help resource; verify with `npm run verify:extension-vocabulary`) · `assets/fonts/` (Lexend, Atkinson Hyperlegible, OpenDyslexic – bundled, work offline).
 
 Extensions cannot modify `chrome://` pages or the Chrome Web Store.

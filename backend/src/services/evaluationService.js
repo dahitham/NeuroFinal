@@ -31,13 +31,20 @@ export function validateEvaluationInput(body) {
 export function buildRecord({ user, participantId, ratings, taskCompleted }) {
   const result = user.assessment && user.assessment.core && user.assessment.core.result;
   const s = effectiveSettings(user);
-  const secs = result ? result.breakdown.reading.rounds.filter((r) => r.seconds > 0).map((r) => r.seconds) : [];
+  const secs = result && result.breakdown && result.breakdown.reading && Array.isArray(result.breakdown.reading.rounds)
+    ? result.breakdown.reading.rounds.filter((r) => r.seconds > 0).map((r) => r.seconds)
+    : [];
+  const comprehension = result && result.breakdown && result.breakdown.comprehension
+    ? result.breakdown.comprehension.percent
+    : result && result.breakdown && Array.isArray(result.breakdown.categories)
+      ? result.breakdown.categories.find((category) => category.key === 'comprehension')?.percent ?? ''
+      : '';
   return {
     Participant_ID: participantId,
     Session_ID: 'S-' + crypto.randomBytes(4).toString('hex'),
     Reading_Time: secs.length ? round(mean(secs), 1) : '',
     Assessment_Score: result ? result.score.total : '',
-    Comprehension_Score: result ? result.breakdown.comprehension.percent : '',
+    Comprehension_Score: comprehension,
     Assistance_Level: result ? result.score.level : '',
     Font: s.font,
     Font_Size: s.fontSize,
@@ -49,7 +56,7 @@ export function buildRecord({ user, participantId, ratings, taskCompleted }) {
     TTS: yn(s.textToSpeech),
     Reader_Mode: yn(s.readerMode),
     Focus_Mode: yn(s.focusMode),
-    Preference_Congruence: result && result.preferences.congruence.score != null ? result.preferences.congruence.score : '',
+    Preference_Congruence: result && result.preferences && result.preferences.congruence && result.preferences.congruence.score != null ? result.preferences.congruence.score : '',
     Task_Completion: yn(taskCompleted),
     Ease_of_Reading: ratings.easeOfReading,
     Navigation_Ease: ratings.navigationEase,

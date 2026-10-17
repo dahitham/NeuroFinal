@@ -4,7 +4,7 @@ import { s } from '../utils/css.js';
 import { api } from '../services/api.js';
 
 const LEVEL_COLOR = { 1: 'var(--neurosync-yellow)', 2: 'var(--neurosync-orange)', 3: 'var(--neurosync-coral)' };
-const NAMES = { readingSpeed: 'Reading speed', comprehension: 'Comprehension', wordDifficulty: 'Word difficulty', focus: 'Focus and comfort' };
+const NAMES = { questionAccuracy: 'Question accuracy' };
 
 /** Assessment Results – layout and styles from Results.dc.html; everything shown is the user's real, stored result. */
 export default function Results() {
@@ -53,7 +53,8 @@ function CoreResults() {
   const L = r.level.level;
   const items = r.recommendedSettings;
   const c = r.score.components;
-  const cong = r.preferences.congruence;
+  const categoryResults = r.breakdown.categories || [];
+  const answers = r.breakdown.answers || [];
   return (
     <div className="r pg-results" style={s('min-height:760px;padding:48px 24px;box-sizing:border-box')}>
       <main style={s('max-width:760px;margin:0 auto')}>
@@ -95,19 +96,32 @@ function CoreResults() {
         <section aria-labelledby="bd" style={s('background:#fff;border-radius:20px;padding:28px 32px;margin-top:20px;box-shadow:0 1px 3px rgba(17,24,39,.08)')}>
           <h2 id="bd" style={s('margin:0 0 8px;font-size:20px')}>How your score was made</h2>
           {Object.entries(c).map(([k, v], i, arr) => (
-            <div className="row" key={k} style={{ ...(i === arr.length - 1 && !(cong && cong.score != null) ? s('border-bottom:0') : {}), justifyContent: 'space-between' }}>
-              <span>{NAMES[k]}{v.detail ? <span style={s('color:var(--ns-muted);font-size:14px')}> · {v.detail}</span> : null}</span>
+            <div className="row" key={k} style={{ ...(i === arr.length - 1 && !categoryResults.length ? s('border-bottom:0') : {}), justifyContent: 'space-between' }}>
+              <span>{NAMES[k] || k}{v.detail ? <span style={s('color:var(--ns-muted);font-size:14px')}> · {v.detail}</span> : null}</span>
               <strong>{v.points} of {v.max}</strong>
             </div>
           ))}
-          {cong && cong.score != null && (
-            <div className="row" style={{ ...s('border-bottom:0'), justifyContent: 'space-between' }}>
-              <span>Preference match<span style={s('color:var(--ns-muted);font-size:14px')}> · your choices matched {cong.matchedCount} of {cong.totalFeatures} recommended features</span></span>
-              <strong>{cong.score}%</strong>
+          {categoryResults.map((category) => (
+            <div className="row" key={category.key} style={{ justifyContent: 'space-between' }}>
+              <span>{category.title}<span style={s('color:var(--ns-muted);font-size:14px')}> · {category.correct} of {category.total} correct</span></span>
+              <strong>{category.percent}%</strong>
             </div>
+          ))}
+          <p style={s('margin:12px 0 0;color:var(--ns-muted);font-size:14px')}>The 0–14 heuristic scales the share of incorrect answers to 14 points; the existing Level 1–3 thresholds are unchanged. Higher points mean more support may help. This is a personalization guide, not a diagnosis.</p>
+          {answers.length > 0 && (
+            <details style={s('margin-top:16px')}>
+              <summary style={s('cursor:pointer;font-weight:600')}>Review answer explanations</summary>
+              <div style={s('margin-top:10px')}>
+                {answers.map((answer) => (
+                  <div key={answer.id} style={s('padding:12px 0;border-bottom:1px solid var(--ns-border)')}>
+                    <strong>{answer.question}</strong>
+                    <p style={s('margin:6px 0;color:var(--ns-muted);font-size:14px')}>Your answer: {answer.selectedAnswer || 'No answer'} · Correct answer: {answer.correctAnswer}</p>
+                    <p style={s('margin:0;font-size:14px')}>{answer.explanation}</p>
+                  </div>
+                ))}
+              </div>
+            </details>
           )}
-          {r.score.missing.includes('reading') && <p style={s('margin:12px 0 0;color:var(--ns-muted);font-size:14px')}>Reading speed could not be measured because the passages were finished too quickly to have been read, so it counted as 0 points.</p>}
-          <p style={s('margin:12px 0 0;color:var(--ns-muted);font-size:14px')}>Higher points mean more support may help. This is a personalization guide, not a diagnosis.</p>
         </section>
 
         {cog && (

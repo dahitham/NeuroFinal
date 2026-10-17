@@ -11,11 +11,16 @@ Optional usability research. **Nothing is pre-filled** – every figure comes fr
 ## Fields
 `Participant_ID, Session_ID, Reading_Time, Assessment_Score, Comprehension_Score, Assistance_Level, Font, Font_Size, Line_Spacing, Letter_Spacing, Word_Spacing, Bionic_Reading, Color_Tint, TTS, Reader_Mode, Focus_Mode, Preference_Congruence, Task_Completion, Ease_of_Reading, Navigation_Ease, Usefulness, Satisfaction`
 
+The export keeps its stable column set. With the current supplied assessment records, `Reading_Time`
+and `Preference_Congruence` are blank because those datasets do not collect passage timing or
+preference answers. `Comprehension_Score` is calculated from the `comprehension` category; no
+missing measurements are inferred or filled in.
+
 Never collected: names, e-mails, user ids, phone numbers, addresses, ID numbers, medical diagnoses. A test asserts that no name or e-mail can appear in the CSV.
 
 ## Reading the data (research team)
 Set `RESEARCH_ADMIN_EMAILS=you@example.com` in `backend/.env`; those signed-in accounts can call
-- `GET /api/evaluation` – count, **descriptive statistics** (mean, median, sample SD, task-completion rate, mean preference congruence, distributions) and the records
+- `GET /api/evaluation` – count, **descriptive statistics** (mean, median, sample SD, task-completion rate, preference congruence when available, distributions) and the records
 - `GET /api/evaluation/export` – the CSV (also **Settings → Download research CSV** for those accounts)
 
 If there are no records the API returns `statistics: null` – there is nothing to chart, and nothing is invented.
@@ -28,5 +33,5 @@ node evaluation/analysis/summarize.mjs evaluation/exports/*.csv
 ## Definitions
 - **Mean / median / SD** – SD is the *sample* standard deviation (n − 1), reported only when n ≥ 2.
 - **Task completion rate** – share of submissions where the participant answered "able to complete".
-- **Preference congruence** – % of compared features (font, line spacing, letter spacing, bionic reading, colour tint) where the *recommended* setting equals what the participant chose in the preference questions. It measures personalization alignment, **not** diagnostic accuracy.
-- **Assessment score** – the 0–14 Recommended Assistance Level heuristic; not a clinically validated measure.
+- **Preference congruence** – retained for compatible historical records; blank for current assessments because no preference questions are in the supplied datasets.
+- **Assessment score** – the 0–14 Recommended Assistance Level heuristic, based on incorrect-answer rate across the supplied categories; not a clinically validated measure.

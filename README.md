@@ -1,6 +1,6 @@
 # NeuroSync – backend-integrated
 
-NeuroSync is an AI-powered inclusive-education and web-accessibility platform. A short, dataset-based assessment plus your own preferences produce a **Recommended Assistance Level** and a personalised set of reading settings, which a Chrome extension applies to any website.
+NeuroSync is an AI-powered inclusive-education and web-accessibility platform. A dataset-based assessment produces a **Recommended Assistance Level** and a personalised set of reading settings, which a Chrome extension applies to any website.
 
 > **Not a diagnostic tool.** Scores are a project heuristic for choosing comfortable reading settings. They are not clinically validated and do not diagnose dyslexia or any other condition.
 
@@ -40,7 +40,7 @@ The design set did not include everything the product needs. These are the only 
 2. **Profile and Settings pages** – the Dashboard sidebar links to them. Composed from the Dashboard's `.c` cards and token form controls. Settings holds: assessment difficulty (LOW / MEDIUM / HIGH / adaptive), the research-consent switch + optional anonymous feedback, AI/backend status, account deletion.
 3. **Sidebar on Reading Studio / Reading Intelligence** – the mock-ups show these without the sidebar, but the Dashboard sidebar lists them; they render inside the same sidebar shell so navigation works. On phones the sidebar becomes a scrolling row (the mock hides it entirely, which would remove navigation).
 4. **OpenDyslexic** added to the Font select – required by Level 3 of the personalization spec.
-5. **Small data-driven additions inside existing screens:** "Welcome back, *name*"; a passage / sentence / sample-text block inside the assessment card for reading and vocabulary questions; the extension card's *Get pairing code* link; an auto-save status line under the Reading Studio buttons; an "Assessment breakdown" card and "Retake" link on Results.
+5. **Small data-driven additions inside existing screens:** "Welcome back, *name*"; dataset category and answer-option rendering in the assessment card; the extension card's *Get pairing code* link; an auto-save status line under the Reading Studio buttons; category performance and answer explanations on Results.
 6. **Dashboard / Results states** the mock-ups don't show (in progress, completed, highlighted level) reuse the design's own colours.
 
 ## Architecture
@@ -51,9 +51,9 @@ NeuroSync/
 ├── backend/       Node + Express REST API (port 4000)
 │   └── src/ routes · controllers · services · middleware · utils · data · server.js
 ├── extension/     Chrome Manifest V3 extension + the shared accessibility engine
-├── datasets/      YOUR original dataset JSON files (unmodified)
+├── datasets/      supplied neurosync_*.json assessment banks
 ├── evaluation/    anonymous research notes + analysis script
-├── scripts/       build-extension-data.mjs (vocabulary for the extension)
+├── scripts/       verify-extension-vocabulary.mjs (independent local word-help data)
 └── tests/e2e/     optional Playwright browser checks
 ```
 
@@ -91,9 +91,9 @@ All endpoints are under `/api`. JSON in/out. Errors: `{ "error": { "code", "mess
 
 ## Dataset integration
 
-Your eight original files in `datasets/` are read directly by `backend/src/data/datasetAdapter.js`; they are never copied or modified. See [`datasets/README.md`](datasets/README.md). Highlights: ids are namespaced per module (Speed_and_Comprehension and Sentence_Completion both use `SC-…`); Word Difficulty items have no `question` field so the prompt is derived from `target_word`; Memory Recall's `Fact: … ?` is split so the fact is shown then hidden; malformed items are skipped **and reported** at startup – currently `Word_Sequencing.json › WS-H-02` (its `correct_answer` isn't among its options, and two options are identical). The answer key is stored server-side and **never sent to the browser**.
+The supplied files in `new datasets/` are copied unchanged into `datasets/` and are the authoritative assessment banks. The backend reads only `neurosync_*.json`; legacy assessment files are not loaded as a fallback. See [`datasets/README.md`](datasets/README.md). Their `questions[]` records use option objects (`id`, `text`) and `correctAnswer` option IDs. Startup validation reports exact files and record IDs/rows and fails on malformed data. The answer key and explanations stay server-side until submission.
 
-Which dataset feeds what: reading passages → reading speed + comprehension · word difficulty → vocabulary questions **and** the local word-help vocabulary (also `extension/data/vocabulary.json`) · focus → comfort self-report (FOCUS-03 only follows a Hard passage) · reading/font preference → preference questions + preference congruence · memory, pattern, sentence-completion, word-sequencing → the separate, optional cognitive check.
+The five active categories are attention to detail, comprehension, sentence understanding, sequencing, and word recognition. Each assessment samples up to four unique questions per category; difficulty adapts by category. The standalone `extension/data/vocabulary.json` remains a separate word-help resource because the supplied recognition records do not contain definitions.
 
 ## Gemini configuration
 
@@ -133,13 +133,11 @@ Email + password (scrypt-hashed, salted). Sessions are standard **HS256 JWTs** s
 
 Server-side sessions, so **Save & exit** resumes exactly where you left, and **Previous** lets you review/change answers.
 
-- **Flow**: 3 reading passages (read step + comprehension question each) → 6 vocabulary questions → focus & comfort questions (5, or 6 if a Hard passage appeared) → 6 preference questions ≈ 23–24 steps.
-- **Difficulty**: random selection, no repeats, options shuffled. *Adaptive* starts MEDIUM; two correct in a row → harder, a miss → easier. LOW / MEDIUM / HIGH pin the level (Settings → Question difficulty).
-- **Reading speed** is measured server-side from the time between showing and leaving the passage (WPM = words ÷ minutes; > 600 WPM is treated as "skipped"). It is a heuristic, not a validated test.
-- **`calculateAssessmentScore()` (0–14)**: reading speed 0–3 (avg WPM: ≥200→0, ≥150→1, ≥100→2, else 3) + comprehension 0–3 + word difficulty 0–3 (accuracy ≥80%→0, ≥60→1, ≥40→2, else 3) + focus 0–5 (dataset `score_impact` normalised).
+- **Flow**: up to four multiple-choice questions from each supplied category (20 questions with the current files); no question repeats within an assessment, and options are shuffled.
+- **Difficulty**: *Adaptive* starts MEDIUM; two correct in a row within a category → harder, a miss → easier. LOW / MEDIUM / HIGH pin the level (Settings → Question difficulty).
+- **`calculateAssessmentScore()` (0–14)**: because the new records contain scored answers but no reading-time or self-report fields, the score is the rounded share of incorrect answers scaled to 14. This deterministic mapping uses only the provided records.
 - **Classification**: 0–4 *Basic / Mild* · 5–9 *Moderate* · 10–14 *High / Maximum Assistance* – always called **Recommended Assistance Level**.
-- **Cognitive check** (optional, `part=cognitive`): 4 timed sections × 4 questions from the memory, pattern, language and word-order datasets, reported **separately** and never used for the level. Descriptive wording only.
-- **`calculatePreferenceCongruence()`**: compares the recommended settings with the user's preference answers (font, line spacing, letter spacing, bionic reading, colour tint) → `{score, matchedFeatures, totalFeatures}`; `null` when there are no preferences. A personalization-alignment measure, not diagnostic accuracy.
+- **Optional check** (`part=cognitive`): draws from the same supplied categories, uses the existing timed flow, and reports results separately from the assistance level.
 
 ## Personalization
 
@@ -161,7 +159,7 @@ Stored per user and validated against the schema (unknown keys, wrong types and 
 
 - **Simplify** → `{simplified}` · **Summarize** → `{summary, bullets[3–5]}` · **Word assistance** → `{simpleMeaning, synonym, pronunciation, visualHint, source}`.
 - Prompts demand: preserve meaning, simpler words, shorter sentences, no new information; text inside the prompt is treated as data (prompt-injection guard).
-- Word help is **local first** (50-word vocabulary from the Word Difficulty dataset, instant, offline). Only unknown words go to Gemini; identical requests are cached on the server and in the browser, concurrent duplicates are de-duplicated, and calls are click-triggered (never on hover).
+- Word help is **local first** using the standalone bundled vocabulary resource, instant and offline in the extension. Only unknown words go to Gemini; identical requests are cached on the server and in the browser, concurrent duplicates are de-duplicated, and calls are click-triggered (never on hover).
 - All failures (key missing, network, 4xx/5xx, empty or malformed reply) return the friendly message with no secrets or stack traces. AI endpoints are rate-limited per IP.
 
 ## Evaluation
@@ -204,7 +202,7 @@ Open [http://localhost:5173](http://localhost:5173) → *Get Started* → create
 npm test            # backend + frontend
 ```
 
-- **Backend (node:test, real HTTP)**: dataset loading and untouched originals; adaptive/fixed difficulty and randomisation; scoring boundaries; classification; personalization levels; settings validation; preference congruence; full assessment runs (best case → level 1, worst case → score 14 / level 3); resume, previous/edit, ordering; **answer key never sent**; dashboard real-state transitions; settings save/apply/override/reset; cognitive separation; auth and JWT tampering; AI success, local-first words, caching, validation, **all failure modes leak nothing**, rate limiting; evaluation consent/anonymity/CSV/admin gating; extension pairing, scope and revocation.
+- **Backend (node:test, real HTTP)**: actual dataset parsing and schema validation; adaptive/fixed difficulty and randomisation; 0–14 scoring and level thresholds; personalization levels; settings validation; full assessment runs (all correct → level 1, all wrong → score 14 / level 3); resume, previous/edit, ordering; **answer key never sent before submission**; explanations after submission; dashboard real-state transitions; settings save/apply/override/reset; separate optional assessment; auth and JWT tampering; AI success, local-first words, caching, validation, **all failure modes leak nothing**, rate limiting; evaluation consent/anonymity/CSV/admin gating; extension pairing, scope and revocation.
 - **Frontend (vitest + jsdom)**: the engine (bionic safety and reversibility, fonts, units, colours, ruler, focus, reader mode, TTS), word assistant, selection toolbar, API service (auth header, error mapping, 401 handling), design style conversion, and **schema parity with the backend**.
 - **Real-browser checks** (`tests/e2e/`): full user journey and the unpacked extension in Chromium, including pairing and revocation.
 
@@ -216,7 +214,7 @@ npm test            # backend + frontend
 | CORS error in the console | add your frontend origin to `CORS_ORIGINS` |
 | "AI assistance is temporarily unavailable" | set `GEMINI_API_KEY`; check `GET /api/health` (`ai.configured`) and confirm `GEMINI_MODEL` is available to your API key |
 | Signed out after restarting the backend | set `JWT_SECRET` |
-| Start-up warns about skipped dataset items | expected for `WS-H-02`; fix the item in the source file to include it |
+| Start-up reports dataset validation errors | correct the cited source record; the server intentionally does not skip malformed assessment items or load legacy files |
 | Extension says the code is invalid | codes are single-use and last 10 minutes – create a new one |
 | Extension can't reach the API | backend must be running; non-default host → edit `host_permissions` in `extension/manifest.json` and `DEFAULT_API` in `background.js` |
 | Port 5173 in use | Vite is configured with `strictPort`; free the port or change it in `frontend/vite.config.js` **and** `CORS_ORIGINS` |
@@ -231,4 +229,4 @@ All persistence goes through `backend/src/services/storage.js` (`users.findById/
 
 ## Limitations
 
-Scoring thresholds are heuristics, not validated norms · reading speed is self-timed on short passages · JSON-file storage suits a prototype, not production scale · no guest mode (not in the design) · extension targets Chrome (MV3) · fonts are Latin-only · layout-heavy sites may react to font/spacing overrides · `WS-H-02` is excluded from the cognitive check because it is malformed in the source dataset · Gemini model availability is controlled by Google.
+Scoring thresholds are heuristics, not validated norms · the supplied task categories and accuracy score do not diagnose dyslexia · JSON-file storage suits a prototype, not production scale · no guest mode (not in the design) · extension targets Chrome (MV3) · fonts are Latin-only · layout-heavy sites may react to font/spacing overrides · Gemini model availability is controlled by Google.

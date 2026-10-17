@@ -6,8 +6,8 @@ import { wordPrompt } from './aiPrompts.js';
 export const normalizeWord = (w) => String(w || '').trim().replace(/^[^\p{L}]+|[^\p{L}]+$/gu, '').toLowerCase();
 
 /**
- * Word assistance is LOCAL FIRST: the vocabulary built from datasets/Word_Difficulty_Test.json is searched
- * before any AI call. Only unknown words go to Gemini, and identical requests are cached.
+ * Word assistance is LOCAL FIRST: the independent extension vocabulary is searched before any AI call.
+ * Only unknown words go to Gemini, and identical requests are cached.
  */
 export function createWordService({ vocabulary, ai }) {
   const cache = new TtlCache();

@@ -37,6 +37,8 @@ export function createAssessmentController({ storage, assessment }) {
       if (!session || session.status === 'submitted') {
         if (session && req.user.assessment[part].result) return res.json({ status: 'submitted', part, hasResult: true });
         session = startFresh(req.user, part);
+      } else if (!assessment.isSessionCompatible(session)) {
+        session = startFresh(req.user, part);
       }
       let idx = assessment.currentIndex(session);
       if (req.query.cursor !== undefined) {

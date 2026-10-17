@@ -1,29 +1,44 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { buildDatasets } from './datasetAdapter.js';
+import { buildDatasets, isNeuroSyncDatasetFile } from './datasetAdapter.js';
+import { loadLocalVocabulary } from './localVocabulary.js';
+
+export const REQUIRED_DATASET_FILES = [
+  'neurosync_attention_to_detail.json',
+  'neurosync_comprehension.json',
+  'neurosync_sentence_understanding.json',
+  'neurosync_sequencing.json',
+  'neurosync_word_recognition.json',
+];
 
 let cache = null;
 
-/**
- * Reads the ORIGINAL dataset files from the datasets directory (never modifies them)
- * and normalises them through the adapter. Missing / malformed items are reported, not hidden.
- */
+/** Loads only the supplied neurosync_*.json assessment banks; legacy JSON files are never a fallback. */
 export function loadDatasets(dir) {
-  const raw = {};
-  let files = [];
+  let files;
   try {
-    files = fs.readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.json'));
-  } catch {
-    console.error(`[datasets] directory not found: ${dir}`);
+    files = fs.readdirSync(dir).filter(isNeuroSyncDatasetFile);
+  } catch (error) {
+    throw new Error(`[datasets] Cannot read dataset directory "${dir}": ${error.message}`, { cause: error });
   }
-  for (const f of files) {
+
+  const missing = REQUIRED_DATASET_FILES.filter((file) => !files.includes(file));
+  if (missing.length) {
+    throw new Error(`[datasets] Missing required assessment dataset file(s) in "${dir}": ${missing.join(', ')}`);
+  }
+
+  const raw = {};
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
     try {
-      raw[f] = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
-    } catch (e) {
-      console.error(`[datasets] could not parse ${f}: ${e.message}`);
+      raw[file] = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+    } catch (error) {
+      throw new Error(`[datasets] Cannot parse "${fullPath}": ${error.message}`, { cause: error });
     }
   }
-  return buildDatasets(raw);
+
+  const datasets = buildDatasets(raw);
+  return { ...datasets, vocabulary: loadLocalVocabulary() };
 }
 
 export function getDatasets(dir) {

@@ -1,0 +1,1415 @@
+{
+  "project": "NeuroSync",
+  "datasetVersion": "1.0",
+  "purpose": "Experimental reading-related behavioral task dataset for accessibility personalization",
+  "totalQuestions": 250,
+  "categoryCounts": {
+    "word_recognition": 50,
+    "comprehension": 50,
+    "sequencing": 50,
+    "sentence_understanding": 50,
+    "attention_to_detail": 50
+  },
+  "questions": [
+    {
+      "id": "AD001",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "repeated_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Which list contains the same word twice?",
+      "options": [
+        {
+          "id": "A",
+          "text": "cat, hat, bat, mat"
+        },
+        {
+          "id": "B",
+          "text": "sun, moon, star, sun"
+        },
+        {
+          "id": "C",
+          "text": "red, blue, green, pink"
+        },
+        {
+          "id": "D",
+          "text": "one, two, three, four"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Only the list with 'sun' repeats a word."
+    },
+    {
+      "id": "AD002",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "exact_sentence_matching",
+      "questionType": "multiple_choice",
+      "question": "Which line matches 'Please call Dr. Simmons at ten past four' exactly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Please call Dr. Simmons at ten past four"
+        },
+        {
+          "id": "B",
+          "text": "Please call Dr. Simons at ten past four"
+        },
+        {
+          "id": "C",
+          "text": "Please call Dr. Simmons at ten to four"
+        },
+        {
+          "id": "D",
+          "text": "Please call Dr. Simmons at tem past four"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The other lines change the name, the time phrase, or a letter."
+    },
+    {
+      "id": "AD003",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "exact_string_matching",
+      "questionType": "multiple_choice",
+      "question": "Which line matches 'the quick brown fox' exactly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "the quick brown fox"
+        },
+        {
+          "id": "B",
+          "text": "the quick brown box"
+        },
+        {
+          "id": "C",
+          "text": "the quick brawn fox"
+        },
+        {
+          "id": "D",
+          "text": "the quikc brown fox"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The other lines change or swap a letter in one word."
+    },
+    {
+      "id": "AD004",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'garden' and 'gardin'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "3rd"
+        },
+        {
+          "id": "B",
+          "text": "4th"
+        },
+        {
+          "id": "C",
+          "text": "5th"
+        },
+        {
+          "id": "D",
+          "text": "6th"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The words differ only in the 5th letter ('e' vs 'i')."
+    },
+    {
+      "id": "AD005",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "exact_string_matching",
+      "questionType": "multiple_choice",
+      "question": "Which string matches 'bdpq' exactly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bdqp"
+        },
+        {
+          "id": "B",
+          "text": "dbpq"
+        },
+        {
+          "id": "C",
+          "text": "pdbq"
+        },
+        {
+          "id": "D",
+          "text": "bdpq"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Only 'bdpq' keeps b, d, p, q in the original order."
+    },
+    {
+      "id": "AD006",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "odd_item_detection_codes",
+      "questionType": "multiple_choice",
+      "question": "Which item is different from the other three? RK47, RK47, RK47, RK74",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st item"
+        },
+        {
+          "id": "B",
+          "text": "2nd item"
+        },
+        {
+          "id": "C",
+          "text": "3rd item"
+        },
+        {
+          "id": "D",
+          "text": "4th item"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Item 4 ('RK74') is the only one that does not match the other three."
+    },
+    {
+      "id": "AD007",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "missing_letter_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair has one letter missing from the second word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "tree – tre"
+        },
+        {
+          "id": "B",
+          "text": "tree – tree"
+        },
+        {
+          "id": "C",
+          "text": "tree – tred"
+        },
+        {
+          "id": "D",
+          "text": "tree – trees"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Tre' lacks one e. 'Trees' adds a letter, 'tred' replaces one, and the first pair is identical."
+    },
+    {
+      "id": "AD008",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "specific_detail_retrieval",
+      "questionType": "multiple_choice",
+      "question": "Nina has two brothers and one sister, and the youngest of them is her sister. Who is the youngest?",
+      "options": [
+        {
+          "id": "A",
+          "text": "One of her brothers"
+        },
+        {
+          "id": "B",
+          "text": "Nina herself"
+        },
+        {
+          "id": "C",
+          "text": "Her sister"
+        },
+        {
+          "id": "D",
+          "text": "Her cousin"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The sentence says outright that the youngest is her sister."
+    },
+    {
+      "id": "AD009",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "word_order_meaning_change",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: Only Kim ate the fish. Sentence 2: Kim ate only the fish. Do these sentences mean the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "B",
+          "text": "No, a word was removed"
+        },
+        {
+          "id": "C",
+          "text": "No, a letter is different"
+        },
+        {
+          "id": "D",
+          "text": "No, moving 'only' changes the meaning"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The first says nobody else ate fish; the second says fish was the only food Kim ate."
+    },
+    {
+      "id": "AD010",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "extra_letter_detection",
+      "questionType": "multiple_choice",
+      "question": "Which word has one extra letter compared with 'window'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "window"
+        },
+        {
+          "id": "B",
+          "text": "windoow"
+        },
+        {
+          "id": "C",
+          "text": "widow"
+        },
+        {
+          "id": "D",
+          "text": "windaw"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Windoow' has an extra o. 'Widow' omits n, 'windaw' replaces o, and 'window' is the original."
+    },
+    {
+      "id": "AD011",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "difference_counting",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: The small boy ate the red apple quickly. Sentence 2: The small girl ate the red apple slowly. How many words are different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1"
+        },
+        {
+          "id": "B",
+          "text": "2"
+        },
+        {
+          "id": "C",
+          "text": "3"
+        },
+        {
+          "id": "D",
+          "text": "4"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Girl' replaced 'boy' and 'slowly' replaced 'quickly'."
+    },
+    {
+      "id": "AD012",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "exact_sentence_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence is exactly the same as 'The sun is hot.'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The sun is hot?"
+        },
+        {
+          "id": "B",
+          "text": "The sun is hot."
+        },
+        {
+          "id": "C",
+          "text": "The sun is not."
+        },
+        {
+          "id": "D",
+          "text": "The son is hot."
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Only the first option matches every word and the full stop."
+    },
+    {
+      "id": "AD013",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "repeated_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Which sentence contains a repeated word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "We went to the park."
+        },
+        {
+          "id": "B",
+          "text": "We went to a park."
+        },
+        {
+          "id": "C",
+          "text": "We went to to the park."
+        },
+        {
+          "id": "D",
+          "text": "We went into the park."
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Only the first sentence repeats 'to'."
+    },
+    {
+      "id": "AD014",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "changed_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: The tall boy kicked the ball. Sentence 2: The tall boy kicked the bell. Which word is different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "tall"
+        },
+        {
+          "id": "B",
+          "text": "boy"
+        },
+        {
+          "id": "C",
+          "text": "bell"
+        },
+        {
+          "id": "D",
+          "text": "kicked"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Bell' replaced 'ball'; the other words are unchanged."
+    },
+    {
+      "id": "AD015",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "word_order_meaning_change",
+      "questionType": "multiple_choice",
+      "question": "Which sentence uses the same words as 'The cat chased the mouse' but means something different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The cat chased a mouse"
+        },
+        {
+          "id": "B",
+          "text": "The cat did not chase the mouse"
+        },
+        {
+          "id": "C",
+          "text": "The cat saw the mouse"
+        },
+        {
+          "id": "D",
+          "text": "The mouse chased the cat"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Swapping 'cat' and 'mouse' changes who does the chasing."
+    },
+    {
+      "id": "AD016",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'elephant' and 'elephent'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "4th"
+        },
+        {
+          "id": "B",
+          "text": "5th"
+        },
+        {
+          "id": "C",
+          "text": "6th"
+        },
+        {
+          "id": "D",
+          "text": "7th"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The words differ only in the 6th letter ('a' vs 'e')."
+    },
+    {
+      "id": "AD017",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "exact_identity_comparison",
+      "questionType": "multiple_choice",
+      "question": "Are 'separate' and 'seperate' exactly the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, one letter is different"
+        },
+        {
+          "id": "B",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "C",
+          "text": "No, two letters are swapped"
+        },
+        {
+          "id": "D",
+          "text": "No, one letter is missing"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The fourth letter is 'a' in 'separate' and 'e' in 'seperate'."
+    },
+    {
+      "id": "AD018",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "odd_item_detection",
+      "questionType": "multiple_choice",
+      "question": "Which item is different from the other three? farm, farm, farn, farm",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st item"
+        },
+        {
+          "id": "B",
+          "text": "2nd item"
+        },
+        {
+          "id": "C",
+          "text": "3rd item"
+        },
+        {
+          "id": "D",
+          "text": "4th item"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Item 3 ('farn') is the only one that does not match the other three."
+    },
+    {
+      "id": "AD019",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'cart' and 'cant'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st"
+        },
+        {
+          "id": "B",
+          "text": "2nd"
+        },
+        {
+          "id": "C",
+          "text": "3rd"
+        },
+        {
+          "id": "D",
+          "text": "4th"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The words differ only in the 3rd letter ('r' vs 'n')."
+    },
+    {
+      "id": "AD020",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "word_order_meaning_change",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: The girl is taller than her brother. Sentence 2: The girl's brother is taller than her. Do they mean the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, they describe opposite comparisons"
+        },
+        {
+          "id": "B",
+          "text": "Yes, they mean the same"
+        },
+        {
+          "id": "C",
+          "text": "No, a word was replaced by a different word"
+        },
+        {
+          "id": "D",
+          "text": "No, a letter is different"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The first makes the girl taller; the second makes her brother taller."
+    },
+    {
+      "id": "AD021",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'band' and 'hand'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st"
+        },
+        {
+          "id": "B",
+          "text": "2nd"
+        },
+        {
+          "id": "C",
+          "text": "3rd"
+        },
+        {
+          "id": "D",
+          "text": "4th"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The words differ only in the 1st letter ('b' vs 'h')."
+    },
+    {
+      "id": "AD022",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'planet' and 'plamet'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "3rd"
+        },
+        {
+          "id": "B",
+          "text": "4th"
+        },
+        {
+          "id": "C",
+          "text": "5th"
+        },
+        {
+          "id": "D",
+          "text": "6th"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The words differ only in the 4th letter ('n' vs 'm')."
+    },
+    {
+      "id": "AD023",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "specific_detail_retrieval",
+      "questionType": "multiple_choice",
+      "question": "On Friday, Omar left at nine and returned at five. When did Omar leave?",
+      "options": [
+        {
+          "id": "A",
+          "text": "At nine"
+        },
+        {
+          "id": "B",
+          "text": "At five"
+        },
+        {
+          "id": "C",
+          "text": "On Friday"
+        },
+        {
+          "id": "D",
+          "text": "At noon"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The sentence says he left at nine."
+    },
+    {
+      "id": "AD024",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "exact_sentence_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence is exactly the same as 'The principal praised the principle of honesty.'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The principle praised the principal of honesty."
+        },
+        {
+          "id": "B",
+          "text": "The principal praised the principal of honesty."
+        },
+        {
+          "id": "C",
+          "text": "The principal praised the principle of honestly."
+        },
+        {
+          "id": "D",
+          "text": "The principal praised the principle of honesty."
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Each other line swaps or changes one word form."
+    },
+    {
+      "id": "AD025",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair has two letters swapped in the second word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "lamp – lamp"
+        },
+        {
+          "id": "B",
+          "text": "lamp – lump"
+        },
+        {
+          "id": "C",
+          "text": "lamp – lmap"
+        },
+        {
+          "id": "D",
+          "text": "lamp – lam"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Lmap' swaps the a and m. 'Lump' replaces a letter and 'lam' omits one."
+    },
+    {
+      "id": "AD026",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "transposition_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair has two neighboring letters swapped in the second word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "garden – gardens"
+        },
+        {
+          "id": "B",
+          "text": "garden – garten"
+        },
+        {
+          "id": "C",
+          "text": "garden – gadren"
+        },
+        {
+          "id": "D",
+          "text": "garden – garde"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Gadren' swaps r and d. 'Gardens' adds a letter, 'garten' replaces one and 'garde' omits one."
+    },
+    {
+      "id": "AD027",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "odd_item_detection",
+      "questionType": "multiple_choice",
+      "question": "Which item is different from the other three? trail, trial, trail, trail",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st item"
+        },
+        {
+          "id": "B",
+          "text": "2nd item"
+        },
+        {
+          "id": "C",
+          "text": "3rd item"
+        },
+        {
+          "id": "D",
+          "text": "4th item"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Item 2 ('trial') is the only one that does not match the other three."
+    },
+    {
+      "id": "AD028",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "changed_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: She left her umbrella at the station. Sentence 2: She left her umbrella at the stadium. Which word is different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "left"
+        },
+        {
+          "id": "B",
+          "text": "umbrella"
+        },
+        {
+          "id": "C",
+          "text": "at"
+        },
+        {
+          "id": "D",
+          "text": "stadium"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Stadium' replaced 'station'; the other words are unchanged."
+    },
+    {
+      "id": "AD029",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "exact_identity_comparison",
+      "questionType": "multiple_choice",
+      "question": "Are 'library' and 'libary' exactly the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "B",
+          "text": "No, one letter is missing"
+        },
+        {
+          "id": "C",
+          "text": "No, one letter is different"
+        },
+        {
+          "id": "D",
+          "text": "No, two letters are swapped"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Libary' is missing the first r."
+    },
+    {
+      "id": "AD030",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "word_order_change_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: Mia gave Joe a pen. Sentence 2: Joe gave Mia a pen. What is the difference?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The two names have changed places"
+        },
+        {
+          "id": "B",
+          "text": "One word was replaced by a different word"
+        },
+        {
+          "id": "C",
+          "text": "One word was removed"
+        },
+        {
+          "id": "D",
+          "text": "There is no difference"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The same words are used, but Mia and Joe swapped positions."
+    },
+    {
+      "id": "AD031",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "specific_detail_retrieval",
+      "questionType": "multiple_choice",
+      "question": "Lena bought three red apples on Monday. Which day is mentioned?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sunday"
+        },
+        {
+          "id": "B",
+          "text": "Tuesday"
+        },
+        {
+          "id": "C",
+          "text": "Friday"
+        },
+        {
+          "id": "D",
+          "text": "Monday"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The sentence names Monday as the day of the purchase."
+    },
+    {
+      "id": "AD032",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "specific_detail_retrieval",
+      "questionType": "multiple_choice",
+      "question": "The blue bag is on the table, and the red bag is under the chair. Where is the red bag?",
+      "options": [
+        {
+          "id": "A",
+          "text": "On the table"
+        },
+        {
+          "id": "B",
+          "text": "Under the table"
+        },
+        {
+          "id": "C",
+          "text": "Under the chair"
+        },
+        {
+          "id": "D",
+          "text": "On the chair"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The sentence puts the red bag under the chair."
+    },
+    {
+      "id": "AD033",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "transposition_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'between' and 'betwene'. Which two letters are swapped?",
+      "options": [
+        {
+          "id": "A",
+          "text": "3rd and 4th"
+        },
+        {
+          "id": "B",
+          "text": "4th and 5th"
+        },
+        {
+          "id": "C",
+          "text": "5th and 6th"
+        },
+        {
+          "id": "D",
+          "text": "6th and 7th"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The last two letters, 'n' and 'e', have swapped places."
+    },
+    {
+      "id": "AD034",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "specific_detail_retrieval",
+      "questionType": "multiple_choice",
+      "question": "The green frog sat on a tall rock. What did the frog sit on?",
+      "options": [
+        {
+          "id": "A",
+          "text": "A small rock"
+        },
+        {
+          "id": "B",
+          "text": "A tall rock"
+        },
+        {
+          "id": "C",
+          "text": "A green leaf"
+        },
+        {
+          "id": "D",
+          "text": "A tall log"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The sentence says the frog sat on a tall rock."
+    },
+    {
+      "id": "AD035",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'bridge' and 'bridle'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "2nd"
+        },
+        {
+          "id": "B",
+          "text": "3rd"
+        },
+        {
+          "id": "C",
+          "text": "4th"
+        },
+        {
+          "id": "D",
+          "text": "5th"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The words differ only in the 5th letter ('g' vs 'l')."
+    },
+    {
+      "id": "AD036",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "letter_count_monitoring",
+      "questionType": "multiple_choice",
+      "question": "How many times does the letter 'e' appear in 'eleven'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "2"
+        },
+        {
+          "id": "B",
+          "text": "3"
+        },
+        {
+          "id": "C",
+          "text": "4"
+        },
+        {
+          "id": "D",
+          "text": "5"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The letter 'e' appears 3 times in 'eleven'."
+    },
+    {
+      "id": "AD037",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'fish' and 'fist'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st"
+        },
+        {
+          "id": "B",
+          "text": "2nd"
+        },
+        {
+          "id": "C",
+          "text": "3rd"
+        },
+        {
+          "id": "D",
+          "text": "4th"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The words differ only in the 4th letter ('h' vs 't')."
+    },
+    {
+      "id": "AD038",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "extra_letter_detection",
+      "questionType": "multiple_choice",
+      "question": "Which pair has one extra letter in the second word?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bird – birds"
+        },
+        {
+          "id": "B",
+          "text": "bird – bird"
+        },
+        {
+          "id": "C",
+          "text": "bird – bid"
+        },
+        {
+          "id": "D",
+          "text": "bird – bind"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Birds' has an added s. 'Bid' misses a letter, 'bind' replaces one, and the first pair is identical."
+    },
+    {
+      "id": "AD039",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "changed_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: Tom has a small dog. Sentence 2: Tom has a small cat. Which word is different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "cat"
+        },
+        {
+          "id": "B",
+          "text": "Tom"
+        },
+        {
+          "id": "C",
+          "text": "has"
+        },
+        {
+          "id": "D",
+          "text": "small"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Cat' replaced 'dog'; the other words are unchanged."
+    },
+    {
+      "id": "AD040",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "exact_identity_comparison",
+      "questionType": "multiple_choice",
+      "question": "Are 'train' and 'trian' exactly the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "B",
+          "text": "No, one letter is different"
+        },
+        {
+          "id": "C",
+          "text": "No, two letters are swapped"
+        },
+        {
+          "id": "D",
+          "text": "No, one letter is missing"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The last two letters, 'i' and 'n', have swapped places."
+    },
+    {
+      "id": "AD041",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "exact_identity_comparison",
+      "questionType": "multiple_choice",
+      "question": "Are 'house' and 'house' exactly the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "B",
+          "text": "No, one letter is different"
+        },
+        {
+          "id": "C",
+          "text": "No, two letters are swapped"
+        },
+        {
+          "id": "D",
+          "text": "No, one letter is missing"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Both words are spelled h-o-u-s-e."
+    },
+    {
+      "id": "AD042",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "single_letter_substitution_position",
+      "questionType": "multiple_choice",
+      "question": "Compare 'lamp' and 'lump'. Which letter position is different?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st"
+        },
+        {
+          "id": "B",
+          "text": "2nd"
+        },
+        {
+          "id": "C",
+          "text": "3rd"
+        },
+        {
+          "id": "D",
+          "text": "4th"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The words differ only in the 2nd letter ('a' vs 'u')."
+    },
+    {
+      "id": "AD043",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "changed_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: The committee postponed the meeting until the following Thursday evening. Sentence 2: The committee postponed the meeting until the following Tuesday evening. Which word is different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "committee"
+        },
+        {
+          "id": "B",
+          "text": "following"
+        },
+        {
+          "id": "C",
+          "text": "evening"
+        },
+        {
+          "id": "D",
+          "text": "Tuesday"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Tuesday' replaced 'Thursday'; the other words are unchanged."
+    },
+    {
+      "id": "AD044",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "letter_count_monitoring",
+      "questionType": "multiple_choice",
+      "question": "How many times does the letter 's' appear in 'assess'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "2"
+        },
+        {
+          "id": "B",
+          "text": "3"
+        },
+        {
+          "id": "C",
+          "text": "4"
+        },
+        {
+          "id": "D",
+          "text": "5"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The letter 's' appears 4 times in 'assess'."
+    },
+    {
+      "id": "AD045",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "changed_word_detection",
+      "questionType": "multiple_choice",
+      "question": "Sentence 1: The red car stopped. Sentence 2: The blue car stopped. Which word is different in sentence 2?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The"
+        },
+        {
+          "id": "B",
+          "text": "car"
+        },
+        {
+          "id": "C",
+          "text": "stopped"
+        },
+        {
+          "id": "D",
+          "text": "blue"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Blue' replaced 'red'; the other words are unchanged."
+    },
+    {
+      "id": "AD046",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "exact_string_matching",
+      "questionType": "multiple_choice",
+      "question": "Which string matches 'mnumnu' exactly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "mnumun"
+        },
+        {
+          "id": "B",
+          "text": "nmumnu"
+        },
+        {
+          "id": "C",
+          "text": "mnunmu"
+        },
+        {
+          "id": "D",
+          "text": "mnumnu"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Only 'mnumnu' keeps all six letters in the same order."
+    },
+    {
+      "id": "AD047",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "odd_item_detection_reversible_letters",
+      "questionType": "multiple_choice",
+      "question": "Which item is different from the other three? dbqpd, dbpqd, dbpqd, dbpqd",
+      "options": [
+        {
+          "id": "A",
+          "text": "1st item"
+        },
+        {
+          "id": "B",
+          "text": "2nd item"
+        },
+        {
+          "id": "C",
+          "text": "3rd item"
+        },
+        {
+          "id": "D",
+          "text": "4th item"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Item 1 ('dbqpd') is the only one that does not match the other three."
+    },
+    {
+      "id": "AD048",
+      "category": "attention_to_detail",
+      "difficulty": "medium",
+      "skill": "exact_identity_comparison",
+      "questionType": "multiple_choice",
+      "question": "Are 'quiet' and 'quite' exactly the same?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, two letters are swapped"
+        },
+        {
+          "id": "B",
+          "text": "Yes, they are identical"
+        },
+        {
+          "id": "C",
+          "text": "No, one letter is different"
+        },
+        {
+          "id": "D",
+          "text": "No, one letter is missing"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The last two letters, 'e' and 't', have swapped places."
+    },
+    {
+      "id": "AD049",
+      "category": "attention_to_detail",
+      "difficulty": "hard",
+      "skill": "letter_count_monitoring",
+      "questionType": "multiple_choice",
+      "question": "How many times does the letter 'a' appear in 'banana bread'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "3"
+        },
+        {
+          "id": "B",
+          "text": "4"
+        },
+        {
+          "id": "C",
+          "text": "5"
+        },
+        {
+          "id": "D",
+          "text": "6"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The letter 'a' appears 4 times in 'banana bread'."
+    },
+    {
+      "id": "AD050",
+      "category": "attention_to_detail",
+      "difficulty": "easy",
+      "skill": "exact_string_matching",
+      "questionType": "multiple_choice",
+      "question": "Which string matches 'dog' exactly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "bog"
+        },
+        {
+          "id": "B",
+          "text": "dog"
+        },
+        {
+          "id": "C",
+          "text": "dop"
+        },
+        {
+          "id": "D",
+          "text": "gog"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Only 'dog' has d-o-g in that order; the others change one letter."
+    }
+  ]
+}

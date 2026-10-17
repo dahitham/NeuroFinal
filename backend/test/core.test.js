@@ -5,9 +5,8 @@ import path from 'node:path';
 import { withServer, runCoreAssessment, datasets, DATASETS_DIR, completion, jsonResponse } from './helpers.js';
 import { createAssessmentService } from '../src/services/assessmentService.js';
 import { seededRng } from '../src/utils/rng.js';
-import { calculateAssessmentScore, readingSpeedPoints, accuracyPoints, focusPoints } from '../src/services/scoringService.js';
+import { calculateAssessmentScore } from '../src/services/scoringService.js';
 import { classifyAssistance, generateAccessibilityProfile, describeSettings } from '../src/services/personalizationService.js';
-import { calculatePreferenceCongruence, answersToFeatures } from '../src/services/preferenceService.js';
 import { sanitizeSettings } from '../src/services/settingsService.js';
 import { DEFAULT_SETTINGS, SETTING_RULES } from '../src/data/settingsSchema.js';
 import { AppError } from '../src/utils/AppError.js';
@@ -21,40 +20,40 @@ test('config: Gemini model and Google Generative Language API settings', () => {
 });
 
 /* ------------------------------------------------------------------ datasets */
-test('datasets: all original files load; only the known-malformed item is skipped', () => {
+test('datasets: all supplied assessment records load without skips', () => {
   assert.deepEqual(datasets.report.missing, []);
-  assert.deepEqual(datasets.report.skipped, { wordSequencing: ['WS-H-02'] });
-  assert.deepEqual(datasets.report.loaded, { readingPassages: 50, wordDifficulty: 50, memoryRecall: 50, patternRecognition: 50, sentenceCompletion: 50, wordSequencing: 49, focus: 6, preferences: 6 });
+  assert.deepEqual(datasets.report.skipped, {});
+  const actualCounts = Object.fromEntries(Object.entries(datasets.categories).map(([category, items]) => [category, items.length]));
+  assert.deepEqual(datasets.report.loaded, actualCounts);
   assert.equal(Object.keys(datasets.vocabulary).length, 50);
-  const uids = [...datasets.readingPassages, ...datasets.sentenceCompletion].map((i) => i.uid);
+  const uids = Object.values(datasets.categories).flat().map((item) => item.uid);
   assert.equal(new Set(uids).size, uids.length, 'ids are namespaced per module');
 });
 
-test('datasets: the original files are untouched (14 expected structures still readable)', () => {
+test('datasets: only supplied question banks are active', () => {
   const files = fs.readdirSync(DATASETS_DIR).filter((f) => f.endsWith('.json'));
-  assert.equal(files.length, 8);
-  const ws = JSON.parse(fs.readFileSync(path.join(DATASETS_DIR, 'Word_Sequencing.json'), 'utf8'));
-  assert.ok(ws.find((i) => i.id === 'WS-H-02'), 'malformed item still present in the original file');
+  assert.ok(files.length > 0);
+  assert.ok(files.every((file) => file.startsWith('neurosync_')));
 });
 
 /* ------------------------------------------------------------------- scoring */
-test('scoring: component thresholds, boundaries and classification', () => {
-  assert.deepEqual([250, 200, 160, 120, 60].map(readingSpeedPoints), [0, 0, 1, 2, 3]);
-  assert.deepEqual([100, 80, 79, 60, 59, 40, 39, 0].map(accuracyPoints), [0, 0, 1, 1, 2, 2, 3, 3]);
-  assert.equal(focusPoints([{ scoreImpact: 3, maxImpact: 3 }, { scoreImpact: 2, maxImpact: 2 }]), 5);
+test('scoring: 0–14 accuracy mapping and existing level thresholds', () => {
   assert.deepEqual([0, 4, 5, 9, 10, 14].map((t) => classifyAssistance(t).level), [1, 1, 2, 2, 3, 3]);
   assert.equal(classifyAssistance(2).classification, 'Basic / Mild Assistance');
   assert.equal(classifyAssistance(7).classification, 'Moderate Assistance');
   assert.equal(classifyAssistance(12).classification, 'High / Maximum Assistance');
 });
 
-test('scoring: range 0–14, missing modules flagged, skipped (too fast) passages ignored', () => {
-  const worst = calculateAssessmentScore({ reading: { rounds: [{ seconds: 60, wpm: 40 }] }, comprehension: { total: 3, correct: 0, percent: 0 }, wordDifficulty: { total: 6, correct: 0, percent: 0 }, focus: { answers: [{ scoreImpact: 3, maxImpact: 3 }] } });
+test('scoring: overall error rate scales deterministically to 0–14', () => {
+  const categories = [{ key: 'comprehension', total: 4, correct: 0 }, { key: 'sequencing', total: 4, correct: 0 }];
+  const worst = calculateAssessmentScore(categories);
   assert.equal(worst.total, 14);
   assert.equal(worst.level, 3);
-  const none = calculateAssessmentScore({ reading: { rounds: [{ seconds: 1, wpm: 5400 }] } });
+  assert.equal(calculateAssessmentScore([{ key: 'comprehension', total: 4, correct: 4 }]).total, 0);
+  assert.equal(calculateAssessmentScore([{ key: 'comprehension', total: 4, correct: 2 }]).total, 7);
+  const none = calculateAssessmentScore([]);
   assert.equal(none.total, 0);
-  assert.deepEqual(none.missing, ['reading', 'comprehension', 'wordDifficulty', 'focus']);
+  assert.equal(none.complete, false);
 });
 
 /* ----------------------------------------------------------- personalization */
@@ -88,37 +87,22 @@ test('settings validation: unknown keys, wrong types, out-of-range values and sn
   assert.deepEqual(Object.keys(SETTING_RULES).sort(), Object.keys(DEFAULT_SETTINGS).sort());
 });
 
-test('preference congruence: score, matched and total features', () => {
-  const rec = generateAccessibilityProfile(7).settings; // lexend, 1.9, letters+, no bionic, tint
-  const features = answersToFeatures({ 'PREF-FONT-01': 'Lexend', 'PREF-SPACE-01': 'Moderate Spacing (1.5x)', 'PREF-LSPACE-01': 'Standard Letters', 'PREF-BIONIC-01': 'Standard Text', 'PREF-COLOR-01': 'Soft Tint (Yellow)' });
-  const c = calculatePreferenceCongruence(rec, features);
-  assert.equal(c.totalFeatures, 5);
-  assert.deepEqual(c.matchedFeatures, ['Font', 'Line spacing', 'Bionic reading', 'Color tint']);
-  assert.equal(c.score, 80);
-  assert.equal(calculatePreferenceCongruence(rec, {}).score, null, 'no fabricated score without preferences');
-});
-
 /* ----------------------------------------------------------- adaptive engine */
 test('adaptive logic: starts medium, harder after two correct, easier after a miss, never repeats', () => {
   const svc = createAssessmentService({ datasets, rng: seededRng(4) });
   const s = svc.newSession({ part: 'core', mode: 'adaptive' });
-  const last = () => s.steps[s.steps.length - 1];
-  const doPassage = () => {
-    svc.answer(s, { stepId: s.steps[s.steps.length - 2].id, timeMs: 20000 });
-  };
   assert.equal(s.steps[0].difficulty, 'medium');
-  // passage pair 1: read, answer comprehension correctly
-  svc.answer(s, { stepId: s.steps[0].id, timeMs: 20000 });
-  svc.answer(s, { stepId: s.steps[1].id, value: s.steps[1].correct });
-  svc.answer(s, { stepId: s.steps[2].id, timeMs: 20000 });
-  assert.equal(s.steps[2].difficulty, 'medium');
-  svc.answer(s, { stepId: s.steps[3].id, value: s.steps[3].correct }); // second correct in a row
-  assert.equal(s.steps[4].difficulty, 'hard', 'two correct → harder');
-  assert.equal(s.steps[4].kind, 'passage');
-  svc.answer(s, { stepId: s.steps[4].id, timeMs: 20000 });
-  svc.answer(s, { stepId: s.steps[5].id, value: s.steps[5].options.find((o) => o !== s.steps[5].correct) });
-  assert.equal(s.steps[6].kind, 'mcq');
-  assert.equal(s.steps[6].difficulty, 'medium', 'a miss → easier');
+  const category = s.steps[0].section;
+  const first = s.steps[0];
+  svc.answer(s, { stepId: first.id, value: first.correct });
+  const second = s.steps[1];
+  assert.equal(second.section, category);
+  assert.equal(second.difficulty, 'medium');
+  svc.answer(s, { stepId: second.id, value: second.correct });
+  const third = s.steps[2];
+  assert.equal(third.difficulty, 'hard', 'two correct → harder');
+  svc.answer(s, { stepId: third.id, value: third.options.find((option) => option.id !== third.correct).id });
+  assert.equal(s.steps[3].difficulty, 'medium', 'a miss → easier');
   assert.equal(new Set(s.state.used).size, s.state.used.length);
 });
 
@@ -130,7 +114,7 @@ test('fixed modes only serve the chosen difficulty', () => {
     while (!svc.isComplete(s) && guard++ < 60) {
       const step = s.steps[svc.currentIndex(s)];
       if (step.difficulty) assert.equal(step.difficulty, d);
-      svc.answer(s, step.kind === 'passage' ? { stepId: step.id, timeMs: 15000 } : { stepId: step.id, value: step.options[0] });
+      svc.answer(s, { stepId: step.id, value: step.options[0].id });
     }
     assert.ok(svc.isComplete(s));
   }
@@ -149,24 +133,25 @@ test('assessment API: questions never leak answers; full best-case run → level
     const first = await api.get('/assessment/questions', { token });
     assert.equal(first.status, 200);
     assert.equal(first.data.step.number, 1);
-    assert.equal(first.data.step.kind, 'passage');
+    assert.equal(first.data.step.kind, 'mcq');
     const seen = await runCoreAssessment(api, token, 'best');
-    assert.ok(seen.length >= 23 && seen.length <= 24, `steps = ${seen.length}`);
+    assert.equal(seen.length, 20);
     const blob = JSON.stringify(seen);
-    assert.ok(!/"correct"|correctAnswer|correct_answer|score_impact|scoreImpact/.test(blob), 'answer key is never sent to the browser');
-    assert.deepEqual([...new Set(seen.map((s) => s.category))].sort(), ['Comprehension', 'Focus and comfort', 'Reading flow', 'Reading preferences', 'Word difficulty', 'Font Preference', 'Spacing Preference (Line Height)', 'Spacing Preference (Letter Spacing)', 'Bionic Reading Preference', 'Text Simplification Preference', 'Color Overlay / Contrast'].filter((c) => seen.some((s) => s.category === c)).sort());
+    assert.ok(!/"correct"|correctAnswer|explanation/.test(blob), 'answer key and explanations are not sent before submission');
+    assert.deepEqual([...new Set(seen.map((s) => s.categoryId))].sort(), Object.keys(datasets.categories).sort());
+    assert.ok(seen.every((step) => step.options.every((option) => typeof option.id === 'string' && typeof option.text === 'string')));
     const early = await api.post('/assessment/submit', { part: 'core' }, { token });
-    assert.equal(early.status, 201); // complete because the helper answered every step
+    assert.equal(early.status, 201);
     const res = early.data;
     assert.equal(res.score.total, 0);
     assert.equal(res.level.level, 1);
     assert.equal(res.level.classification, 'Basic / Mild Assistance');
     assert.ok(res.recommendedSettings.includes('Light bionic reading'));
-    assert.equal(res.score.components.readingSpeed.points, 0);
-    assert.equal(res.score.components.comprehension.points, 0);
-    assert.equal(res.breakdown.comprehension.total, 3);
-    assert.equal(res.breakdown.wordDifficulty.total, 6);
-    assert.ok(res.preferences.congruence.totalFeatures >= 4);
+    assert.equal(res.score.components.questionAccuracy.points, 0);
+    assert.equal(res.breakdown.categories.length, 5);
+    assert.ok(res.breakdown.categories.every((category) => category.total === 4 && category.correct === 4));
+    assert.equal(res.breakdown.answers.length, 20);
+    assert.ok(res.breakdown.answers.every((answer) => answer.explanation));
     const again = await api.get('/assessment/results', { token });
     assert.deepEqual(again.data.score, res.score);
     assert.equal(again.data.cognitiveCompleted, false, 'the Results page uses this flag instead of probing for cognitive results');
@@ -193,23 +178,23 @@ test('assessment API: resume, previous/edit, ordering and validation', async () 
     const s1 = q1.data.step;
     assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: 'nope', value: 'x' }, { token })).status, 404);
     // answering step 2 before step 1 is rejected
-    const a1 = await api.post('/assessment/answer', { part: 'core', stepId: s1.id, timeMs: 12000 }, { token });
+    const a1 = await api.post('/assessment/answer', { part: 'core', stepId: s1.id, value: s1.options[0].id, timeMs: 12000 }, { token });
     assert.equal(a1.status, 200);
     const s2 = a1.data.step;
     assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: s2.id, value: 'not an option' }, { token })).status, 400);
-    assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: s2.id, value: s2.options[0], timeMs: 900 }, { token })).status, 200);
+    assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: s2.id, value: s2.options[0].id, timeMs: 900 }, { token })).status, 200);
     // "Save & exit" then resume → continues at question 3, previous answers kept
     const resumed = await api.get('/assessment/questions', { token });
     assert.equal(resumed.data.step.number, 3);
     assert.equal(resumed.data.progress.answered, 2);
     const back = await api.get('/assessment/questions?cursor=1', { token });
     assert.equal(back.data.step.id, s2.id);
-    assert.equal(back.data.step.answer, s2.options[0]);
-    assert.equal((await api.get('/assessment/questions?cursor=3', { token })).status, 409, 'exists but not reached yet');
+    assert.equal(back.data.step.answer, s2.options[0].id);
+    assert.equal((await api.get('/assessment/questions?cursor=3', { token })).status, 400, 'not generated yet');
     assert.equal((await api.get('/assessment/questions?cursor=50', { token })).status, 400, 'does not exist');
     // edit the previous answer
-    assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: s2.id, value: s2.options[1] }, { token })).status, 200);
-    assert.equal((await api.get('/assessment/questions?cursor=1', { token })).data.step.answer, s2.options[1]);
+    assert.equal((await api.post('/assessment/answer', { part: 'core', stepId: s2.id, value: s2.options[1].id }, { token })).status, 200);
+    assert.equal((await api.get('/assessment/questions?cursor=1', { token })).data.step.answer, s2.options[1].id);
     assert.equal((await api.post('/assessment/submit', { part: 'core' }, { token })).status, 409, 'cannot submit early');
     assert.equal((await api.get('/assessment/results', { token })).status, 404);
     assert.equal((await api.get('/assessment/questions?part=bogus', { token })).status, 400);
@@ -279,7 +264,7 @@ test('dashboard shows real state only (no data → nulls, then results, settings
     assert.equal(d.extension.connected, false);
 
     const q = await api.get('/assessment/questions', { token });
-    await api.post('/assessment/answer', { part: 'core', stepId: q.data.step.id, timeMs: 9000 }, { token });
+    await api.post('/assessment/answer', { part: 'core', stepId: q.data.step.id, value: q.data.step.options[0].id, timeMs: 9000 }, { token });
     d = (await api.get('/dashboard', { token })).data;
     assert.equal(d.assessment.status, 'in_progress');
     assert.equal(d.assessment.progress.answered, 1);
@@ -290,9 +275,7 @@ test('dashboard shows real state only (no data → nulls, then results, settings
     assert.equal(d.assessment.status, 'complete');
     assert.equal(d.assessment.summary.score, 14);
     assert.equal(d.recommendedLevel, 3);
-    assert.equal(d.preferences.items.length, 6);
-    assert.ok(d.preferences.items.every((i) => !/^PREF-/.test(i.category)), 'shows dataset category names, not ids');
-    assert.ok(d.preferences.items.some((i) => i.category === 'Font Preference'));
+    assert.equal(d.preferences, null, 'new assessment records do not collect reading preferences');
     await api.post('/accessibility/reset', { to: 'recommended' }, { token });
     d = (await api.get('/dashboard', { token })).data;
     assert.equal(d.accessibility.saved, true);
@@ -304,26 +287,23 @@ test('dashboard shows real state only (no data → nulls, then results, settings
 });
 
 /* ------------------------------------------------------ cognitive (separate) */
-test('cognitive assessment is separate from the assistance score', async () => {
+test('cognitive assessment uses supplied datasets and remains separate from the assistance score', async () => {
   await withServer(async ({ api, signup }) => {
     const { token } = await signup();
     let r = await api.post('/assessment/start', { part: 'cognitive' }, { token });
     let n = 0;
-    let sawFact = false;
     while (n++ < 40) {
       const step = r.data.step;
       assert.ok(step.timeLimitSeconds > 0);
-      if (step.fact) { sawFact = true; assert.ok(step.memorizeSeconds > 0); assert.ok(!step.prompt.startsWith('Fact:')); }
-      const a = await api.post('/assessment/answer', n % 5 === 0 ? { part: 'cognitive', stepId: step.id, timedOut: true, timeMs: 20000 } : { part: 'cognitive', stepId: step.id, value: step.options[0], timeMs: 2000 }, { token });
+      const a = await api.post('/assessment/answer', n % 5 === 0 ? { part: 'cognitive', stepId: step.id, timedOut: true, timeMs: 20000 } : { part: 'cognitive', stepId: step.id, value: step.options[0].id, timeMs: 2000 }, { token });
       assert.equal(a.status, 200);
       if (a.data.complete) break;
       r = { data: { step: a.data.step } };
     }
-    assert.ok(sawFact);
     const done = await api.post('/assessment/submit', { part: 'cognitive' }, { token });
     assert.equal(done.status, 201);
-    assert.equal(done.data.sections.length, 4);
-    assert.equal(done.data.attention.total, 16);
+    assert.equal(done.data.sections.length, 5);
+    assert.equal(done.data.attention.total, 20);
     assert.ok(done.data.note.includes('not a medical'));
     assert.equal((await api.get('/assessment/results?part=core', { token })).status, 404, 'core results unaffected');
     assert.equal((await api.get('/accessibility/profile', { token })).data.recommended, null, 'no assistance level from cognitive');

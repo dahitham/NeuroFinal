@@ -1,172 +1,179 @@
-/**
- * Dataset adapter layer (server side).
- * The ORIGINAL JSON files in /datasets are never modified. This module only normalises
- * their different shapes into one internal format:
- *   { uid, id, module, difficulty, question, options, correctAnswer, ...extras }
- * Item uids are namespaced by module because two datasets reuse the id "SC-E-01"
- * (Sentence Completion and Speed & Comprehension).
- */
+const NEW_DATASET_FILE = /^neurosync_[a-z0-9_]+\.json$/i;
+const DIFFICULTIES = new Set(['easy', 'medium', 'hard']);
+const REQUIRED_FIELDS = ['id', 'category', 'difficulty', 'skill', 'questionType', 'question', 'options', 'correctAnswer', 'explanation'];
 
-export const DIFFICULTIES = ['easy', 'medium', 'hard'];
-export const DIFFICULTY_LABEL = { easy: 'LOW', medium: 'MEDIUM', hard: 'HIGH' };
+export const isNeuroSyncDatasetFile = (name) => NEW_DATASET_FILE.test(name);
 
-const FILE_KEYS = {
-  speedandcomprehension: 'readingPassages',
-  worddifficultytest: 'wordDifficulty',
-  focustest: 'focus',
-  readingpreferencefontpreference: 'preferences',
-  memoryrecall: 'memoryRecall',
-  patternrecognition: 'patternRecognition',
-  sentencecompletion: 'sentenceCompletion',
-  wordsequencing: 'wordSequencing',
-};
+const categoryFromFile = (name) =>
+  name.replace(/^neurosync_/i, '').replace(/\.json$/i, '').toLowerCase();
 
-export const normalizeFileName = (name) =>
-  String(name).replace(/^.*[\\/]/, '').replace(/\.json$/i, '').toLowerCase().replace(/[^a-z0-9]/g, '');
-
-export function normalizeDifficulty(d) {
-  const v = String(d || '').toLowerCase();
-  if (v === 'low' || v === 'easy') return 'easy';
-  if (v === 'high' || v === 'hard') return 'hard';
-  if (v === 'medium' || v === 'mid') return 'medium';
-  return null;
+function validationError(file, record, message) {
+  return `${file} › ${record}: ${message}`;
 }
 
-const itemsOf = (raw) => (Array.isArray(raw) ? raw : raw && Array.isArray(raw.items) ? raw.items : []);
+function validateQuestion(question, file, row, expectedCategory) {
+  const issues = [];
+  const record = question && typeof question.id === 'string' && question.id ? question.id : `row ${row}`;
+  if (!question || typeof question !== 'object' || Array.isArray(question)) {
+    return [validationError(file, record, 'record must be an object')];
+  }
 
-/** An item is usable only if it has a question, ≥2 string options and a correct answer that is one of them. */
-function validMcq(raw) {
-  return (
-    raw &&
-    typeof raw.id === 'string' &&
-    (typeof raw.question === 'string' || typeof raw.target_word === 'string') &&
-    Array.isArray(raw.options) &&
-    raw.options.length >= 2 &&
-    raw.options.every((o) => typeof o === 'string') &&
-    raw.options.includes(raw.correct_answer) &&
-    normalizeDifficulty(raw.difficulty)
-  );
-}
+  for (const field of REQUIRED_FIELDS) {
+    if (!(field in question)) issues.push(validationError(file, record, `missing required field "${field}"`));
+  }
+  if (typeof question.id !== 'string' || !question.id.trim()) issues.push(validationError(file, record, '"id" must be a non-empty string'));
+  if (typeof question.category !== 'string' || !/^[a-z0-9]+(?:_[a-z0-9]+)*$/.test(question.category)) {
+    issues.push(validationError(file, record, '"category" must be a lowercase underscore-separated string'));
+  } else if (question.category !== expectedCategory) {
+    issues.push(validationError(file, record, `"category" must match filename category "${expectedCategory}"`));
+  }
+  if (!DIFFICULTIES.has(question.difficulty)) issues.push(validationError(file, record, '"difficulty" must be easy, medium, or hard'));
+  if (typeof question.skill !== 'string' || !question.skill.trim()) issues.push(validationError(file, record, '"skill" must be a non-empty string'));
+  if (question.questionType !== 'multiple_choice') issues.push(validationError(file, record, '"questionType" must be "multiple_choice"'));
+  if (typeof question.question !== 'string' || !question.question.trim()) issues.push(validationError(file, record, '"question" must be a non-empty string'));
+  if (typeof question.explanation !== 'string' || !question.explanation.trim()) issues.push(validationError(file, record, '"explanation" must be a non-empty string'));
 
-/**
- * Memory Recall questions embed the fact in the question ("Fact: … What is …?").
- * Split them so the UI can show the fact first, hide it, then ask the question.
- * Falls back to showing everything at once if the pattern is not recognised.
- */
-export function splitMemoryItem(question) {
-  const m = /^Fact:\s*([\s\S]*\.)\s+([^.]*\?)\s*$/.exec(question);
-  return m ? { fact: m[1].trim(), prompt: m[2].trim() } : { fact: null, prompt: question };
-}
-
-function mcqModule(raw, moduleKey, extra = () => ({})) {
-  const items = [];
-  const skipped = [];
-  itemsOf(raw).forEach((r) => {
-    if (!validMcq(r)) return skipped.push(r && r.id ? r.id : '(unknown)');
-    items.push({
-      uid: `${moduleKey}:${r.id}`,
-      id: r.id,
-      module: moduleKey,
-      difficulty: normalizeDifficulty(r.difficulty),
-      // Word Difficulty items have no `question` field – derive the prompt from target_word
-      question: typeof r.question === 'string' ? r.question : `What does “${r.target_word}” mean in this sentence?`,
-      options: [...r.options],
-      correctAnswer: r.correct_answer,
-      ...extra(r),
+  if (!Array.isArray(question.options) || question.options.length < 2) {
+    issues.push(validationError(file, record, '"options" must contain at least two options'));
+  } else {
+    const optionIds = new Set();
+    question.options.forEach((option, index) => {
+      if (!option || typeof option !== 'object' || Array.isArray(option)) {
+        issues.push(validationError(file, record, `option ${index + 1} must be an object with "id" and "text"`));
+        return;
+      }
+      if (typeof option.id !== 'string' || !option.id.trim()) {
+        issues.push(validationError(file, record, `option ${index + 1} "id" must be a non-empty string`));
+      } else if (optionIds.has(option.id)) {
+        issues.push(validationError(file, record, `option ID "${option.id}" is duplicated`));
+      } else {
+        optionIds.add(option.id);
+      }
+      if (typeof option.text !== 'string' || !option.text.trim()) {
+        issues.push(validationError(file, record, `option ${index + 1} "text" must be a non-empty string`));
+      }
     });
-  });
-  return { items, skipped };
-}
+    if (typeof question.correctAnswer !== 'string' || !optionIds.has(question.correctAnswer)) {
+      issues.push(validationError(file, record, '"correctAnswer" must reference an option ID'));
+    }
+  }
 
-export function buildVocabulary(wordItems) {
-  const vocab = {};
-  wordItems.forEach((w) => {
-    const key = w.targetWord.toLowerCase();
-    if (vocab[key]) return;
-    vocab[key] = {
-      simpleMeaning: `Means about the same as “${w.correctAnswer}”.`,
-      synonym: w.correctAnswer,
-      pronunciation: null,
-      visualHint: w.contextSentence,
-    };
-  });
-  return vocab;
+  return issues;
 }
 
 /**
- * @param {Record<string, any>} rawByFile  parsed JSON keyed by file name (any of the original names)
+ * Convert the supplied per-category question files into an internal category map.
+ * Original records are not mutated, and all validation failures are reported together.
  */
 export function buildDatasets(rawByFile) {
-  const byKey = {};
-  Object.entries(rawByFile || {}).forEach(([file, raw]) => {
-    const key = FILE_KEYS[normalizeFileName(file)];
-    if (key) byKey[key] = raw;
-  });
-
+  const categories = {};
   const report = { loaded: {}, missing: [], skipped: {} };
-  const out = {};
+  const ids = new Map();
+  const recordSignatures = new Map();
+  const errors = [];
+  let filesSeen = 0;
 
-  const mark = (key, res) => {
-    out[key] = res.items;
-    report.loaded[key] = res.items.length;
-    if (res.skipped.length) report.skipped[key] = res.skipped;
-  };
-
-  Object.values(FILE_KEYS).forEach((k) => {
-    if (!byKey[k]) {
-      report.missing.push(k);
-      out[k] = k === 'focus' || k === 'preferences' ? { items: [] } : [];
+  for (const [file, raw] of Object.entries(rawByFile || {})) {
+    if (!isNeuroSyncDatasetFile(file)) continue;
+    filesSeen += 1;
+    const expectedCategory = categoryFromFile(file);
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
+      errors.push(validationError(file, 'root', 'expected a JSON object with a "questions" array'));
+      continue;
     }
-  });
+    if (typeof raw.project !== 'string' || !raw.project.trim()) errors.push(validationError(file, 'root', '"project" must be a non-empty string'));
+    if (typeof raw.datasetVersion !== 'string' || !raw.datasetVersion.trim()) errors.push(validationError(file, 'root', '"datasetVersion" must be a non-empty string'));
+    if (typeof raw.purpose !== 'string' || !raw.purpose.trim()) errors.push(validationError(file, 'root', '"purpose" must be a non-empty string'));
+    if (!Number.isInteger(raw.totalQuestions) || raw.totalQuestions < 1) errors.push(validationError(file, 'root', '"totalQuestions" must be a positive integer'));
+    if (!raw.categoryCounts || typeof raw.categoryCounts !== 'object' || Array.isArray(raw.categoryCounts)) {
+      errors.push(validationError(file, 'root', '"categoryCounts" must be an object of category-to-count values'));
+    } else {
+      for (const [name, count] of Object.entries(raw.categoryCounts)) {
+        if (!/^[a-z0-9]+(?:_[a-z0-9]+)*$/.test(name) || !Number.isInteger(count) || count < 1) {
+          errors.push(validationError(file, 'root', `"categoryCounts" has an invalid entry for "${name}"`));
+        }
+      }
+    }
+    if (!Array.isArray(raw.questions)) {
+      errors.push(validationError(file, 'root', '"questions" must be an array'));
+      continue;
+    }
+    if (raw.questions.length === 0) {
+      errors.push(validationError(file, 'root', '"questions" must not be empty'));
+      continue;
+    }
+    if (Object.hasOwn(categories, expectedCategory)) {
+      errors.push(validationError(file, 'root', `duplicate category "${expectedCategory}" is already provided by another file`));
+      continue;
+    }
 
-  if (byKey.readingPassages) {
-    mark(
-      'readingPassages',
-      mcqModule(byKey.readingPassages, 'speed_and_comprehension', (r) => ({
-        passage: String(r.passage || ''),
-        wordCount: Number(r.word_count) || String(r.passage || '').trim().split(/\s+/).length,
-      }))
-    );
-    out.readingPassages = out.readingPassages.filter((p) => p.passage);
+    const items = [];
+    raw.questions.forEach((question, index) => {
+      const row = index + 1;
+      const questionIssues = validateQuestion(question, file, row, expectedCategory);
+      if (question && typeof question.id === 'string' && question.id) {
+        if (ids.has(question.id)) questionIssues.push(validationError(file, question.id, `ID is duplicated; first seen at ${ids.get(question.id)}`));
+        else ids.set(question.id, `${file} row ${row}`);
+      }
+      if (question && typeof question === 'object' && !Array.isArray(question)) {
+        const signature = JSON.stringify({
+          category: question.category,
+          difficulty: question.difficulty,
+          skill: question.skill,
+          questionType: question.questionType,
+          question: question.question,
+          options: question.options,
+          correctAnswer: question.correctAnswer,
+          explanation: question.explanation,
+        });
+        if (recordSignatures.has(signature)) {
+          const recordId = question.id || `row ${row}`;
+          questionIssues.push(validationError(file, recordId, `duplicate question content; first seen at ${recordSignatures.get(signature)}`));
+        } else {
+          recordSignatures.set(signature, `${file} row ${row}`);
+        }
+      }
+      errors.push(...questionIssues);
+      if (questionIssues.length) return;
+      items.push({
+        ...question,
+        uid: `${expectedCategory}:${question.id}`,
+        id: question.id,
+        category: question.category,
+        difficulty: question.difficulty,
+        skill: question.skill,
+        questionType: question.questionType,
+        question: question.question,
+        options: question.options.map(({ id, text }) => ({ id, text })),
+        correctAnswer: question.correctAnswer,
+        explanation: question.explanation,
+      });
+    });
+    categories[expectedCategory] = items;
+    report.loaded[expectedCategory] = items.length;
   }
-  if (byKey.wordDifficulty)
-    mark('wordDifficulty', mcqModule(byKey.wordDifficulty, 'word_difficulty', (r) => ({ targetWord: r.target_word, contextSentence: r.context_sentence })));
-  if (byKey.memoryRecall) {
-    mark('memoryRecall', mcqModule(byKey.memoryRecall, 'memory_recall', (r) => splitMemoryItem(r.question)));
-  }
-  if (byKey.patternRecognition) mark('patternRecognition', mcqModule(byKey.patternRecognition, 'pattern_recognition'));
-  if (byKey.sentenceCompletion) mark('sentenceCompletion', mcqModule(byKey.sentenceCompletion, 'sentence_completion'));
-  if (byKey.wordSequencing) mark('wordSequencing', mcqModule(byKey.wordSequencing, 'word_sequencing'));
 
-  if (byKey.focus) {
-    const items = itemsOf(byKey.focus)
-      .filter((f) => f && f.id && f.question && Array.isArray(f.options) && f.options.length)
-      .map((f) => ({
-        uid: `focus:${f.id}`,
-        id: f.id,
-        trigger: f.trigger,
-        question: f.question,
-        options: f.options.map((o) => ({ text: o.text, scoreImpact: Number(o.score_impact) || 0 })),
-        maxImpact: Math.max(...f.options.map((o) => Number(o.score_impact) || 0)),
-      }));
-    out.focus = { items };
-    report.loaded.focus = items.length;
+  if (!filesSeen) errors.push('No neurosync_*.json dataset files were found; refusing to load legacy assessment datasets.');
+  const actualCounts = Object.fromEntries(Object.entries(categories).map(([category, items]) => [category, items.length]));
+  const actualTotal = Object.values(actualCounts).reduce((total, count) => total + count, 0);
+  for (const [file, raw] of Object.entries(rawByFile || {})) {
+    if (!isNeuroSyncDatasetFile(file) || !raw || typeof raw !== 'object' || Array.isArray(raw)) continue;
+    if (Number.isInteger(raw.totalQuestions) && raw.totalQuestions !== actualTotal) {
+      errors.push(validationError(file, 'root', `"totalQuestions" declares ${raw.totalQuestions}, but ${actualTotal} records were loaded from the supplied banks`));
+    }
+    if (raw.categoryCounts && typeof raw.categoryCounts === 'object' && !Array.isArray(raw.categoryCounts)) {
+      for (const [category, count] of Object.entries({ ...actualCounts, ...raw.categoryCounts })) {
+        if (actualCounts[category] !== count) {
+          errors.push(validationError(file, 'root', `"categoryCounts.${category}" declares ${count}, but ${actualCounts[category] || 0} records were loaded`));
+        }
+      }
+    }
   }
-  if (byKey.preferences) {
-    const items = itemsOf(byKey.preferences).map((p) => ({
-      uid: `pref:${p.id}`,
-      id: p.id,
-      category: p.test_category,
-      options: p.ui_options || [],
-      text: p.test_text || null,
-      textOriginal: p.test_text_original || null,
-      textSimplified: p.test_text_simplified || null,
-    }));
-    out.preferences = { items };
-    report.loaded.preferences = items.length;
-  }
+  if (errors.length) throw new Error(`[datasets] Validation failed:\n- ${errors.join('\n- ')}`);
 
-  out.vocabulary = buildVocabulary(out.wordDifficulty || []);
-  out.report = report;
-  return out;
+  return {
+    categories,
+    vocabulary: {},
+    report,
+  };
 }

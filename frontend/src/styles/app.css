@@ -3,10 +3,11 @@ body{margin:0}
 #root{min-height:100vh}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+.shell .sb{position:sticky;top:0;height:100vh;align-self:flex-start;overflow-y:auto;z-index:10}
 /* The mockups hide the sidebar on phones; keep navigation reachable by showing it as a scrolling row
    (the same pattern tokens.css defines for .ns-side). */
 @media(max-width:820px){
-  .shell .sb{display:flex!important;flex-direction:row!important;width:auto!important;overflow-x:auto;padding:10px!important}
+  .shell .sb{display:flex!important;position:sticky;top:0;flex-direction:row!important;width:auto!important;height:auto;overflow-x:auto;overflow-y:hidden;padding:10px!important}
   .shell .sb>span{display:none!important}
   .shell .sb a{white-space:nowrap}
   .shell.d{flex-direction:column}

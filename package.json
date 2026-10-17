@@ -9,6 +9,6 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build",
     "test": "npm --prefix backend test && npm --prefix frontend test",
-    "sync:extension-data": "node scripts/build-extension-data.mjs"
+    "verify:extension-vocabulary": "node scripts/verify-extension-vocabulary.mjs"
   }
 }

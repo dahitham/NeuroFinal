@@ -211,10 +211,10 @@ export default function Assessment() {
 
           {phase === 'ask' && step.options.length > 0 && (
             <div role="radiogroup" style={s('display:flex;flex-direction:column;gap:12px')}>
-              {step.options.map((o, i) => (
-                <div key={step.id + o}>
-                  <input className="op" type="radio" name="q" id={`o${i}`} checked={selected === o} onChange={() => setSelected(o)} />
-                  <label className="ol" htmlFor={`o${i}`}>{o}</label>
+              {step.options.map((option, i) => (
+                <div key={step.id + option.id}>
+                  <input className="op" type="radio" name="q" id={`o${i}`} checked={selected === option.id} onChange={() => setSelected(option.id)} />
+                  <label className="ol" htmlFor={`o${i}`}>{option.text}</label>
                 </div>
               ))}
             </div>

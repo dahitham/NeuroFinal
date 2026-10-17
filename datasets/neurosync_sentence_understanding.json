@@ -1,0 +1,1415 @@
+{
+  "project": "NeuroSync",
+  "datasetVersion": "1.0",
+  "purpose": "Experimental reading-related behavioral task dataset for accessibility personalization",
+  "totalQuestions": 250,
+  "categoryCounts": {
+    "word_recognition": 50,
+    "comprehension": 50,
+    "sequencing": 50,
+    "sentence_understanding": 50,
+    "attention_to_detail": 50
+  },
+  "questions": [
+    {
+      "id": "SU001",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "negation_quantifier",
+      "questionType": "multiple_choice",
+      "question": "Not every student passed the exam. Which statement must be true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "At least one student did not pass"
+        },
+        {
+          "id": "B",
+          "text": "No student passed"
+        },
+        {
+          "id": "C",
+          "text": "Every student passed"
+        },
+        {
+          "id": "D",
+          "text": "Only one student passed"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Not every' means at least one did not pass."
+    },
+    {
+      "id": "SU002",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "relative_clause_comprehension",
+      "questionType": "multiple_choice",
+      "question": "The man who was bitten by the dog called the police. Who called the police?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The dog"
+        },
+        {
+          "id": "B",
+          "text": "A neighbor"
+        },
+        {
+          "id": "C",
+          "text": "The man who was bitten"
+        },
+        {
+          "id": "D",
+          "text": "The police"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Who was bitten' identifies the man; he is the one who called."
+    },
+    {
+      "id": "SU003",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "subject_verb_agreement_meaning",
+      "questionType": "multiple_choice",
+      "question": "Which sentence is about more than one child?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The child is playing"
+        },
+        {
+          "id": "B",
+          "text": "The children are playing"
+        },
+        {
+          "id": "C",
+          "text": "A child plays"
+        },
+        {
+          "id": "D",
+          "text": "Each child plays"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Children' and 'are' show more than one child."
+    },
+    {
+      "id": "SU004",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "The girls told the teacher that they were ready. Who was ready?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The teacher"
+        },
+        {
+          "id": "B",
+          "text": "The teacher and the girls"
+        },
+        {
+          "id": "C",
+          "text": "The girls"
+        },
+        {
+          "id": "D",
+          "text": "No one"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'They' is plural, so it refers to the girls."
+    },
+    {
+      "id": "SU005",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "modifier_agent_identification",
+      "questionType": "multiple_choice",
+      "question": "The boy who is wearing a hat waved. Who waved?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The boy without a hat"
+        },
+        {
+          "id": "B",
+          "text": "The boy wearing a hat"
+        },
+        {
+          "id": "C",
+          "text": "A girl in a hat"
+        },
+        {
+          "id": "D",
+          "text": "The hat"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The words 'who is wearing a hat' describe which boy waved."
+    },
+    {
+      "id": "SU006",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "not_but_relationship",
+      "questionType": "multiple_choice",
+      "question": "Ria did not stay home because she was ill, but because she wanted to rest. Why did Ria stay home?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She was ill"
+        },
+        {
+          "id": "B",
+          "text": "She was late"
+        },
+        {
+          "id": "C",
+          "text": "She wanted to rest"
+        },
+        {
+          "id": "D",
+          "text": "She was working"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Not ... but' rejects the first reason and gives the second."
+    },
+    {
+      "id": "SU007",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "passive_agent_identification",
+      "questionType": "multiple_choice",
+      "question": "The cake was eaten by Ben. Who ate the cake?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ben"
+        },
+        {
+          "id": "B",
+          "text": "The cake"
+        },
+        {
+          "id": "C",
+          "text": "Ben's friend"
+        },
+        {
+          "id": "D",
+          "text": "Nobody"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "In 'was eaten by Ben', Ben is the one who ate it."
+    },
+    {
+      "id": "SU008",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "negation_processing",
+      "questionType": "multiple_choice",
+      "question": "Eli did not eat the cake. Which statement is true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Eli ate no cake"
+        },
+        {
+          "id": "B",
+          "text": "Eli ate all of the cake"
+        },
+        {
+          "id": "C",
+          "text": "Eli ate part of the cake"
+        },
+        {
+          "id": "D",
+          "text": "Eli cut the cake"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Did not eat' means no cake was eaten by Eli."
+    },
+    {
+      "id": "SU009",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "Tom told Mia that he was late. Who was late?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mia"
+        },
+        {
+          "id": "B",
+          "text": "Both of them"
+        },
+        {
+          "id": "C",
+          "text": "Tom"
+        },
+        {
+          "id": "D",
+          "text": "Neither of them"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'He' refers to Tom."
+    },
+    {
+      "id": "SU010",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "although_relationship",
+      "questionType": "multiple_choice",
+      "question": "Although Sam was tired, he finished his work. Did Sam finish his work?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No"
+        },
+        {
+          "id": "B",
+          "text": "Yes"
+        },
+        {
+          "id": "C",
+          "text": "Only half of it"
+        },
+        {
+          "id": "D",
+          "text": "We cannot tell"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Although' shows he finished despite being tired."
+    },
+    {
+      "id": "SU011",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "agent_identification",
+      "questionType": "multiple_choice",
+      "question": "Mia kicked the ball. Who kicked the ball?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The ball"
+        },
+        {
+          "id": "B",
+          "text": "Her friend"
+        },
+        {
+          "id": "C",
+          "text": "Mia"
+        },
+        {
+          "id": "D",
+          "text": "The goalkeeper"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Mia is the one doing the kicking."
+    },
+    {
+      "id": "SU012",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "passive_agent_identification",
+      "questionType": "multiple_choice",
+      "question": "The pizza was delivered to the neighbors by a driver. Who delivered the pizza?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The neighbors"
+        },
+        {
+          "id": "B",
+          "text": "The pizza"
+        },
+        {
+          "id": "C",
+          "text": "The cook"
+        },
+        {
+          "id": "D",
+          "text": "A driver"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The 'by' phrase names the driver as the one who delivered."
+    },
+    {
+      "id": "SU013",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "if_relationship",
+      "questionType": "multiple_choice",
+      "question": "Mia will bake a cake if her friends come. When will Mia bake a cake?",
+      "options": [
+        {
+          "id": "A",
+          "text": "When her friends leave"
+        },
+        {
+          "id": "B",
+          "text": "When her friends come"
+        },
+        {
+          "id": "C",
+          "text": "Whether or not they come"
+        },
+        {
+          "id": "D",
+          "text": "Never"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'If' makes the baking depend on her friends coming."
+    },
+    {
+      "id": "SU014",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "although_inference",
+      "questionType": "multiple_choice",
+      "question": "Although the exam was easy, few students passed. What does this tell us?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The exam was hard"
+        },
+        {
+          "id": "B",
+          "text": "All students passed"
+        },
+        {
+          "id": "C",
+          "text": "No one took the exam"
+        },
+        {
+          "id": "D",
+          "text": "Many students failed even though the exam was easy"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Although' contrasts an easy exam with few passes."
+    },
+    {
+      "id": "SU015",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "agent_identification",
+      "questionType": "multiple_choice",
+      "question": "The dog chased the cat. Who chased?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The cat"
+        },
+        {
+          "id": "B",
+          "text": "The dog"
+        },
+        {
+          "id": "C",
+          "text": "The mouse"
+        },
+        {
+          "id": "D",
+          "text": "The bird"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The dog is performing the action of chasing."
+    },
+    {
+      "id": "SU016",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "unless_relationship",
+      "questionType": "multiple_choice",
+      "question": "Unless they apologize, the club will not accept the players. What must the players do to be accepted?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Leave the club"
+        },
+        {
+          "id": "B",
+          "text": "Apologize"
+        },
+        {
+          "id": "C",
+          "text": "Pay a fee"
+        },
+        {
+          "id": "D",
+          "text": "Do nothing"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Unless' makes apologizing the condition for acceptance."
+    },
+    {
+      "id": "SU017",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "active_passive_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means that the teacher helped the student?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The teacher was helped by the student"
+        },
+        {
+          "id": "B",
+          "text": "The student was helped by the teacher"
+        },
+        {
+          "id": "C",
+          "text": "The student helped the teacher"
+        },
+        {
+          "id": "D",
+          "text": "Neither person helped the other"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The passive sentence still has the teacher as the helper."
+    },
+    {
+      "id": "SU018",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "sentence_paraphrase_selection",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means the same as 'Jo rarely eats fish'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Jo eats fish every day"
+        },
+        {
+          "id": "B",
+          "text": "Jo never eats fish"
+        },
+        {
+          "id": "C",
+          "text": "Jo often eats fish"
+        },
+        {
+          "id": "D",
+          "text": "Jo hardly ever eats fish"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Rarely and hardly ever have the same meaning."
+    },
+    {
+      "id": "SU019",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "different_meaning_detection",
+      "questionType": "multiple_choice",
+      "question": "Which sentence has a different meaning from the others?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The dog was chased by the cat"
+        },
+        {
+          "id": "B",
+          "text": "The dog chased the cat"
+        },
+        {
+          "id": "C",
+          "text": "The cat was chased by the dog"
+        },
+        {
+          "id": "D",
+          "text": "The dog went after the cat"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "In this sentence the cat does the chasing; in the others the dog does."
+    },
+    {
+      "id": "SU020",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "Daniel told Grace that he had sold her bike. Whose bike was sold?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Daniel's"
+        },
+        {
+          "id": "B",
+          "text": "Someone else's"
+        },
+        {
+          "id": "C",
+          "text": "It cannot be known"
+        },
+        {
+          "id": "D",
+          "text": "Grace's"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Her' refers to Grace, since Daniel is 'he'."
+    },
+    {
+      "id": "SU021",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "Ella opened the box and then she smiled. Who smiled?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The box"
+        },
+        {
+          "id": "B",
+          "text": "Ella"
+        },
+        {
+          "id": "C",
+          "text": "Her friend"
+        },
+        {
+          "id": "D",
+          "text": "Nobody"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'She' refers to Ella."
+    },
+    {
+      "id": "SU022",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "recipient_identification",
+      "questionType": "multiple_choice",
+      "question": "Dad gave Nina a toy. Who received the toy?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dad"
+        },
+        {
+          "id": "B",
+          "text": "Nina"
+        },
+        {
+          "id": "C",
+          "text": "The toy"
+        },
+        {
+          "id": "D",
+          "text": "Mum"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Nina is the one who was given the toy."
+    },
+    {
+      "id": "SU023",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "Ravi lost his hat, so Ana helped him look. Who lost a hat?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ana"
+        },
+        {
+          "id": "B",
+          "text": "Both of them"
+        },
+        {
+          "id": "C",
+          "text": "Neither of them"
+        },
+        {
+          "id": "D",
+          "text": "Ravi"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'His' and 'him' both refer to Ravi, who lost the hat."
+    },
+    {
+      "id": "SU024",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "because_relationship",
+      "questionType": "multiple_choice",
+      "question": "Ana smiled because she got a gift. Why did Ana smile?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She got a gift"
+        },
+        {
+          "id": "B",
+          "text": "She lost a gift"
+        },
+        {
+          "id": "C",
+          "text": "She gave a gift"
+        },
+        {
+          "id": "D",
+          "text": "She was cold"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Because' introduces the reason for the smile."
+    },
+    {
+      "id": "SU025",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "object_identification",
+      "questionType": "multiple_choice",
+      "question": "Sam eats an apple every day. What does Sam eat?",
+      "options": [
+        {
+          "id": "A",
+          "text": "An apple"
+        },
+        {
+          "id": "B",
+          "text": "Dinner"
+        },
+        {
+          "id": "C",
+          "text": "A pear"
+        },
+        {
+          "id": "D",
+          "text": "Bread"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The sentence names an apple as what Sam eats."
+    },
+    {
+      "id": "SU026",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "multiple_conjunctions",
+      "questionType": "multiple_choice",
+      "question": "Unless it snows, the school will open, although some buses may be late. When will the school open?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only when it snows"
+        },
+        {
+          "id": "B",
+          "text": "If it does not snow"
+        },
+        {
+          "id": "C",
+          "text": "Only when every bus is on time"
+        },
+        {
+          "id": "D",
+          "text": "Never"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Unless it snows' means opening depends on no snow; the buses do not change that."
+    },
+    {
+      "id": "SU027",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "subject_verb_relationship",
+      "questionType": "multiple_choice",
+      "question": "The birds sing in the morning. Which word names who is singing?",
+      "options": [
+        {
+          "id": "A",
+          "text": "sing"
+        },
+        {
+          "id": "B",
+          "text": "morning"
+        },
+        {
+          "id": "C",
+          "text": "the"
+        },
+        {
+          "id": "D",
+          "text": "birds"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Birds' is the one doing the singing."
+    },
+    {
+      "id": "SU028",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "but_relationship",
+      "questionType": "multiple_choice",
+      "question": "It was sunny, but Jo stayed inside. What did Jo do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Went out"
+        },
+        {
+          "id": "B",
+          "text": "Played in the park"
+        },
+        {
+          "id": "C",
+          "text": "Stayed inside"
+        },
+        {
+          "id": "D",
+          "text": "Went swimming"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'But' contrasts the sunny weather with Jo staying inside."
+    },
+    {
+      "id": "SU029",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "although_relationship",
+      "questionType": "multiple_choice",
+      "question": "Although it was cold, Lara went swimming. What is true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Lara stayed inside because of the cold"
+        },
+        {
+          "id": "B",
+          "text": "It was a warm day"
+        },
+        {
+          "id": "C",
+          "text": "Lara went swimming in cold weather"
+        },
+        {
+          "id": "D",
+          "text": "Lara did not go swimming"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Although' shows she swam in spite of the cold."
+    },
+    {
+      "id": "SU030",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "subject_verb_relationship",
+      "questionType": "multiple_choice",
+      "question": "The key to the doors was lost. What was lost?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The doors"
+        },
+        {
+          "id": "B",
+          "text": "The key"
+        },
+        {
+          "id": "C",
+          "text": "The keys"
+        },
+        {
+          "id": "D",
+          "text": "The key and the doors"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Was lost' goes with 'the key', the main subject."
+    },
+    {
+      "id": "SU031",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "passive_agent_identification",
+      "questionType": "multiple_choice",
+      "question": "The window was broken by the storm. What broke the window?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The storm"
+        },
+        {
+          "id": "B",
+          "text": "The window"
+        },
+        {
+          "id": "C",
+          "text": "A boy"
+        },
+        {
+          "id": "D",
+          "text": "A ball"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "In 'by the storm', the storm is the cause of the breaking."
+    },
+    {
+      "id": "SU032",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "active_passive_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means that the bird saw the fox?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The bird was seen by the fox"
+        },
+        {
+          "id": "B",
+          "text": "The fox saw the bird"
+        },
+        {
+          "id": "C",
+          "text": "The fox was seen by the bird"
+        },
+        {
+          "id": "D",
+          "text": "Neither animal saw the other"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The passive form keeps the bird as the one who saw."
+    },
+    {
+      "id": "SU033",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "because_relationship",
+      "questionType": "multiple_choice",
+      "question": "The match was cancelled because the field was flooded. Why was the match cancelled?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The players were late"
+        },
+        {
+          "id": "B",
+          "text": "The referee was ill"
+        },
+        {
+          "id": "C",
+          "text": "The field was flooded"
+        },
+        {
+          "id": "D",
+          "text": "The crowd was too small"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'Because' marks the flooded field as the reason."
+    },
+    {
+      "id": "SU034",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "because_with_negation",
+      "questionType": "multiple_choice",
+      "question": "Leo did not go to the party because he was sick. Why did Leo not go?",
+      "options": [
+        {
+          "id": "A",
+          "text": "He disliked parties"
+        },
+        {
+          "id": "B",
+          "text": "He was not invited"
+        },
+        {
+          "id": "C",
+          "text": "He was late"
+        },
+        {
+          "id": "D",
+          "text": "He was sick"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Because' gives sickness as the reason for not going."
+    },
+    {
+      "id": "SU035",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "negation_processing",
+      "questionType": "multiple_choice",
+      "question": "Kim has no pets. Which sentence is true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Kim owns two cats"
+        },
+        {
+          "id": "B",
+          "text": "Kim has one dog"
+        },
+        {
+          "id": "C",
+          "text": "Kim has many pets"
+        },
+        {
+          "id": "D",
+          "text": "Kim does not have a pet"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Has no pets' means Kim has none."
+    },
+    {
+      "id": "SU036",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "relative_clause_comprehension",
+      "questionType": "multiple_choice",
+      "question": "The prize was awarded to the student whom the teacher praised. Who was praised?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The student"
+        },
+        {
+          "id": "B",
+          "text": "The teacher"
+        },
+        {
+          "id": "C",
+          "text": "The prize"
+        },
+        {
+          "id": "D",
+          "text": "The student's parents"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "The teacher did the praising; the student received it."
+    },
+    {
+      "id": "SU037",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "agent_identification",
+      "questionType": "multiple_choice",
+      "question": "Quietly, the teacher closed the door. Who closed the door?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The door"
+        },
+        {
+          "id": "B",
+          "text": "A student"
+        },
+        {
+          "id": "C",
+          "text": "Quietly"
+        },
+        {
+          "id": "D",
+          "text": "The teacher"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The teacher is the one who performed the closing."
+    },
+    {
+      "id": "SU038",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "recipient_identification",
+      "questionType": "multiple_choice",
+      "question": "The girl hugged her mother. Who was hugged?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The girl"
+        },
+        {
+          "id": "B",
+          "text": "The father"
+        },
+        {
+          "id": "C",
+          "text": "The teacher"
+        },
+        {
+          "id": "D",
+          "text": "The mother"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "The mother receives the hug."
+    },
+    {
+      "id": "SU039",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "negation_processing",
+      "questionType": "multiple_choice",
+      "question": "Neither Jo nor Ali was late. Which statement is true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Jo was late"
+        },
+        {
+          "id": "B",
+          "text": "Ali was late"
+        },
+        {
+          "id": "C",
+          "text": "One of them was late"
+        },
+        {
+          "id": "D",
+          "text": "Both were on time"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "'Neither...nor' denies lateness for both people."
+    },
+    {
+      "id": "SU040",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "unless_relationship",
+      "questionType": "multiple_choice",
+      "question": "We will go to the park unless it rains. When will we go to the park?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only if it rains"
+        },
+        {
+          "id": "B",
+          "text": "If it does not rain"
+        },
+        {
+          "id": "C",
+          "text": "Every time it rains"
+        },
+        {
+          "id": "D",
+          "text": "Never"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Unless it rains' means the plan holds when there is no rain."
+    },
+    {
+      "id": "SU041",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "passive_object_identification",
+      "questionType": "multiple_choice",
+      "question": "The letter was sent by Rosa. What was sent?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Rosa"
+        },
+        {
+          "id": "B",
+          "text": "A gift"
+        },
+        {
+          "id": "C",
+          "text": "The letter"
+        },
+        {
+          "id": "D",
+          "text": "A parcel"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The letter is what was sent; Rosa is the sender."
+    },
+    {
+      "id": "SU042",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "active_passive_matching",
+      "questionType": "multiple_choice",
+      "question": "Which sentence means the same as 'The boy pushed the girl'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The boy was pushed by the girl"
+        },
+        {
+          "id": "B",
+          "text": "The girl pushed the boy"
+        },
+        {
+          "id": "C",
+          "text": "The boy and girl pushed a door"
+        },
+        {
+          "id": "D",
+          "text": "The girl was pushed by the boy"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Both sentences have the boy as the pusher and the girl as the one pushed."
+    },
+    {
+      "id": "SU043",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "Maria told Peter that she had finished the report. Who finished the report?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Maria"
+        },
+        {
+          "id": "B",
+          "text": "Peter"
+        },
+        {
+          "id": "C",
+          "text": "Both of them"
+        },
+        {
+          "id": "D",
+          "text": "Nobody"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'She' can only refer to Maria."
+    },
+    {
+      "id": "SU044",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "unless_relationship",
+      "questionType": "multiple_choice",
+      "question": "You cannot enter unless you have a ticket. Who can enter?",
+      "options": [
+        {
+          "id": "A",
+          "text": "People with a ticket"
+        },
+        {
+          "id": "B",
+          "text": "People without a ticket"
+        },
+        {
+          "id": "C",
+          "text": "Everyone"
+        },
+        {
+          "id": "D",
+          "text": "Nobody"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Unless' means entry requires a ticket."
+    },
+    {
+      "id": "SU045",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "different_meaning_detection",
+      "questionType": "multiple_choice",
+      "question": "Which sentence has a different meaning from 'The nurse thanked the doctor'?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The doctor was thanked by the nurse"
+        },
+        {
+          "id": "B",
+          "text": "The nurse gave thanks to the doctor"
+        },
+        {
+          "id": "C",
+          "text": "The doctor received thanks from the nurse"
+        },
+        {
+          "id": "D",
+          "text": "The doctor thanked the nurse"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Here the doctor does the thanking; in the others the nurse does."
+    },
+    {
+      "id": "SU046",
+      "category": "sentence_understanding",
+      "difficulty": "easy",
+      "skill": "sentence_meaning_selection",
+      "questionType": "multiple_choice",
+      "question": "Which sentence says that the train left early?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The train left before its time"
+        },
+        {
+          "id": "B",
+          "text": "The train arrived late"
+        },
+        {
+          "id": "C",
+          "text": "The train left late"
+        },
+        {
+          "id": "D",
+          "text": "The train did not leave"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Leaving before its time means leaving early."
+    },
+    {
+      "id": "SU047",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "pronoun_resolution",
+      "questionType": "multiple_choice",
+      "question": "When Ben called Alice, she was already asleep. Who was asleep?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ben"
+        },
+        {
+          "id": "B",
+          "text": "Both of them"
+        },
+        {
+          "id": "C",
+          "text": "Alice"
+        },
+        {
+          "id": "D",
+          "text": "Neither of them"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'She' refers to Alice."
+    },
+    {
+      "id": "SU048",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "but_relationship",
+      "questionType": "multiple_choice",
+      "question": "The shoes were cheap, but they broke in a week. What is true?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The shoes were cheap and did not last"
+        },
+        {
+          "id": "B",
+          "text": "The shoes were expensive and lasted"
+        },
+        {
+          "id": "C",
+          "text": "The shoes were free"
+        },
+        {
+          "id": "D",
+          "text": "The shoes lasted a long time"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'But' contrasts low price with poor durability."
+    },
+    {
+      "id": "SU049",
+      "category": "sentence_understanding",
+      "difficulty": "medium",
+      "skill": "recipient_identification",
+      "questionType": "multiple_choice",
+      "question": "The coach handed the captain a medal. Who received the medal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The coach"
+        },
+        {
+          "id": "B",
+          "text": "The whole team"
+        },
+        {
+          "id": "C",
+          "text": "The captain"
+        },
+        {
+          "id": "D",
+          "text": "The medal"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "The captain is the one handed the medal."
+    },
+    {
+      "id": "SU050",
+      "category": "sentence_understanding",
+      "difficulty": "hard",
+      "skill": "subject_with_modifier",
+      "questionType": "multiple_choice",
+      "question": "The man next to the dogs is asleep. Who is asleep?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The man"
+        },
+        {
+          "id": "B",
+          "text": "The dogs"
+        },
+        {
+          "id": "C",
+          "text": "Both the man and the dogs"
+        },
+        {
+          "id": "D",
+          "text": "The man and one dog"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "'Is asleep' goes with the man; 'next to the dogs' only tells where he is."
+    }
+  ]
+}
