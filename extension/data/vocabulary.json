@@ -1,0 +1,302 @@
+{
+ "glad": {
+  "simpleMeaning": "Means about the same as “Happy”.",
+  "synonym": "Happy",
+  "pronunciation": null,
+  "visualHint": "She was very glad to see her friends at the park."
+ },
+ "quick": {
+  "simpleMeaning": "Means about the same as “Fast”.",
+  "synonym": "Fast",
+  "pronunciation": null,
+  "visualHint": "The rabbit is a very quick animal."
+ },
+ "begin": {
+  "simpleMeaning": "Means about the same as “Start”.",
+  "synonym": "Start",
+  "pronunciation": null,
+  "visualHint": "The movie will begin in five minutes."
+ },
+ "assist": {
+  "simpleMeaning": "Means about the same as “Help”.",
+  "synonym": "Help",
+  "pronunciation": null,
+  "visualHint": "Can you assist me with carrying these heavy bags?"
+ },
+ "pretty": {
+  "simpleMeaning": "Means about the same as “Beautiful”.",
+  "synonym": "Beautiful",
+  "pronunciation": null,
+  "visualHint": "The flowers in the garden look very pretty."
+ },
+ "difficult": {
+  "simpleMeaning": "Means about the same as “Hard”.",
+  "synonym": "Hard",
+  "pronunciation": null,
+  "visualHint": "That math test was very difficult."
+ },
+ "simple": {
+  "simpleMeaning": "Means about the same as “Easy”.",
+  "synonym": "Easy",
+  "pronunciation": null,
+  "visualHint": "The rules for the game are very simple."
+ },
+ "pal": {
+  "simpleMeaning": "Means about the same as “Friend”.",
+  "synonym": "Friend",
+  "pronunciation": null,
+  "visualHint": "He went to the cinema with his best pal."
+ },
+ "speak": {
+  "simpleMeaning": "Means about the same as “Talk”.",
+  "synonym": "Talk",
+  "pronunciation": null,
+  "visualHint": "Please speak louder so everyone can hear you."
+ },
+ "stroll": {
+  "simpleMeaning": "Means about the same as “Walk”.",
+  "synonym": "Walk",
+  "pronunciation": null,
+  "visualHint": "They took a long stroll on the beach."
+ },
+ "peek": {
+  "simpleMeaning": "Means about the same as “Look”.",
+  "synonym": "Look",
+  "pronunciation": null,
+  "visualHint": "Do not peek inside the box until your birthday."
+ },
+ "consume": {
+  "simpleMeaning": "Means about the same as “Eat”.",
+  "synonym": "Eat",
+  "pronunciation": null,
+  "visualHint": "You should not consume too much sugar."
+ },
+ "rest": {
+  "simpleMeaning": "Means about the same as “Sleep”.",
+  "synonym": "Sleep",
+  "pronunciation": null,
+  "visualHint": "You look tired; you need to get some rest."
+ },
+ "excellent": {
+  "simpleMeaning": "Means about the same as “Good”.",
+  "synonym": "Good",
+  "pronunciation": null,
+  "visualHint": "She did an excellent job on her science project."
+ },
+ "terrible": {
+  "simpleMeaning": "Means about the same as “Bad”.",
+  "synonym": "Bad",
+  "pronunciation": null,
+  "visualHint": "The weather today is absolutely terrible for a picnic."
+ },
+ "chilly": {
+  "simpleMeaning": "Means about the same as “Cold”.",
+  "synonym": "Cold",
+  "pronunciation": null,
+  "visualHint": "It is a bit chilly outside, so bring a jacket."
+ },
+ "huge": {
+  "simpleMeaning": "Means about the same as “Very big”.",
+  "synonym": "Very big",
+  "pronunciation": null,
+  "visualHint": "That is a huge building in the center of the city."
+ },
+ "abundant": {
+  "simpleMeaning": "Means about the same as “Plentiful”.",
+  "synonym": "Plentiful",
+  "pronunciation": null,
+  "visualHint": "The farm produced an abundant harvest this year."
+ },
+ "predict": {
+  "simpleMeaning": "Means about the same as “Guess”.",
+  "synonym": "Guess",
+  "pronunciation": null,
+  "visualHint": "It is difficult to predict what the weather will be next week."
+ },
+ "courageous": {
+  "simpleMeaning": "Means about the same as “Brave”.",
+  "synonym": "Brave",
+  "pronunciation": null,
+  "visualHint": "The firefighter was very courageous when saving the family."
+ },
+ "frequently": {
+  "simpleMeaning": "Means about the same as “Often”.",
+  "synonym": "Often",
+  "pronunciation": null,
+  "visualHint": "She frequently visits the library to borrow new books."
+ },
+ "essential": {
+  "simpleMeaning": "Means about the same as “Necessary”.",
+  "synonym": "Necessary",
+  "pronunciation": null,
+  "visualHint": "Water is essential for all living creatures."
+ },
+ "observe": {
+  "simpleMeaning": "Means about the same as “Watch”.",
+  "synonym": "Watch",
+  "pronunciation": null,
+  "visualHint": "Scientists closely observe the behavior of the animals."
+ },
+ "reluctant": {
+  "simpleMeaning": "Means about the same as “Unwilling”.",
+  "synonym": "Unwilling",
+  "pronunciation": null,
+  "visualHint": "He was reluctant to try the spicy food."
+ },
+ "modify": {
+  "simpleMeaning": "Means about the same as “Change”.",
+  "synonym": "Change",
+  "pronunciation": null,
+  "visualHint": "You can modify the settings on your phone to save battery."
+ },
+ "sufficient": {
+  "simpleMeaning": "Means about the same as “Enough”.",
+  "synonym": "Enough",
+  "pronunciation": null,
+  "visualHint": "Make sure you have sufficient water for the long hike."
+ },
+ "conclude": {
+  "simpleMeaning": "Means about the same as “Finish”.",
+  "synonym": "Finish",
+  "pronunciation": null,
+  "visualHint": "The speaker will conclude her presentation with a short video."
+ },
+ "rapid": {
+  "simpleMeaning": "Means about the same as “Fast”.",
+  "synonym": "Fast",
+  "pronunciation": null,
+  "visualHint": "The town has seen rapid growth over the last five years."
+ },
+ "emerge": {
+  "simpleMeaning": "Means about the same as “Appear”.",
+  "synonym": "Appear",
+  "pronunciation": null,
+  "visualHint": "The sun started to emerge from behind the dark clouds."
+ },
+ "perplex": {
+  "simpleMeaning": "Means about the same as “Confuse”.",
+  "synonym": "Confuse",
+  "pronunciation": null,
+  "visualHint": "The complicated puzzle seemed to perplex everyone in the room."
+ },
+ "shield": {
+  "simpleMeaning": "Means about the same as “Protect”.",
+  "synonym": "Protect",
+  "pronunciation": null,
+  "visualHint": "Wear these glasses to shield your eyes from the bright light."
+ },
+ "accomplish": {
+  "simpleMeaning": "Means about the same as “Achieve”.",
+  "synonym": "Achieve",
+  "pronunciation": null,
+  "visualHint": "It takes hard work to accomplish your goals."
+ },
+ "reply": {
+  "simpleMeaning": "Means about the same as “Answer”.",
+  "synonym": "Answer",
+  "pronunciation": null,
+  "visualHint": "Please reply to my email as soon as possible."
+ },
+ "notify": {
+  "simpleMeaning": "Means about the same as “Inform”.",
+  "synonym": "Inform",
+  "pronunciation": null,
+  "visualHint": "We will notify you when your package arrives."
+ },
+ "obfuscate": {
+  "simpleMeaning": "Means about the same as “Confuse”.",
+  "synonym": "Confuse",
+  "pronunciation": null,
+  "visualHint": "The politician used complicated words to obfuscate his true intentions."
+ },
+ "ephemeral": {
+  "simpleMeaning": "Means about the same as “Short-lived”.",
+  "synonym": "Short-lived",
+  "pronunciation": null,
+  "visualHint": "The beauty of a sunset is ephemeral, lasting only a few moments."
+ },
+ "ubiquitous": {
+  "simpleMeaning": "Means about the same as “Everywhere”.",
+  "synonym": "Everywhere",
+  "pronunciation": null,
+  "visualHint": "Smartphones have become ubiquitous in modern society."
+ },
+ "mitigate": {
+  "simpleMeaning": "Means about the same as “Reduce”.",
+  "synonym": "Reduce",
+  "pronunciation": null,
+  "visualHint": "We must plant more trees to mitigate the effects of pollution."
+ },
+ "intricate": {
+  "simpleMeaning": "Means about the same as “Complicated”.",
+  "synonym": "Complicated",
+  "pronunciation": null,
+  "visualHint": "The clock was made of intricate gears and tiny springs."
+ },
+ "resilient": {
+  "simpleMeaning": "Means about the same as “Tough”.",
+  "synonym": "Tough",
+  "pronunciation": null,
+  "visualHint": "The resilient community rebuilt their town after the terrible storm."
+ },
+ "inevitable": {
+  "simpleMeaning": "Means about the same as “Unavoidable”.",
+  "synonym": "Unavoidable",
+  "pronunciation": null,
+  "visualHint": "With the dark clouds approaching, rain seemed inevitable."
+ },
+ "pragmatic": {
+  "simpleMeaning": "Means about the same as “Practical”.",
+  "synonym": "Practical",
+  "pronunciation": null,
+  "visualHint": "She took a pragmatic approach to solving the difficult problem."
+ },
+ "anomalous": {
+  "simpleMeaning": "Means about the same as “Abnormal”.",
+  "synonym": "Abnormal",
+  "pronunciation": null,
+  "visualHint": "The anomalous test results confused the scientists."
+ },
+ "enigma": {
+  "simpleMeaning": "Means about the same as “Mystery”.",
+  "synonym": "Mystery",
+  "pronunciation": null,
+  "visualHint": "How the ancient pyramids were built remains a fascinating enigma."
+ },
+ "superfluous": {
+  "simpleMeaning": "Means about the same as “Unnecessary”.",
+  "synonym": "Unnecessary",
+  "pronunciation": null,
+  "visualHint": "The extra decorations on the cake were completely superfluous."
+ },
+ "paradox": {
+  "simpleMeaning": "Means about the same as “Contradiction”.",
+  "synonym": "Contradiction",
+  "pronunciation": null,
+  "visualHint": "It is a paradox that the more you learn, the less you realize you know."
+ },
+ "altruistic": {
+  "simpleMeaning": "Means about the same as “Unselfish”.",
+  "synonym": "Unselfish",
+  "pronunciation": null,
+  "visualHint": "Donating his entire lottery win to charity was an altruistic act."
+ },
+ "clandestine": {
+  "simpleMeaning": "Means about the same as “Secret”.",
+  "synonym": "Secret",
+  "pronunciation": null,
+  "visualHint": "The spies held a clandestine meeting in the dark alley."
+ },
+ "prolific": {
+  "simpleMeaning": "Means about the same as “Productive”.",
+  "synonym": "Productive",
+  "pronunciation": null,
+  "visualHint": "She was a prolific writer, publishing three books every year."
+ },
+ "loquacious": {
+  "simpleMeaning": "Means about the same as “Talkative”.",
+  "synonym": "Talkative",
+  "pronunciation": null,
+  "visualHint": "The loquacious passenger talked the entire duration of the flight."
+ }
+}

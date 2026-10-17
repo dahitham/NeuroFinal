@@ -1,0 +1,14 @@
+{
+  "name": "neurosync",
+  "version": "2.0.0",
+  "private": true,
+  "description": "NeuroSync – AI-powered inclusive education and web accessibility platform (frontend + backend + Chrome extension)",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "sync:extension-data": "node scripts/build-extension-data.mjs"
+  }
+}

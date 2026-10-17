@@ -1,0 +1,35 @@
+/* Only what the mockups do not already define. Everything else comes from tokens.css + pages.generated.css. */
+body{margin:0}
+#root{min-height:100vh}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* The mockups hide the sidebar on phones; keep navigation reachable by showing it as a scrolling row
+   (the same pattern tokens.css defines for .ns-side). */
+@media(max-width:820px){
+  .shell .sb{display:flex!important;flex-direction:row!important;width:auto!important;overflow-x:auto;padding:10px!important}
+  .shell .sb>span{display:none!important}
+  .shell .sb a{white-space:nowrap}
+  .shell.d{flex-direction:column}
+}
+.shell .sb a{cursor:pointer}
+/* Reading Studio / Reading Intelligence mockups carry their own page padding; inside the app shell the main area already has it */
+.shell .pg-accessibility.x,.shell .pg-aitools.t{padding:0!important;min-height:0!important;background:transparent!important}
+
+/* status / helper lines used by wired pages */
+.ns-status{font-size:14px;color:var(--ns-muted);min-height:22px;margin:10px 0 0}
+.ns-error{color:var(--ns-coral-text);font-weight:600}
+.ns-center-screen{min-height:60vh;display:flex;align-items:center;justify-content:center;color:var(--ns-muted);font-family:'Lexend',system-ui,sans-serif}
+button[disabled]{opacity:.6;cursor:not-allowed}
+.res.has-result{border-style:solid;border-color:var(--ns-border);color:var(--ns-text)}
+.res ul{margin:0;padding-left:20px}.res dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}.res dt{font-weight:600;color:var(--neurosync-dark)}.res dd{margin:0}
+.prefsample{border:2px solid var(--ns-border);border-radius:14px;padding:16px;margin-top:20px;font-size:17px;line-height:1.7;background:#fff}
+.passage-box{border:2px solid var(--ns-border);border-radius:14px;padding:18px 20px;margin:0 0 20px;font-size:18px;line-height:1.8;background:var(--ns-bg)}
+.bigword{background:var(--neurosync-yellow);border-radius:6px;padding:0 6px;font-weight:700}
+.preview-box [data-ns-reader]{border-radius:14px}
+
+/* Reading Studio preview box: the mock's preview panel (white by default; the engine colours it from Background + Tint) */
+.preview-box{position:relative;min-height:230px;background:#fff;border-radius:14px;padding:22px;border:1px solid #EFDDA3;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.5;transition:background-color .15s}
+
+/* tokens.css styles .ns-field inputs/textareas; selects get the identical control look */
+.ns-field select{width:100%;box-sizing:border-box;min-height:48px;border:2px solid var(--ns-control);border-radius:var(--ns-radius-ctl);padding:0 14px;font-size:16px;background:#fff;font-family:inherit;color:var(--ns-text)}
+.ns-field input[readonly]{background:#F3F4F6}

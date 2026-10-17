@@ -1,0 +1,459 @@
+{
+  "dataset_metadata": {
+    "module": "speed_and_comprehension",
+    "total_items": 50,
+    "distribution": {"easy": 17, "medium": 17, "hard": 16}
+  },
+  "items": [
+    {
+      "id": "SC-E-01",
+      "difficulty": "easy",
+      "word_count": 27,
+      "passage": "The small dog barked at the loud car. It ran across the green yard and hid behind a large tree. The yard was very quiet again.",
+      "question": "Where did the dog hide?",
+      "options": ["Inside the house", "Under a car", "Behind a tree", "In the garage"],
+      "correct_answer": "Behind a tree"
+    },
+    {
+      "id": "SC-E-02",
+      "difficulty": "easy",
+      "word_count": 28,
+      "passage": "Emma loves to paint pictures of the ocean. She uses blue and green colors to draw the water. Yesterday, she painted a large boat on the waves.",
+      "question": "What colors does Emma use to draw the water?",
+      "options": ["Red and yellow", "Blue and green", "Black and white", "Purple and pink"],
+      "correct_answer": "Blue and green"
+    },
+    {
+      "id": "SC-E-03",
+      "difficulty": "easy",
+      "word_count": 26,
+      "passage": "Tom woke up early and made breakfast. He cooked two eggs and poured a glass of cold milk. He ate quickly before going to school.",
+      "question": "What did Tom pour to drink?",
+      "options": ["Hot coffee", "Apple juice", "Cold milk", "Warm tea"],
+      "correct_answer": "Cold milk"
+    },
+    {
+      "id": "SC-E-04",
+      "difficulty": "easy",
+      "word_count": 27,
+      "passage": "The sun is a very bright star. It gives us light and keeps the earth warm. Without the sun, plants and animals could not grow.",
+      "question": "What does the sun give us?",
+      "options": ["Light and warmth", "Rain and snow", "Wind and clouds", "Rocks and dirt"],
+      "correct_answer": "Light and warmth"
+    },
+    {
+      "id": "SC-E-05",
+      "difficulty": "easy",
+      "word_count": 28,
+      "passage": "Birds like to build nests in the spring. They use dry grass and small twigs. The mother bird lays her eggs and keeps them safe inside.",
+      "question": "When do birds like to build nests?",
+      "options": ["In the winter", "In the spring", "At night", "In the fall"],
+      "correct_answer": "In the spring"
+    },
+    {
+      "id": "SC-E-06",
+      "difficulty": "easy",
+      "word_count": 29,
+      "passage": "The library is a quiet place full of books. You can sit in a soft chair and read all day. People go there to learn new things.",
+      "question": "What can you do at the library?",
+      "options": ["Play loud games", "Buy food", "Read all day", "Watch a movie"],
+      "correct_answer": "Read all day"
+    },
+    {
+      "id": "SC-E-07",
+      "difficulty": "easy",
+      "word_count": 29,
+      "passage": "Apples are a sweet and healthy snack. They can be red, green, or yellow. Many people like to bake them into warm pies during the autumn season.",
+      "question": "Which of these is an apple color mentioned in the text?",
+      "options": ["Blue", "Orange", "Yellow", "Purple"],
+      "correct_answer": "Yellow"
+    },
+    {
+      "id": "SC-E-08",
+      "difficulty": "easy",
+      "word_count": 27,
+      "passage": "The train travels very fast along the metal tracks. It carries people from the busy city to the quiet country. The ride takes about two hours.",
+      "question": "Where does the train carry people?",
+      "options": ["From the country to the ocean", "From the city to the country", "Into the sky", "Under the ground"],
+      "correct_answer": "From the city to the country"
+    },
+    {
+      "id": "SC-E-09",
+      "difficulty": "easy",
+      "word_count": 28,
+      "passage": "Cats love to sleep in warm spots. If the sun shines through the window, a cat will often lie right in the middle of the light.",
+      "question": "Where do cats love to sleep?",
+      "options": ["In cold water", "In warm spots", "Under the bed", "In the dark"],
+      "correct_answer": "In warm spots"
+    },
+    {
+      "id": "SC-E-10",
+      "difficulty": "easy",
+      "word_count": 28,
+      "passage": "It was snowing heavily outside. The children put on their boots and thick coats. They spent the whole afternoon building a giant snowman in the yard.",
+      "question": "What did the children build?",
+      "options": ["A treehouse", "A giant snowman", "A sandcastle", "A small boat"],
+      "correct_answer": "A giant snowman"
+    },
+    {
+      "id": "SC-E-11",
+      "difficulty": "easy",
+      "word_count": 27,
+      "passage": "Fish live their entire lives underwater. They use gills on the sides of their bodies to breathe. Some fish live in rivers, while others live in oceans.",
+      "question": "What do fish use to breathe?",
+      "options": ["Lungs", "Noses", "Gills", "Mouths"],
+      "correct_answer": "Gills"
+    },
+    {
+      "id": "SC-E-12",
+      "difficulty": "easy",
+      "word_count": 30,
+      "passage": "The sky turned dark and thunder rumbled loudly. Soon, heavy rain began to fall on the roof. We stayed inside and played board games until the storm passed.",
+      "question": "What did they do while it rained?",
+      "options": ["Went for a walk", "Played board games", "Watched television", "Went to sleep"],
+      "correct_answer": "Played board games"
+    },
+    {
+      "id": "SC-E-13",
+      "difficulty": "easy",
+      "word_count": 27,
+      "passage": "Bears sleep for a long time during the cold winter. This deep sleep is called hibernation. They wake up in the spring when it is warm.",
+      "question": "What is the deep winter sleep of a bear called?",
+      "options": ["Resting", "Hibernation", "Napping", "Freezing"],
+      "correct_answer": "Hibernation"
+    },
+    {
+      "id": "SC-E-14",
+      "difficulty": "easy",
+      "word_count": 26,
+      "passage": "I bought a new pair of shoes today. They are bright red with white laces. I am going to wear them to the park tomorrow.",
+      "question": "What color are the new shoes?",
+      "options": ["Bright red", "Dark blue", "Pure white", "Neon green"],
+      "correct_answer": "Bright red"
+    },
+    {
+      "id": "SC-E-15",
+      "difficulty": "easy",
+      "word_count": 30,
+      "passage": "The farmer drives a big green tractor. He uses it to plant corn in the wide fields. When summer ends, the corn will be tall and ready to eat.",
+      "question": "What does the farmer plant in the fields?",
+      "options": ["Apples", "Wheat", "Corn", "Potatoes"],
+      "correct_answer": "Corn"
+    },
+    {
+      "id": "SC-E-16",
+      "difficulty": "easy",
+      "word_count": 26,
+      "passage": "Music makes people feel happy. You can make music by singing or playing an instrument. The piano and the guitar are very popular instruments to play.",
+      "question": "What are two popular instruments mentioned?",
+      "options": ["Drums and flute", "Piano and guitar", "Violin and cello", "Trumpet and saxophone"],
+      "correct_answer": "Piano and guitar"
+    },
+    {
+      "id": "SC-E-17",
+      "difficulty": "easy",
+      "word_count": 31,
+      "passage": "Bees are very busy insects. They fly from flower to flower to collect sweet nectar. They bring the nectar back to their hive, where they turn it into delicious honey.",
+      "question": "What do bees collect from flowers?",
+      "options": ["Honey", "Leaves", "Nectar", "Water"],
+      "correct_answer": "Nectar"
+    },
+    {
+      "id": "SC-M-01",
+      "difficulty": "medium",
+      "word_count": 52,
+      "passage": "The compass is an ancient navigational instrument that changed global travel forever. Before its invention, sailors stayed close to the shore so they would not lose their way. The compass uses Earth's magnetic field to consistently point north, allowing ships to safely cross massive oceans without needing visual landmarks.",
+      "question": "Why did sailors stay close to the shore before the compass was invented?",
+      "options": ["To avoid large sea monsters", "Because ships were not strong enough", "So they would not lose their way", "To trade with coastal towns"],
+      "correct_answer": "So they would not lose their way"
+    },
+    {
+      "id": "SC-M-02",
+      "difficulty": "medium",
+      "word_count": 55,
+      "passage": "Penguins are fascinating birds that cannot fly in the air. Instead, they use their strong wings like flippers to swim perfectly through freezing ocean waters. Their bodies are covered in tightly packed feathers that keep them completely dry. Underneath the feathers, a thick layer of fat keeps them insulated on the ice.",
+      "question": "How do penguins stay insulated on the freezing ice?",
+      "options": ["By swimming very fast", "With a thick layer of fat", "By hiding in snow caves", "By migrating to warmer weather"],
+      "correct_answer": "With a thick layer of fat"
+    },
+    {
+      "id": "SC-M-03",
+      "difficulty": "medium",
+      "word_count": 53,
+      "passage": "Recycling is a critical practice that protects the environment by reducing the amount of garbage in landfills. When people recycle paper, glass, and plastic, specialized factories melt them down to manufacture new items. This process conserves natural resources like timber and crude oil, making the planet cleaner for future generations.",
+      "question": "What do specialized factories do with recycled glass and plastic?",
+      "options": ["Bury it in landfills", "Melt them down to manufacture new items", "Send it to space", "Throw it in the ocean"],
+      "correct_answer": "Melt them down to manufacture new items"
+    },
+    {
+      "id": "SC-M-04",
+      "difficulty": "medium",
+      "word_count": 55,
+      "passage": "The Great Wall of China represents one of the largest architectural projects in human history. It was constructed over many centuries primarily to protect the Chinese Empire from northern military invasions. The wall stretches for thousands of miles across rugged mountains and deserts, built mostly from stone, brick, and packed earth.",
+      "question": "What was the primary reason the Great Wall of China was constructed?",
+      "options": ["To create a new trade route", "To protect against northern military invasions", "To mark the center of the empire", "To provide jobs for citizens"],
+      "correct_answer": "To protect against northern military invasions"
+    },
+    {
+      "id": "SC-M-05",
+      "difficulty": "medium",
+      "word_count": 56,
+      "passage": "Chocolate originates from the cacao tree, which grows in tropical environments near the equator. The seeds, known as cocoa beans, are harvested from large pods, fermented, and then roasted to develop their rich flavor. After roasting, the beans are ground into a thick liquid, which is eventually sweetened to create chocolate bars.",
+      "question": "What must happen to cocoa beans before they are ground into a liquid?",
+      "options": ["They must be frozen", "They must be boiled", "They must be fermented and roasted", "They must be washed in salt water"],
+      "correct_answer": "They must be fermented and roasted"
+    },
+    {
+      "id": "SC-M-06",
+      "difficulty": "medium",
+      "word_count": 62,
+      "passage": "Volcanoes are natural openings in the Earth's surface where hot liquid rock, called magma, can escape from below the crust. When magma erupts onto the surface, scientists refer to it as lava. Over thousands of years, repeated eruptions cause the cooled lava to pile up, eventually forming the massive, cone-shaped mountains we recognize as volcanoes today.",
+      "question": "What is magma called once it erupts onto the Earth's surface?",
+      "options": ["Crust", "Ash", "Lava", "Obsidian"],
+      "correct_answer": "Lava"
+    },
+    {
+      "id": "SC-M-07",
+      "difficulty": "medium",
+      "word_count": 58,
+      "passage": "The printing press, invented by Johannes Gutenberg in the 15th century, revolutionized the way information was shared. Before this invention, books had to be copied by hand, making them incredibly rare and expensive. The printing press allowed books to be mass-produced quickly, which rapidly increased literacy rates and spread new ideas across Europe.",
+      "question": "Why were books incredibly rare before the printing press?",
+      "options": ["Paper had not been invented", "They had to be copied by hand", "Reading was illegal", "People did not write stories"],
+      "correct_answer": "They had to be copied by hand"
+    },
+    {
+      "id": "SC-M-08",
+      "difficulty": "medium",
+      "word_count": 57,
+      "passage": "Camels are perfectly adapted to survive in harsh desert environments. They can drink up to forty gallons of water in a single sitting and then survive for weeks without drinking again. Contrary to popular belief, a camel's hump does not store water; instead, it stores fat, which provides energy when food is scarce.",
+      "question": "What is actually stored inside a camel's hump?",
+      "options": ["Water", "Bone", "Fat", "Muscle"],
+      "correct_answer": "Fat"
+    },
+    {
+      "id": "SC-M-09",
+      "difficulty": "medium",
+      "word_count": 59,
+      "passage": "The human skeleton is composed of 206 individual bones. These bones provide a rigid framework that supports the body and protects vital internal organs, such as the brain and heart. Bones are not entirely solid; their hollow centers contain a spongy tissue called bone marrow, which is responsible for producing new red blood cells.",
+      "question": "What is the function of the bone marrow located inside human bones?",
+      "options": ["To protect the brain", "To produce new red blood cells", "To support muscle growth", "To store calcium"],
+      "correct_answer": "To produce new red blood cells"
+    },
+    {
+      "id": "SC-M-10",
+      "difficulty": "medium",
+      "word_count": 55,
+      "passage": "Mars is often called the Red Planet because its surface is covered in iron oxide, commonly known as rust. It is the fourth planet from the sun and features the largest volcano in the solar system, Olympus Mons. Scientists actively study Mars to determine if it ever supported microbial life billions of years ago.",
+      "question": "What chemical compound gives Mars its red color?",
+      "options": ["Carbon dioxide", "Iron oxide", "Hydrogen peroxide", "Liquid nitrogen"],
+      "correct_answer": "Iron oxide"
+    },
+    {
+      "id": "SC-M-11",
+      "difficulty": "medium",
+      "word_count": 59,
+      "passage": "Diamonds are the hardest known natural substance on Earth. They are formed deep underground over millions of years under conditions of extreme heat and immense pressure. While most people associate diamonds with expensive jewelry, they are also heavily utilized in industrial tools for cutting and grinding hard materials like stone and metal.",
+      "question": "Besides jewelry, what are diamonds heavily used for?",
+      "options": ["Purifying water", "Industrial tools for cutting and grinding", "Medical lasers", "Generating electricity"],
+      "correct_answer": "Industrial tools for cutting and grinding"
+    },
+    {
+      "id": "SC-M-12",
+      "difficulty": "medium",
+      "word_count": 56,
+      "passage": "Elephants are highly intelligent animals with remarkable memories. They live in close-knit matriarchal family groups led by the oldest female. An elephant uses its versatile trunk not only for breathing and smelling but also as an agile tool for gathering food, drinking water, and communicating with other members of the herd.",
+      "question": "Who leads a family group of elephants?",
+      "options": ["The largest male", "The youngest female", "The oldest female", "The strongest calf"],
+      "correct_answer": "The oldest female"
+    },
+    {
+      "id": "SC-M-13",
+      "difficulty": "medium",
+      "word_count": 59,
+      "passage": "Fossils are the preserved remains or traces of ancient organisms. They are usually formed when a plant or animal dies and is quickly buried by sediment, such as mud or sand. Over millions of years, the organic material is slowly replaced by minerals, turning the remains into stone and providing a historical record of life.",
+      "question": "What replaces the organic material during the fossilization process?",
+      "options": ["Ice", "Minerals", "Sap", "Soil"],
+      "correct_answer": "Minerals"
+    },
+    {
+      "id": "SC-M-14",
+      "difficulty": "medium",
+      "word_count": 61,
+      "passage": "A solar eclipse occurs when the Moon passes directly between the Earth and the Sun, temporarily blocking the Sun's light. Depending on the alignment, the eclipse can be partial or total. During a total solar eclipse, the sky turns remarkably dark in the middle of the day, allowing observers to briefly see the Sun's outer atmosphere, the corona.",
+      "question": "What is the Sun's outer atmosphere called?",
+      "options": ["The mantle", "The corona", "The stratosphere", "The core"],
+      "correct_answer": "The corona"
+    },
+    {
+      "id": "SC-M-15",
+      "difficulty": "medium",
+      "word_count": 60,
+      "passage": "The Wright brothers, Orville and Wilbur, are credited with inventing and flying the world's first successful motor-operated airplane. On December 17, 1903, in Kitty Hawk, North Carolina, they achieved powered, sustained, and controlled flight. Their historic first flight lasted only 12 seconds and covered 120 feet, but it fundamentally changed transportation forever.",
+      "question": "How long did the Wright brothers' first successful flight last?",
+      "options": ["12 minutes", "12 seconds", "120 seconds", "1 hour"],
+      "correct_answer": "12 seconds"
+    },
+    {
+      "id": "SC-M-16",
+      "difficulty": "medium",
+      "word_count": 56,
+      "passage": "Ants are social insects that live in highly organized colonies. Each colony has a strict division of labor, including a queen whose sole job is to lay eggs, and worker ants that forage for food and defend the nest. Some ant colonies are so vast they contain millions of individuals working together seamlessly.",
+      "question": "What is the sole job of the queen ant?",
+      "options": ["To defend the nest", "To forage for food", "To lay eggs", "To build tunnels"],
+      "correct_answer": "To lay eggs"
+    },
+    {
+      "id": "SC-M-17",
+      "difficulty": "medium",
+      "word_count": 61,
+      "passage": "Oxygen is a colorless and odorless gas that makes up about 21 percent of the Earth's atmosphere. It is absolutely essential for the survival of most living organisms, which require it for cellular respiration. During this biological process, cells utilize oxygen to break down glucose and generate the energy needed to sustain life.",
+      "question": "Approximately what percentage of the Earth's atmosphere is made up of oxygen?",
+      "options": ["50 percent", "78 percent", "21 percent", "10 percent"],
+      "correct_answer": "21 percent"
+    },
+    {
+      "id": "SC-H-01",
+      "difficulty": "hard",
+      "word_count": 87,
+      "passage": "Photosynthesis is the fundamental biochemical process by which phototrophic organisms convert solar kinetic energy into stored chemical energy. In terrestrial plants, this complex process predominantly occurs within specialized organelles called chloroplasts, where green chlorophyll pigments absorb specific wavelengths of light. This absorbed solar energy drives the synthesis of glucose molecules from carbon dioxide and water, releasing oxygen as a metabolic byproduct. The overall efficiency of this biological mechanism is heavily modulated by environmental variables such as ambient temperature, water availability, and incident light intensity.",
+      "question": "What acts as a metabolic byproduct of the photosynthetic process?",
+      "options": ["Glucose", "Carbon dioxide", "Oxygen", "Chlorophyll"],
+      "correct_answer": "Oxygen"
+    },
+    {
+      "id": "SC-H-02",
+      "difficulty": "hard",
+      "word_count": 89,
+      "passage": "The Industrial Revolution marked a profound turning point in global economic history, transitioning societies from agrarian, craft-based economies to industrialized urban landscapes. Beginning in late 18th-century Britain, revolutionary innovations such as the mechanized textile loom and the steam engine drastically amplified production efficiency. While this era spurred unprecedented technological advancement and aggregate economic growth, it simultaneously introduced severe socio-economic disparities. Laborers frequently endured dangerous working conditions, protracted shifts, and inadequate compensation, a volatile combination that eventually catalyzed the formation of the modern labor rights movement.",
+      "question": "What catalyzed the formation of the modern labor rights movement according to the text?",
+      "options": ["The invention of the mechanized textile loom", "Dangerous working conditions and inadequate compensation", "A desire to return to agrarian economies", "The mass production of steam engines"],
+      "correct_answer": "Dangerous working conditions and inadequate compensation"
+    },
+    {
+      "id": "SC-H-03",
+      "difficulty": "hard",
+      "word_count": 90,
+      "passage": "Cognitive dissonance refers to the intense psychological discomfort experienced by an individual who holds two or more contradictory beliefs, ideas, or values simultaneously. When confronted with new, verifiable information that challenges deeply entrenched convictions, individuals often deploy subconscious defense mechanisms to mitigate the ensuing mental tension. This phenomenon frequently manifests as confirmation bias, wherein a person selectively accepts evidence that bolsters their pre-existing worldview while aggressively dismissing or rationalizing away facts that contradict it, thereby restoring their internal psychological equilibrium at the expense of objectivity.",
+      "question": "How do individuals often attempt to reduce the mental tension caused by cognitive dissonance?",
+      "options": ["By immediately abandoning their entrenched convictions", "By experiencing physical symptoms of distress", "Through confirmation bias and dismissing contradictory facts", "By seeking out purely objective data"],
+      "correct_answer": "Through confirmation bias and dismissing contradictory facts"
+    },
+    {
+      "id": "SC-H-04",
+      "difficulty": "hard",
+      "word_count": 86,
+      "passage": "The scientific theory of plate tectonics posits that Earth's rigid outer shell, the lithosphere, is fractured into several massive tectonic plates that perpetually glide over the asthenosphere, the viscous layer of the upper mantle. The boundaries where these colossal plates interact are primary hotspots for seismic and geological activity. When plates collide forcefully at convergent boundaries, they can uplift massive mountain ranges. Conversely, at divergent boundaries, tectonic plates gradually pull apart, allowing molten magma to breach the surface, cool, and create entirely new oceanic crust.",
+      "question": "What geological event occurs at divergent plate boundaries?",
+      "options": ["Plates collide to uplift mountain ranges", "Plates pull apart, allowing magma to create new oceanic crust", "The asthenosphere solidifies into rigid rock", "Plates slide past each other causing massive earthquakes"],
+      "correct_answer": "Plates pull apart, allowing magma to create new oceanic crust"
+    },
+    {
+      "id": "SC-H-05",
+      "difficulty": "hard",
+      "word_count": 87,
+      "passage": "Circadian rhythms are innate biological oscillations that follow a roughly 24-hour cycle, primarily regulated by a central internal pacemaker located in the suprachiasmatic nucleus of the hypothalamus. These endogenous rhythms dictate a vast array of physiological processes, ranging from the sleep-wake cycle and systemic hormone secretion to fluctuations in core body temperature. Environmental cues, technically known as zeitgebers, are absolutely essential for synchronizing this internal clock with the external solar day. Light serves as the most potent zeitgeber, suppressing melatonin production and actively promoting neurological alertness.",
+      "question": "What is the primary function of the suprachiasmatic nucleus as described in the passage?",
+      "options": ["To produce melatonin during the sleep cycle", "To act as the central internal pacemaker for circadian rhythms", "To regulate the body's core temperature independently", "To process visual light signals from the environment"],
+      "correct_answer": "To act as the central internal pacemaker for circadian rhythms"
+    },
+    {
+      "id": "SC-H-06",
+      "difficulty": "hard",
+      "word_count": 86,
+      "passage": "Quantum entanglement is a perplexing physical phenomenon occurring when pairs or groups of microscopic particles interact in such a way that the quantum state of each particle cannot be described independently of the state of the others. Consequently, any measurement performed on one entangled particle immediately determines the physical state of the other, regardless of the spatial distance separating them. This instantaneous correlation seemingly defies the principles of classical mechanics and prompted Albert Einstein to skeptically refer to it as 'spooky action at a distance.'",
+      "question": "How did Albert Einstein famously refer to the phenomenon of quantum entanglement?",
+      "options": ["A triumph of classical mechanics", "Spooky action at a distance", "The theory of spatial relativity", "Instantaneous quantum correlation"],
+      "correct_answer": "Spooky action at a distance"
+    },
+    {
+      "id": "SC-H-07",
+      "difficulty": "hard",
+      "word_count": 91,
+      "passage": "The concept of inflation in macroeconomics refers to the sustained, general increase in the prices of goods and services within an economy over a specific duration. As the aggregate price level steadily rises, every unit of currency subsequently purchases fewer goods and services, meaning inflation essentially reflects a gradual reduction in the purchasing power of money. Central banks, such as the Federal Reserve, meticulously monitor inflationary trends and frequently adjust baseline interest rates in an attempt to balance economic growth with price stability and prevent hyperinflationary spirals.",
+      "question": "What is the fundamental consequence of inflation on a unit of currency?",
+      "options": ["It increases the currency's overall value", "It reflects a reduction in the purchasing power of money", "It forces central banks to lower interest rates", "It immediately triggers a hyperinflationary spiral"],
+      "correct_answer": "It reflects a reduction in the purchasing power of money"
+    },
+    {
+      "id": "SC-H-08",
+      "difficulty": "hard",
+      "word_count": 88,
+      "passage": "Neuroplasticity is the remarkable ability of the human brain to continuously undergo structural and functional reorganization throughout an individual's life. This dynamic adaptation occurs in response to learning, novel experiences, environmental changes, or neurological injuries. Rather than remaining a static organ post-development, the brain forms new neural pathways, strengthens existing synaptic connections, and can even recruit undamaged cortical areas to assume the functions of damaged regions. This intrinsic malleability is the fundamental biological basis for acquiring new skills and recovering cognitive function following a traumatic stroke.",
+      "question": "What does the brain do in response to learning or injury due to neuroplasticity?",
+      "options": ["It remains a completely static organ", "It forms new neural pathways and strengthens synapses", "It completely replaces damaged cortical areas with new cells", "It immediately loses previous memories"],
+      "correct_answer": "It forms new neural pathways and strengthens synapses"
+    },
+    {
+      "id": "SC-H-09",
+      "difficulty": "hard",
+      "word_count": 89,
+      "passage": "The placebo effect is a well-documented psychological and physiological phenomenon in which a patient experiences a perceived or actual improvement in their medical condition after receiving a biologically inert substance. This therapeutic outcome is entirely driven by the patient's deeply held belief and expectation that the treatment will be efficacious. In rigorous clinical trials, pharmaceutical researchers must employ double-blind methodologies to separate the genuine pharmacological efficacy of a new drug from the symptomatic relief generated purely by the brain's anticipatory response to the placebo control.",
+      "question": "What drives the therapeutic outcome observed in the placebo effect?",
+      "options": ["The genuine pharmacological efficacy of the drug", "The biological reaction to an inert substance", "The patient's belief and expectation that the treatment will work", "The double-blind methodology used in the trial"],
+      "correct_answer": "The patient's belief and expectation that the treatment will work"
+    },
+    {
+      "id": "SC-H-10",
+      "difficulty": "hard",
+      "word_count": 87,
+      "passage": "Symbiosis describes an intimate, long-term biological interaction between two different biological species. These complex relationships manifest in several distinct forms. In mutualistic symbiosis, both participating organisms derive a tangible survival benefit, such as the relationship between bees and flowering plants. Conversely, in parasitic symbiosis, one organism actively benefits at the direct expense of the host organism, often causing physiological harm. Understanding these intricate interdependent networks is crucial for ecologists attempting to preserve fragile ecosystems against the catastrophic impacts of climate change and habitat destruction.",
+      "question": "What characterizes a mutualistic symbiotic relationship?",
+      "options": ["One organism benefits while the other is harmed", "Both participating organisms derive a survival benefit", "Neither organism is affected by the interaction", "One organism consumes the other entirely"],
+      "correct_answer": "Both participating organisms derive a survival benefit"
+    },
+    {
+      "id": "SC-H-11",
+      "difficulty": "hard",
+      "word_count": 90,
+      "passage": "The Byzantine Empire, often referred to as the Eastern Roman Empire, successfully endured for nearly a millennium after the dramatic collapse of the Western Roman Empire in the 5th century. Centered around its highly fortified capital, Constantinople, the empire became a beacon of economic prosperity, complex bureaucratic administration, and the preservation of classical Greek and Roman literature. The empire's strategic geographic position bridging Europe and Asia allowed it to dominate lucrative Eurasian trade routes until it eventually fell to the besieging Ottoman forces in 1453.",
+      "question": "What contributed to the Byzantine Empire's ability to dominate Eurasian trade?",
+      "options": ["Its eventual surrender to Ottoman forces", "The preservation of classical Greek literature", "Its strategic geographic position bridging Europe and Asia", "The collapse of the Western Roman Empire"],
+      "correct_answer": "Its strategic geographic position bridging Europe and Asia"
+    },
+    {
+      "id": "SC-H-12",
+      "difficulty": "hard",
+      "word_count": 92,
+      "passage": "Dark matter is a hypothetical form of matter thought to account for approximately 85 percent of the total matter in the observable universe. Unlike normal baryonic matter, dark matter does not visibly interact with the electromagnetic field, meaning it does not emit, reflect, or absorb light, rendering it entirely invisible to standard astronomical instruments. Astrophysicists infer its profound existence purely through its measurable gravitational effects on visible matter, particularly observing the unexpectedly high rotational velocities of outer stars within galaxies that cannot be explained by visible mass alone.",
+      "question": "How do astrophysicists infer the existence of invisible dark matter?",
+      "options": ["By capturing the light it reflects from stars", "Through its measurable gravitational effects on visible matter", "By analyzing its interactions with the electromagnetic field", "By detecting radiation emitted from the center of galaxies"],
+      "correct_answer": "Through its measurable gravitational effects on visible matter"
+    },
+    {
+      "id": "SC-H-13",
+      "difficulty": "hard",
+      "word_count": 89,
+      "passage": "The philosophical doctrine of determinism asserts that every event, including every human decision and action, is the inevitable and necessary consequence of antecedent states of affairs combined with the fundamental laws of nature. If strict determinism holds true, it fundamentally challenges the traditional concept of human free will, suggesting that individuals could not have acted differently under the exact same prior conditions. This ongoing debate has profound implications for ethical frameworks and legal systems, which fundamentally rely on the premise of moral culpability and personal choice.",
+      "question": "What traditional concept does the doctrine of strict determinism fundamentally challenge?",
+      "options": ["The fundamental laws of nature", "The premise of moral culpability", "The traditional concept of human free will", "The existence of antecedent states of affairs"],
+      "correct_answer": "The traditional concept of human free will"
+    },
+    {
+      "id": "SC-H-14",
+      "difficulty": "hard",
+      "word_count": 89,
+      "passage": "Epidemiology is the rigorous scientific study of the distribution, patterns, and determinants of health and disease conditions within defined human populations. Rather than focusing on treating individual clinical patients, epidemiologists analyze vast datasets to identify localized outbreaks, track viral transmission vectors, and evaluate the statistical efficacy of public health interventions like mass vaccination campaigns. By understanding the complex intersection of biological, environmental, and sociological factors, the discipline plays a critical role in formulating evidence-based public policies designed to mitigate the devastating impact of global pandemics.",
+      "question": "Unlike clinical medicine, what is the primary focus of epidemiology?",
+      "options": ["Treating individual patients with specific diseases", "Studying disease patterns and determinants within defined populations", "Developing new surgical techniques", "Synthesizing new pharmacological drugs"],
+      "correct_answer": "Studying disease patterns and determinants within defined populations"
+    },
+    {
+      "id": "SC-H-15",
+      "difficulty": "hard",
+      "word_count": 89,
+      "passage": "The architectural transition from the Romanesque to the Gothic style in medieval Europe was defined by several revolutionary structural innovations. The widespread implementation of pointed arches, ribbed vaults, and flying buttresses allowed master masons to construct dramatically taller cathedrals with considerably thinner walls. This precise redistribution of heavy structural loads permitted the insertion of massive, intricate stained-glass windows, which flooded the expansive interiors with ethereal light. This architectural paradigm shift completely transformed European religious buildings from dark, fortress-like structures into soaring, luminous monuments of civic pride.",
+      "question": "What structural innovation allowed Gothic cathedrals to have thinner walls and larger windows?",
+      "options": ["The return to dark, fortress-like designs", "The redistribution of loads using ribbed vaults and flying buttresses", "The use of massive stone columns in the interior", "The complete removal of all interior supports"],
+      "correct_answer": "The redistribution of loads using ribbed vaults and flying buttresses"
+    },
+    {
+      "id": "SC-H-16",
+      "difficulty": "hard",
+      "word_count": 91,
+      "passage": "CRISPR-Cas9 is a groundbreaking genetic engineering technology adapted from the naturally occurring antiviral defense mechanisms found in bacteria. This precise molecular tool allows scientists to target specific sequences of DNA within an organism's genome and induce targeted double-strand breaks. By leveraging the cell's endogenous repair machinery, researchers can seamlessly add, remove, or alter genetic material with unprecedented accuracy. While this technology holds immense therapeutic promise for curing hereditary genetic disorders, it also raises profound ethical concerns regarding unintended off-target mutations and the controversial prospect of germline editing.",
+      "question": "What ethical concern is associated with the use of CRISPR-Cas9 technology?",
+      "options": ["Its inability to alter genetic material", "The high financial cost of the natural bacteria", "Unintended off-target mutations and germline editing", "Its inefficiency compared to older genetic tools"],
+      "correct_answer": "Unintended off-target mutations and germline editing"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "dataset_metadata": {
+    "module": "visual_preferences",
+    "total_items": 6
+  },
+  "items": [
+    {
+      "id": "PREF-FONT-01",
+      "test_category": "Font Preference",
+      "ui_options": ["System Default", "Lexend", "OpenDyslexic"],
+      "test_text": "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the alphabet, making it perfect for comparing how different letters look. Which of these fonts feels easiest for your eyes to read?"
+    },
+    {
+      "id": "PREF-SPACE-01",
+      "test_category": "Spacing Preference (Line Height)",
+      "ui_options": ["Standard Spacing", "Moderate Spacing (1.5x)", "Wide Spacing (2.0x)"],
+      "test_text": "When text is crowded together, it can sometimes be difficult to keep your place. Increasing the space between lines can give your eyes a track to follow. Try clicking the options above to see which spacing feels most comfortable."
+    },
+    {
+      "id": "PREF-LSPACE-01",
+      "test_category": "Spacing Preference (Letter Spacing)",
+      "ui_options": ["Standard Letters", "Expanded Letters"],
+      "test_text": "Sometimes letters that are pushed too closely together can look like they are blending into one another. Adding a tiny bit of space between each letter can help separate the words. Which one do you prefer?"
+    },
+    {
+      "id": "PREF-BIONIC-01",
+      "test_category": "Bionic Reading Preference",
+      "ui_options": ["Standard Text", "Bionic Reading Overlay"],
+      "test_text": "Bionic reading highlights the first few letters of every word. This guides the eyes artificially through the text, allowing your brain to complete the word. Some readers find this highly focusing, while others find it distracting."
+    },
+    {
+      "id": "PREF-SIMP-01",
+      "test_category": "Text Simplification Preference",
+      "ui_options": ["Original Text", "AI Simplified Text"],
+      "test_text_original": "The precipitate dissemination of multifaceted information across decentralized digital infrastructures has fundamentally revolutionized modern interpersonal communications.",
+      "test_text_simplified": "The fast spread of information across the internet has completely changed how people talk to each other today."
+    },
+    {
+      "id": "PREF-COLOR-01",
+      "test_category": "Color Overlay / Contrast",
+      "ui_options": ["High Contrast (Black on White)", "Soft Tint (Yellow)", "Soft Tint (Blue)", "Dark Mode"],
+      "test_text": "Staring at a bright white screen can cause visual stress or glare. Many readers prefer a softer background color to reduce eye strain. Select the background that feels most relaxing to look at."
+    }
+  ]
+}

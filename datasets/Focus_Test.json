@@ -1,0 +1,68 @@
+{
+  "dataset_metadata": {
+    "module": "focus_self_report",
+    "total_items": 6
+  },
+  "items": [
+    {
+      "id": "FOCUS-01",
+      "trigger": "After any reading passage",
+      "question": "Did you lose your place or skip a line while reading that paragraph?",
+      "options": [
+        {"text": "No, not at all", "score_impact": 0},
+        {"text": "Maybe once", "score_impact": 1},
+        {"text": "Yes, multiple times", "score_impact": 3}
+      ]
+    },
+    {
+      "id": "FOCUS-02",
+      "trigger": "After any reading passage",
+      "question": "Did you need to re-read any sentences to understand what they meant?",
+      "options": [
+        {"text": "No, I read it straight through", "score_impact": 0},
+        {"text": "I re-read one or two sentences", "score_impact": 1},
+        {"text": "I had to re-read large parts of it", "score_impact": 3}
+      ]
+    },
+    {
+      "id": "FOCUS-03",
+      "trigger": "After a Hard difficulty passage",
+      "question": "Did the length of the text make it difficult to maintain your concentration?",
+      "options": [
+        {"text": "No, it was fine", "score_impact": 0},
+        {"text": "A little bit", "score_impact": 1},
+        {"text": "Yes, I struggled to stay focused", "score_impact": 2}
+      ]
+    },
+    {
+      "id": "FOCUS-04",
+      "trigger": "After Word Difficulty Test",
+      "question": "When you encounter a long, unfamiliar word, what usually happens?",
+      "options": [
+        {"text": "I can usually sound it out quickly", "score_impact": 0},
+        {"text": "It slows me down, but I figure it out", "score_impact": 1},
+        {"text": "I often skip it or guess the meaning", "score_impact": 3}
+      ]
+    },
+    {
+      "id": "FOCUS-05",
+      "trigger": "After Font Preference",
+      "question": "Do the letters sometimes appear to move, blur, or flip when you read on a screen?",
+      "options": [
+        {"text": "Never", "score_impact": 0},
+        {"text": "Sometimes, when I am tired", "score_impact": 1},
+        {"text": "Yes, frequently", "score_impact": 3}
+      ]
+    },
+    {
+      "id": "FOCUS-06",
+      "trigger": "Overall Onboarding Wrap-up",
+      "question": "How quickly do your eyes feel tired when reading online?",
+      "options": [
+        {"text": "They rarely get tired", "score_impact": 0},
+        {"text": "After an hour or two", "score_impact": 1},
+        {"text": "Very quickly (within 15-30 minutes)", "score_impact": 2}
+      ]
+    }
+  ]
+}

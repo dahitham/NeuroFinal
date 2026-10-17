@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroSync</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="top">
+    <span class="logo" aria-hidden="true"></span>
+    <div><h1>NeuroSync</h1><p id="level" class="sub">Loading…</p></div>
+    <label class="switch" title="Turn NeuroSync on or off for all websites"><input type="checkbox" id="enabled" aria-label="Enable NeuroSync" /><span></span></label>
+  </header>
+
+  <section id="connect" hidden>
+    <p class="muted">Connect this extension to your NeuroSync account. In the web app open <b>Dashboard → Browser Extension → Get pairing code</b>.</p>
+    <label for="code" class="lbl">Pairing code</label>
+    <input id="code" class="inp" placeholder="ABCD-2345" autocomplete="off" maxlength="12" />
+    <button id="connectBtn" type="button" class="primary full">Connect</button>
+    <p id="connectMsg" class="notice" role="alert" hidden></p>
+  </section>
+
+  <main id="controls" hidden>
+    <label class="row"><span>Bionic Reading</span><input type="checkbox" id="bionicReading" /></label>
+    <label class="row"><span>Font</span>
+      <select id="font"><option value="system">System default</option><option value="lexend">Lexend</option><option value="atkinson">Atkinson Hyperlegible</option><option value="opendyslexic">OpenDyslexic</option></select>
+    </label>
+    <label class="row"><span>Spacing</span>
+      <select id="spacing"><option value="default">Default</option><option value="comfortable">Comfortable</option><option value="wide">Wide</option></select>
+    </label>
+    <label class="row"><span>Focus Mode</span><input type="checkbox" id="focusMode" /></label>
+    <label class="row"><span>Reading Ruler</span><input type="checkbox" id="readingRuler" /></label>
+    <div class="row"><span>Reader Mode</span><button id="reader" type="button" class="small">Toggle</button></div>
+    <div class="row"><span>Text-to-Speech</span>
+      <span class="tts"><button id="ttsPlay" type="button" class="small" aria-label="Play">▶</button><button id="ttsPause" type="button" class="small" aria-label="Pause or resume">⏸</button><button id="ttsStop" type="button" class="small" aria-label="Stop">⏹</button></span>
+    </div>
+  </main>
+
+  <p id="notice" class="notice" role="status" hidden></p>
+  <footer id="footer" hidden>
+    <button id="open" type="button" class="primary">Open NeuroSync</button>
+    <button id="reset" type="button" class="ghost">Reset Settings</button>
+  </footer>
+  <p id="sync" class="foot muted" hidden></p>
+  <script src="popup.js"></script>
+</body>
+</html>

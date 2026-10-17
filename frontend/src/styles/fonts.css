@@ -1,0 +1,12 @@
+/* Lexend (the design font) bundled locally so the app works offline. Weights 400/500/600/700 as in the design. */
+@font-face{font-family:'Lexend';font-weight:400;font-display:swap;src:url('/fonts/lexend-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Lexend';font-weight:500;font-display:swap;src:url('/fonts/lexend-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Lexend';font-weight:600;font-display:swap;src:url('/fonts/lexend-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Lexend';font-weight:700;font-display:swap;src:url('/fonts/lexend-latin-700-normal.woff2') format('woff2')}
+/* families used by the Reading Studio / assessment previews */
+@font-face{font-family:'NS Lexend';font-weight:400;font-display:swap;src:url('/fonts/lexend-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'NS Lexend';font-weight:700;font-display:swap;src:url('/fonts/lexend-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'NS Atkinson';font-weight:400;font-display:swap;src:url('/fonts/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'NS Atkinson';font-weight:700;font-display:swap;src:url('/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'NS OpenDyslexic';font-weight:400;font-display:swap;src:url('/fonts/OpenDyslexic-Regular.woff') format('woff')}
+@font-face{font-family:'NS OpenDyslexic';font-weight:700;font-display:swap;src:url('/fonts/OpenDyslexic-Bold.woff') format('woff')}
