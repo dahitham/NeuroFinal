@@ -14,5 +14,5 @@ export default defineConfig({
   },
   server: { port: 5173, strictPort: true, fs: { allow: [path.resolve(here, '..')] } },
   preview: { port: 4173 },
-  test: { environment: 'jsdom', globals: true, include: ['tests/**/*.test.{js,jsx}'] },
+  test: { environment: 'jsdom', globals: true, include: ['tests/**/*.test.{js,jsx}'], setupFiles: ['./tests/setup.js'] },
 });

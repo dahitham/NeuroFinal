@@ -489,11 +489,14 @@
         ttsListeners.add(cb);
         return () => ttsListeners.delete(cb);
       },
+      getVoices() {
+        return synth && typeof synth.getVoices === 'function' ? synth.getVoices() : [];
+      },
       _set(state) {
         tts.state = state;
         ttsListeners.forEach((cb) => cb(state));
       },
-      play(text, rate) {
+      play(text, rate, voiceURI) {
         if (!synth) return notice('Text-to-speech is not supported in this browser.');
         const clean = String(text || '').replace(/\s+/g, ' ').trim();
         if (!clean) return notice('Select some text or open a page with readable content first.');
@@ -507,6 +510,7 @@
           if (!piece) return tts._set('idle');
           const u = new win.SpeechSynthesisUtterance(piece);
           u.rate = Number(rate || settings.speechSpeed || 1);
+          u.voice = tts.getVoices().find((voice) => voice.voiceURI === voiceURI) || null;
           u.onend = next;
           u.onerror = (ev) => {
             if (ev.error === 'interrupted' || ev.error === 'canceled') return;

@@ -47,6 +47,30 @@ export function createRoutes({ config, ai, c, auth }) {
     context: { max: 300 },
   }), h(c.ai.wordAssistance));
 
+  // reading support tools
+  r.post('/reading/comprehension', aiLimit, auth.requiredAny, validateBody({
+    text: { required: true, min: 80, max: 12000 },
+    source: { pattern: /^(original|simplified)$/ },
+  }), h(c.ai.readingComprehension));
+  r.post('/reading/quiz/submit', aiLimit, auth.requiredAny, validateBody({
+    quizId: { required: true, min: 20, max: 80 },
+    answers: { required: true, type: 'object' },
+  }), h(c.ai.submitReadingComprehension));
+  r.post('/reading/read-aloud', aiLimit, auth.optional, validateBody({ passage: { required: true, min: 10, max: 12000 }, transcript: { required: true, min: 5, max: 12000 } }), h(c.ai.readAloudAccuracy));
+  r.get('/reading/progress', auth.required, h(c.ai.readingProgress));
+  r.post('/reading/progress/start', auth.required, validateBody({
+    source: { pattern: /^(original|simplified)$/ },
+  }), h(c.ai.startReadingSession));
+  r.post('/reading/progress', auth.required, validateBody({
+    sessionId: { required: true, min: 8, max: 80 },
+    supportNeed: { pattern: /^(line-tracking|crowded-text|complex-text|prefer-listening)$/ },
+  }), h(c.ai.readingProgress));
+  r.get('/reading/recommendations', auth.required, h(c.ai.readingRecommendations));
+  r.post('/reading/recommendations', auth.required, validateBody({
+    id: { required: true, min: 1, max: 60 },
+    action: { required: true, pattern: /^(apply|dismiss|undo)$/ },
+  }), h(c.ai.updateReadingRecommendation));
+
   // evaluation (anonymous research data)
   r.put('/evaluation/consent', auth.required, c.evaluation.consent);
   r.post('/evaluation', auth.required, c.evaluation.submit);

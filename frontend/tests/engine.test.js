@@ -214,12 +214,15 @@ describe('reader mode', () => {
 describe('text to speech', () => {
   it('plays, pauses, resumes, stops with the speechSpeed setting; handles missing support', () => {
     const spoken = [];
-    window.speechSynthesis = { speak: vi.fn((u) => spoken.push(u)), cancel: vi.fn(), pause: vi.fn(), resume: vi.fn() };
+    const voice = { name: 'Test voice', voiceURI: 'test-voice', lang: 'en-US' };
+    window.speechSynthesis = { speak: vi.fn((u) => spoken.push(u)), cancel: vi.fn(), pause: vi.fn(), resume: vi.fn(), getVoices: () => [voice] };
     window.SpeechSynthesisUtterance = function (text) { this.text = text; };
     const ctl = E.create();
     ctl.apply({ ...E.DEFAULT_SETTINGS, speechSpeed: 1.5 });
-    ctl.tts.play('First sentence. Second sentence.');
+    ctl.tts.play('First sentence. Second sentence.', 1.5, 'test-voice');
     expect(spoken[0].rate).toBe(1.5);
+    expect(ctl.tts.getVoices()).toEqual([voice]);
+    expect(spoken[0].voice).toBe(voice);
     expect(ctl.tts.getState()).toBe('playing');
     ctl.tts.pause(); expect(ctl.tts.getState()).toBe('paused');
     ctl.tts.resume(); expect(ctl.tts.getState()).toBe('playing');
@@ -272,12 +275,145 @@ describe('selection toolbar', () => {
     await new Promise((r) => setTimeout(r, 200));
     expect(request).not.toHaveBeenCalled();
     const root = document.getElementById('neurosync-selection-host').shadowRoot;
-    expect([...root.querySelectorAll('.bar button')].map((b) => b.textContent)).toEqual(['Simplify', 'Summarize', 'Explain Word', 'Listen']);
+    expect([...root.querySelectorAll('.bar button')].map((b) => b.textContent)).toEqual(['Simplify', 'Summarize', 'Explain Word', 'Check understanding', 'Listen']);
     root.querySelectorAll('.bar button')[0].click();
     await new Promise((r) => setTimeout(r, 20));
     expect(request).toHaveBeenCalledWith('simplify', { text: 'Some interesting selected sentence for simplification.' });
     expect(root.querySelector('.panel').textContent).toContain('Easy.');
     inst.destroy();
+  });
+  it('creates a passage-specific quiz only after the user requests it and submits selected answers', async () => {
+    const text = 'A sufficiently long selected passage gives the comprehension tool enough context. It describes the process, its main parts, and how the parts work together. Readers can use this passage to check their understanding.';
+    document.body.innerHTML = `<p id="t">${text}</p>`;
+    const request = vi.fn(async (kind) => kind === 'comprehension'
+      ? { quizId: 'quiz-session-test', questions: [{ question: 'What does the passage describe?', options: ['A process', 'A recipe', 'A map', 'A story'] }] }
+      : { correct: 1, total: 1, percentage: 100, message: '1 of 1 correct.', summary: 'This score describes this passage only.', details: [{ isCorrect: true, explanation: 'It describes a process.', evidence: 'describes the process' }] });
+    const inst = S.init({ request, lookupLocal: () => null });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      const quizButton = [...root.querySelectorAll('.bar button')].find((button) => button.textContent === 'Check understanding');
+      expect(quizButton.disabled).toBe(false);
+      quizButton.click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(request).toHaveBeenCalledWith('comprehension', { text, source: 'original' });
+      const panel = root.querySelector('.panel');
+      const option = panel.querySelector('input[type="radio"]');
+      option.click();
+      [...panel.querySelectorAll('button')].find((button) => button.textContent === 'Submit answers').click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(request).toHaveBeenCalledWith('quizSubmit', { quizId: 'quiz-session-test', answers: { 0: 'A process' } });
+      expect(panel.textContent).toContain('1 of 1 correct.');
+    } finally {
+      inst.destroy();
+    }
+  });
+  it('rejects malformed quiz responses instead of rendering unusable answer controls', async () => {
+    const text = 'A selected passage contains enough detail for a comprehension check. It explains how the process works and gives examples that can support questions.';
+    document.body.innerHTML = `<p id="t">${text}</p>`;
+    const inst = S.init({
+      request: async () => ({
+        quizId: 'quiz-invalid-response',
+        questions: [{ question: 'What is described?', options: ['A process', 'A story'] }],
+      }),
+      lookupLocal: () => null,
+    });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      [...root.querySelectorAll('.bar button')].find((button) => button.textContent === 'Check understanding').click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(root.querySelector('.panel .err').textContent).toContain('incomplete or invalid');
+      expect(root.querySelector('.panel input[type="radio"]')).toBeNull();
+    } finally {
+      inst.destroy();
+    }
+  });
+  it('enables understanding checks for a useful selection shorter than 120 characters', async () => {
+    const text = 'Python is a popular, high-level computer programming language known for its clear, English-like syntax and readability.';
+    expect(text.length).toBeLessThan(120);
+    document.body.innerHTML = `<p id="t">${text}</p>`;
+    const request = vi.fn(async () => ({
+      quizId: 'quiz-short-passage',
+      questions: [{ question: 'What is Python known for?', options: ['Clear syntax', 'Fast typing', 'Large screens', 'Long files'] }],
+    }));
+    const inst = S.init({ request, lookupLocal: () => null });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      const button = [...root.querySelectorAll('.bar button')].find((item) => item.textContent === 'Check understanding');
+      expect(button.disabled).toBe(false);
+      button.click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(request).toHaveBeenCalledWith('comprehension', { text, source: 'original' });
+      expect(root.querySelector('.panel').textContent).toContain('What is Python known for?');
+    } finally {
+      inst.destroy();
+    }
+  });
+  it('uses the exact simplified text requested for a comprehension quiz', async () => {
+    const text = 'An original passage with enough detail to create meaningful comprehension questions. The reader can simplify this text and later ask questions about the version that was actually displayed to them.';
+    const simplified = 'A shorter version is shown to the reader. The quiz should use these exact words.';
+    document.body.innerHTML = `<p id="t">${text}</p>`;
+    const request = vi.fn(async (kind) => kind === 'simplify'
+      ? { simplified }
+      : { quizId: 'quiz-simplified-test', source: 'simplified', questions: [{ question: 'What version is used?', options: ['The simplified text', 'A different page', 'A dataset', 'No passage'] }] });
+    const inst = S.init({ request, lookupLocal: () => null });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      const buttons = [...root.querySelectorAll('.bar button')];
+      buttons[0].click();
+      await new Promise((r) => setTimeout(r, 20));
+      buttons[3].click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(request).toHaveBeenNthCalledWith(2, 'comprehension', { text: simplified, source: 'simplified' });
+      expect(root.querySelector('.panel').textContent).toContain('Questions use the simplified text you requested.');
+    } finally {
+      inst.destroy();
+    }
+  });
+  it('displays safe backend diagnostics passed through the extension', async () => {
+    document.body.innerHTML = '<p id="t">A selected passage that is long enough to make comprehension questions from. It includes additional context so the user can ask questions about the specific material they selected.</p>';
+    const message = 'Could not connect to the NeuroSync backend at http://localhost:4000. Start the backend and try again.';
+    const inst = S.init({ request: async () => { throw { userMessage: message }; }, lookupLocal: () => null });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      [...root.querySelectorAll('.bar button')].find((button) => button.textContent === 'Check understanding').click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(root.querySelector('.panel .err').textContent).toBe(message);
+    } finally {
+      inst.destroy();
+    }
+  });
+  it('moves a populated summary panel back into the viewport', async () => {
+    document.body.innerHTML = '<p id="t">Some interesting selected sentence for summarization.</p>';
+    const heightDescriptor = Object.getOwnPropertyDescriptor(window, 'innerHeight');
+    Object.defineProperty(window, 'innerHeight', { configurable: true, value: 300 });
+    const heightSpy = vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockImplementation(function () {
+      return this.classList && this.classList.contains('panel') ? (this.querySelector('ul') ? 220 : 40) : 0;
+    });
+    const inst = S.init({ request: async () => ({ bullets: ['First point.', 'Second point.'] }), lookupLocal: () => null });
+    try {
+      select(document.getElementById('t'));
+      await new Promise((r) => setTimeout(r, 200));
+      const root = document.getElementById('neurosync-selection-host').shadowRoot;
+      const bar = root.querySelector('.bar');
+      bar.style.top = '240px';
+      root.querySelectorAll('.bar button')[1].click();
+      await new Promise((r) => setTimeout(r, 20));
+      expect(parseFloat(root.querySelector('.panel').style.top)).toBe(72);
+    } finally {
+      inst.destroy();
+      heightSpy.mockRestore();
+      Object.defineProperty(window, 'innerHeight', heightDescriptor);
+    }
   });
   it('shows the friendly fallback message when AI fails', async () => {
     document.body.innerHTML = '<p id="t">Another selected sentence that fails.</p>';

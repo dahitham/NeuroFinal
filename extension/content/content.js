@@ -4,7 +4,7 @@
   const S = globalThis.NeuroSyncSelection;
   if (!E || !S || window.top !== window) return;
 
-  const KEYS = ['ns_settings', 'ns_overrides', 'ns_enabled'];
+  const KEYS = ['ns_settings', 'ns_overrides', 'ns_enabled', 'ns_voice'];
   let state = {};
   let firstApply = true;
   let toastHost = null;
@@ -40,13 +40,25 @@
 
   /* ---- TTS dock (shown when the profile enables text-to-speech) ---- */
   let dock = null;
+  let voiceChangedHandler = null;
   function updateDock(s) {
     if (!s || !s.textToSpeech || !engine.tts.isSupported()) {
       if (dock) dock.remove();
+      const synth = window.speechSynthesis;
+      if (voiceChangedHandler && synth && typeof synth.removeEventListener === 'function') {
+        synth.removeEventListener('voiceschanged', voiceChangedHandler);
+      }
+      voiceChangedHandler = null;
       dock = null;
+      engine.tts.stop();
       return;
     }
-    if (dock) return;
+    if (dock) {
+      const root = dock.shadowRoot;
+      root.querySelector('[data-rate]').value = String(s.speechSpeed || 1);
+      populateVoiceOptions(root.querySelector('[data-voice]'));
+      return;
+    }
     dock = document.createElement('div');
     dock.setAttribute('data-ns-skip', '');
     const root = dock.attachShadow({ mode: 'open' });
@@ -58,19 +70,48 @@
     </style><div class="d" role="group" aria-label="NeuroSync text to speech">
       <button data-a="play" aria-label="Play">▶ Listen</button><button data-a="pause" aria-label="Pause or resume">⏸</button>
       <button data-a="stop" aria-label="Stop">⏹</button>
-      <select aria-label="Speech rate"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></div>`;
-    const rate = root.querySelector('select');
+      <select data-rate aria-label="Speech rate"><option value="0.8">0.8×</option><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select>
+      <select data-voice aria-label="Speech voice"><option value="">Default voice</option></select></div>`;
+    const rate = root.querySelector('[data-rate]');
+    const voice = root.querySelector('[data-voice]');
     rate.value = String(s.speechSpeed || 1);
+    populateVoiceOptions(voice);
     root.addEventListener('click', (e) => {
       const a = e.target.getAttribute && e.target.getAttribute('data-a');
-      if (a) handleTts(a, Number(rate.value));
+      if (a) handleTts(a, Number(rate.value), voice.value);
     });
+    voice.addEventListener('change', () => {
+      state.ns_voice = voice.value;
+      chrome.storage.local.set({ ns_voice: voice.value });
+    });
+    const synth = window.speechSynthesis;
+    if (synth && typeof synth.addEventListener === 'function') {
+      voiceChangedHandler = () => populateVoiceOptions(voice);
+      synth.addEventListener('voiceschanged', voiceChangedHandler);
+    }
     document.documentElement.appendChild(dock);
   }
 
-  function handleTts(action, rate) {
+  function populateVoiceOptions(select) {
+    const selected = state.ns_voice || '';
+    const voices = engine.tts.getVoices();
+    select.replaceChildren();
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Default voice';
+    select.appendChild(defaultOption);
+    voices.forEach((voice) => {
+      const option = document.createElement('option');
+      option.value = voice.voiceURI;
+      option.textContent = `${voice.name} (${voice.lang})`;
+      select.appendChild(option);
+    });
+    select.value = voices.some((voice) => voice.voiceURI === selected) ? selected : '';
+  }
+
+  function handleTts(action, rate, voiceURI) {
     const t = engine.tts;
-    if (action === 'play') t.play(engine.readText(), rate);
+    if (action === 'play') t.play(engine.readText(), rate, voiceURI || state.ns_voice);
     else if (action === 'pause') (t.getState() === 'paused' ? t.resume() : t.pause());
     else if (action === 'resume') t.resume();
     else if (action === 'stop') t.stop();
@@ -93,7 +134,7 @@
   chrome.runtime.sendMessage({ type: 'NS_VOCAB' }, (v) => (vocab = v || {}));
   S.init({
     lookupLocal: (w) => (vocab && vocab[w]) || null,
-    speak: (text) => engine.tts.play(text, (effective() || {}).speechSpeed || 1),
+    speak: (text) => engine.tts.play(text, (effective() || {}).speechSpeed || 1, state.ns_voice),
     request: (kind, body) =>
       new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({ type: 'NS_AI', kind, body }, (res) => {

@@ -30,3 +30,19 @@ Do not invent facts. ${GUARD}
 
 <word>${word}</word>
 ${context ? `<context>${context}</context>` : ''}`;
+
+export const comprehensionPrompt = (text) => `Create a reading comprehension quiz from the passage below.
+Rules:
+- Write 3 to 5 multiple-choice questions.
+- Base each question strictly on the passage.
+- Each question must have exactly 4 options.
+- Include the exact correct answer as a string that matches one option exactly.
+- Add a brief explanation and a short evidence quote or summary from the passage.
+- Return valid JSON only in this shape:
+{"questions":[{"question":"...","options":["...","...","...","..."],"correctAnswer":"...","explanation":"...","evidence":"..."}]}
+- No markdown fences, no extra text.
+${GUARD}
+
+<text>
+${text}
+</text>`;

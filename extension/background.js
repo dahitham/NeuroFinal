@@ -6,7 +6,13 @@
 importScripts('content/neurosync-engine.js');
 
 const DEFAULT_API = 'http://localhost:4000';
-const ENDPOINTS = { simplify: '/api/simplify', summarize: '/api/summarize', word: '/api/word-assistance' };
+const ENDPOINTS = {
+  simplify: '/api/simplify',
+  summarize: '/api/summarize',
+  word: '/api/word-assistance',
+  comprehension: '/api/reading/comprehension',
+  quizSubmit: '/api/reading/quiz/submit',
+};
 const KEYS = Object.keys(self.NeuroSyncEngine.DEFAULT_SETTINGS);
 let vocabPromise = null;
 
@@ -27,19 +33,31 @@ function sanitizeSettings(obj) {
 
 async function api(path, { method = 'GET', body, token, timeoutMs = 20000 } = {}) {
   const { ns_api } = await store.get('ns_api');
+  const apiBase = ns_api || DEFAULT_API;
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const res = await fetch((ns_api || DEFAULT_API) + path, {
+    const res = await fetch(apiBase + path, {
       method,
       headers: Object.assign({ 'Content-Type': 'application/json' }, token ? { Authorization: 'Bearer ' + token } : {}),
       body: body ? JSON.stringify(body) : undefined,
       signal: ctrl.signal,
     });
-    const data = await res.json().catch(() => ({}));
+    const data = await res.json().catch(() => null);
+    if (!data) {
+      return {
+        ok: false,
+        status: res.status,
+        data: { error: { code: 'INVALID_RESPONSE', message: `NeuroSync returned an unreadable response (HTTP ${res.status}). Please check the backend logs.` } },
+      };
+    }
     return { ok: res.ok, status: res.status, data };
-  } catch (e) {
-    return { ok: false, status: 0, data: {} };
+  } catch (error) {
+    const timedOut = error && error.name === 'AbortError';
+    const message = timedOut
+      ? 'The NeuroSync backend request timed out. Check that the backend is running and try again.'
+      : `Could not connect to the NeuroSync backend at ${apiBase}. Start the backend and try again.`;
+    return { ok: false, status: 0, data: { error: { code: timedOut ? 'BACKEND_TIMEOUT' : 'BACKEND_UNREACHABLE', message } } };
   } finally {
     clearTimeout(timer);
   }
@@ -75,10 +93,13 @@ async function connect(code, apiBase) {
 
 async function callAi(kind, body) {
   const path = ENDPOINTS[kind];
-  if (!path) return { ok: false };
+  if (!path) return { ok: false, message: 'This NeuroSync action is not supported.' };
   const { ns_token } = await store.get('ns_token');
+  if (!ns_token) return { ok: false, message: 'Connect the extension to your NeuroSync account from the dashboard, then try again.' };
   const r = await api(path, { method: 'POST', body, token: ns_token, timeoutMs: 30000 });
-  return r.ok ? { ok: true, data: r.data } : { ok: false, message: r.data.error && r.data.error.message };
+  if (r.ok) return { ok: true, data: r.data };
+  if (r.status === 401) return { ok: false, message: 'The extension connection expired or was revoked. Pair it again from the NeuroSync dashboard.' };
+  return { ok: false, message: r.data.error && r.data.error.message ? r.data.error.message : 'The comprehension request failed. Please try again.' };
 }
 
 function loadVocabulary() {
@@ -100,8 +121,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         case 'NS_VOCAB': return sendResponse(await loadVocabulary());
         default: return sendResponse({ ok: false });
       }
-    } catch (e) {
-      sendResponse({ ok: false });
+    } catch (error) {
+      console.error('[neurosync-extension]', JSON.stringify({ stage: 'message_failed', messageType: msg && msg.type, errorName: error && error.name ? error.name : 'Error' }));
+      sendResponse({ ok: false, message: 'The extension could not complete this request. Check the backend connection and try again.' });
     }
   })();
   return true;

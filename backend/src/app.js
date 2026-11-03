@@ -59,7 +59,7 @@ export function createApp({ config = defaultConfig, ai, storage, datasets, rng }
         dashboard: createDashboardController({ assessment, datasets: data }),
         assessment: createAssessmentController({ storage: store, assessment }),
         accessibility: createAccessibilityController({ storage: store }),
-        ai: createAiController({ ai: aiService, words }),
+        ai: createAiController({ ai: aiService, words, storage: store }),
         evaluation: createEvaluationController({ storage: store, config }),
         extension: createExtensionController({ extension }),
       },

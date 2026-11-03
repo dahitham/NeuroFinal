@@ -1,6 +1,7 @@
 import { effectiveSettings } from '../services/accessibilityService.js';
 import { describeSettings, levelInfo } from '../services/personalizationService.js';
 import { CORE } from '../data/assessmentConfig.js';
+import { readingProgressView } from '../services/readingService.js';
 
 /** Aggregates exactly what the Dashboard page shows. Nothing here is invented – missing data stays null. */
 export function createDashboardController({ assessment, datasets }) {
@@ -34,6 +35,7 @@ export function createDashboardController({ assessment, datasets }) {
         recommendedLevel: rec ? rec.assistanceLevel : null,
         accessibility: { saved, summary: saved ? describeSettings(settings) : null, settings },
         quickControls: { focusMode: settings.focusMode, readingRuler: settings.readingRuler },
+        readingProgress: readingProgressView(u),
         extension: { connected: u.extension.connected, connectedAt: u.extension.connectedAt, lastSeenAt: u.extension.lastSeenAt },
         preferences: null,
         cognitive: cog ? { completed: true, overallPercent: cog.overallPercent } : { completed: false },

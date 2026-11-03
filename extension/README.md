@@ -12,7 +12,7 @@ Applies your NeuroSync reading settings (the ones you set in **Reading Studio**)
 ## How the connection works (no secrets in the extension)
 
 - The web app asks the backend for a **one-time pairing code** (valid 10 minutes, single use).
-- The extension exchanges it for a **limited-scope extension token** (`POST /api/extension/connect`). That token can only (a) read the user's settings (`GET /api/extension/sync`) and (b) call the AI endpoints. It cannot read the profile, assessment results or change settings, and it can be revoked at any time (Disconnect in NeuroSync, or the popup).
+- The extension exchanges it for a **limited-scope extension token** (`POST /api/extension/connect`). That token can read the user's settings (`GET /api/extension/sync`) and call the AI endpoints, including generating and submitting a passage-specific comprehension quiz. It cannot read the profile or assessment results or change settings, and it can be revoked at any time (Disconnect in NeuroSync).
 - Settings are re-synced when the popup opens and every 15 minutes. Quick toggles in the popup are **local overrides**; **Reset Settings** returns to what is saved in NeuroSync.
 - AI requests: page → content script → background worker → NeuroSync backend → Gemini. The extension contains **no** Gemini key, JWT secret or database credential.
 
@@ -22,6 +22,8 @@ Edit `manifest.json › host_permissions` and the default `DEFAULT_API` in `back
 
 ## Files
 
-`content/neurosync-engine.js` (shared accessibility engine) · `content/neurosync-selection.js` (Simplify / Summarize / Explain Word toolbar) · `content/content.js` · `background.js` · `popup/` · `data/vocabulary.json` (standalone local word-help resource; verify with `npm run verify:extension-vocabulary`) · `assets/fonts/` (Lexend, Atkinson Hyperlegible, OpenDyslexic – bundled, work offline).
+`content/neurosync-engine.js` (shared accessibility engine) · `content/neurosync-selection.js` (Simplify / Summarize / Explain Word / Check Understanding toolbar) · `content/content.js` · `background.js` · `popup/` · `data/vocabulary.json` (standalone local word-help resource; verify with `npm run verify:extension-vocabulary`) · `assets/fonts/` (Lexend, Atkinson Hyperlegible, OpenDyslexic – bundled, work offline).
+
+Drag a result panel by its title to move it out of the way and keep the content you are reading visible.
 
 Extensions cannot modify `chrome://` pages or the Chrome Web Store.

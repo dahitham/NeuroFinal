@@ -11,6 +11,12 @@ const LEVELS = [
 ];
 const BTN = 'display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;margin-top:18px;border-radius:12px;background:var(--ns-teal-strong);color:#fff;font-weight:700;font-size:19px;text-decoration:none';
 const fmt = (iso) => (iso ? new Date(iso).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '');
+const fmtDuration = (seconds = 0) => {
+  const total = Math.max(0, Number(seconds) || 0);
+  const minutes = Math.floor(total / 60);
+  const remainder = total % 60;
+  return minutes ? `${minutes}m ${remainder}s` : `${remainder}s`;
+};
 
 /** Dashboard – layout and styles from Dashboard.dc.html; every value comes from GET /api/dashboard. */
 export default function Dashboard() {
@@ -119,7 +125,7 @@ export default function Dashboard() {
 
         <section className="c" aria-labelledby="at">
           <h2 id="at">AI Tools</h2>
-          <p className="em">Simplify, summarize or get word help.</p>
+          <p className="em">Simplify, summarize, practice comprehension or get word help.</p>
           <Link className="lk" to="/ai-tools">Open AI Tools</Link>
         </section>
 
@@ -150,7 +156,27 @@ export default function Dashboard() {
         </section>
 
         <section className="c" aria-labelledby="rp">
-          <h2 id="rp">Reading Preferences</h2>
+          <h2 id="rp">Reading Progress</h2>
+          <p className="em">{d.readingProgress.sessions} tracked sessions · {fmtDuration(d.readingProgress.totalSeconds)} total</p>
+          <p className="em">
+            {d.readingProgress.quizzes
+              ? `${d.readingProgress.quizzes} comprehension tests · average ${d.readingProgress.averageComprehension}%`
+              : 'No completed comprehension tests yet.'}
+          </p>
+          {d.readingProgress.recentResults.length > 0 ? (
+            <ul className="em" style={s('padding-left:18px;margin:4px 0 0')}>
+              {d.readingProgress.recentResults.slice(0, 3).map((result) => (
+                <li key={result.id}>{result.percentage}% · {fmt(result.completedAt)}{result.simplified ? ' · simplified passage' : ''}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="em">Your completed results will appear here. Scores describe a specific passage, not overall reading ability.</p>
+          )}
+          <Link className="lk" to="/ai-tools">Track a session or take a test</Link>
+        </section>
+
+        <section className="c" aria-labelledby="rprefs">
+          <h2 id="rprefs">Reading Preferences</h2>
           {d.preferences ? (
             <>
               <ul className="em" style={s('padding-left:18px;margin:4px 0 0')}>{d.preferences.items.map((p) => <li key={p.category}><span style={s('font-size:13px')}>{p.category}:</span> {p.choice}</li>)}</ul>

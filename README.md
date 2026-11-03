@@ -29,7 +29,7 @@ The design files were static, self-contained mock-ups (`*.dc.html`, with the REA
 | Results `/results` | `GET /api/assessment/results` · `POST /api/accessibility/reset {to:"recommended"}` ("Apply Recommended Settings") | yes |
 | Dashboard `/dashboard` | `GET /api/dashboard` · `PUT /api/accessibility/profile` (Quick Controls) · `POST /api/extension/pairing-code` · `POST /api/extension/disconnect` | yes |
 | Reading Studio `/accessibility` | `GET/PUT /api/accessibility/profile` (auto-save) · `POST /api/accessibility/reset` (both reset buttons) | yes |
-| Reading Intelligence `/ai-tools` | `POST /api/simplify` · `/api/summarize` · `/api/word-assistance` | yes (UI) |
+| Reading Intelligence `/ai-tools` | AI text tools · passage quiz generation/submission · tracked reading progress · recommendations | yes |
 | Profile `/profile`, Settings `/settings` | `GET/PUT/DELETE /api/profile` · `PUT /api/evaluation/consent` · `POST /api/evaluation` · `GET /api/evaluation/export` · `GET /api/health` | yes |
 
 ### Where the design was extended (and why)
@@ -82,6 +82,11 @@ All endpoints are under `/api`. JSON in/out. Errors: `{ "error": { "code", "mess
 | `POST /accessibility/reset` `{to:"recommended"\|"default"}` | user | Apply Recommended / Reset to Default |
 | `POST /simplify` `{text}` · `POST /summarize` `{text}` | optional | AI (Gemini) |
 | `POST /word-assistance` `{word,context?}` | optional | **local vocabulary first**, AI only if unknown |
+| `POST /reading/comprehension` `{text,source?}` | user or paired extension | passage-specific quiz; answer key stays server-side |
+| `POST /reading/quiz/submit` `{quizId,answers}` | quiz owner | server-scored result; each quiz can be submitted once |
+| `GET /reading/progress` · `POST /reading/progress/start` · `POST /reading/progress` `{sessionId,supportNeed?}` | user | server-timed reading sessions and completed quiz results |
+| `GET/POST /reading/recommendations` `{id,action}` | user | settings-based suggestions; apply, dismiss, or undo |
+| `POST /reading/read-aloud` `{passage,transcript}` | optional | compare recognized words; raw audio is not stored |
 | `PUT /evaluation/consent` `{consent}` · `POST /evaluation` | user | consent / anonymous feedback record |
 | `GET /evaluation` · `GET /evaluation/export` | research admin | statistics / anonymous CSV |
 | `POST /extension/pairing-code` | user | one-time code (10 min) |
@@ -153,13 +158,16 @@ The recommendation is stored after submit but **applied only when the user choos
 
 ## Accessibility settings
 
-Stored per user and validated against the schema (unknown keys, wrong types and out-of-range values are rejected with details): `font` (system, lexend, atkinson, opendyslexic), `fontSize` 14–28, `lineSpacing` 1–2.4, `letterSpacing` 0–10, `wordSpacing` 0–10, `bionicReading`, `readingRuler`, `focusMode`, `readerMode`, `background` (white, cream, gray), `colorTint` (none, yellow, blue), `contrast` (standard, high), `textToSpeech`, `speechSpeed` 0.5–2. Slider units: letter ×0.01em, word ×0.03em; **16px and 1.5× mean "leave the website as it is"** in the extension. The Reading Studio preview applies them with the shared engine; the extension applies them on every site.
+Stored per user and validated against the schema (unknown keys, wrong types and out-of-range values are rejected with details): `font` (system, lexend, atkinson, opendyslexic), `fontSize` 14–28, `lineSpacing` 1–2.4, `letterSpacing` 0–10, `wordSpacing` 0–10, `bionicReading`, `readingRuler`, `focusMode`, `readerMode`, `background` (white, cream, gray), `colorTint` (none, yellow, blue), `contrast` (standard, high), `textToSpeech`, `speechSpeed` 0.5–2. Slider units: letter ×0.01em, word ×0.03em; **16px and 1.5× mean "leave the website as it is"** in the extension. The Reading Studio preview applies them with the shared engine; the extension applies them on every site. The extension's speech dock offers browser-provided voices when available and remembers the selection locally.
 
 ## AI tools
 
 - **Simplify** → `{simplified}` · **Summarize** → `{summary, bullets[3–5]}` · **Word assistance** → `{simpleMeaning, synonym, pronunciation, visualHint, source}`.
 - Prompts demand: preserve meaning, simpler words, shorter sentences, no new information; text inside the prompt is treated as data (prompt-injection guard).
 - Word help is **local first** using the standalone bundled vocabulary resource, instant and offline in the extension. Only unknown words go to Gemini; identical requests are cached on the server and in the browser, concurrent duplicates are de-duplicated, and calls are click-triggered (never on hover).
+- **Check My Understanding** sends the selected/original or explicitly chosen simplified passage to Gemini 3.5 Flash-Lite. The backend validates 3–5 questions, four distinct options, matching answer choices, and passage-supported evidence. Active quizzes are tied to the account, expire after one hour, and are one-use; scoring and progress updates use the server-held answer key.
+- Reading progress is updated only after the user finishes an explicit timer session or submits a comprehension quiz. Session settings and optional feedback are saved per account; client-supplied aggregate totals are rejected. Recommendations use actual profile settings and optional feedback, and never apply automatically.
+- Read-aloud comparison is opt-in and reports **Potential Reading Differences**. Browser speech-recognition services may process speech externally; NeuroSync does not save raw audio. Recognition mismatches are not diagnoses or definite reading errors.
 - All failures (key missing, network, 4xx/5xx, empty or malformed reply) return the friendly message with no secrets or stack traces. AI endpoints are rate-limited per IP.
 
 ## Evaluation
@@ -202,8 +210,8 @@ Open [http://localhost:5173](http://localhost:5173) → *Get Started* → create
 npm test            # backend + frontend
 ```
 
-- **Backend (node:test, real HTTP)**: actual dataset parsing and schema validation; adaptive/fixed difficulty and randomisation; 0–14 scoring and level thresholds; personalization levels; settings validation; full assessment runs (all correct → level 1, all wrong → score 14 / level 3); resume, previous/edit, ordering; **answer key never sent before submission**; explanations after submission; dashboard real-state transitions; settings save/apply/override/reset; separate optional assessment; auth and JWT tampering; AI success, local-first words, caching, validation, **all failure modes leak nothing**, rate limiting; evaluation consent/anonymity/CSV/admin gating; extension pairing, scope and revocation.
-- **Frontend (vitest + jsdom)**: the engine (bionic safety and reversibility, fonts, units, colours, ruler, focus, reader mode, TTS), word assistant, selection toolbar, API service (auth header, error mapping, 401 handling), design style conversion, and **schema parity with the backend**.
+- **Backend (node:test, real HTTP)**: actual dataset parsing and schema validation; adaptive/fixed difficulty and randomisation; 0–14 scoring and level thresholds; personalization levels; settings validation; full assessment runs; resume and answer-key privacy; real dashboard state; AI success/failure, passage-specific quiz validation, account isolation, one-time scoring, tracked-session idempotency, recommendation apply/dismiss/undo; evaluation consent/anonymity/CSV/admin gating; extension pairing, scope and revocation.
+- **Frontend (vitest + jsdom)**: the engine (bionic safety and reversibility, fonts, units, colours, ruler, focus, reader mode, TTS), word assistant, selection toolbar including comprehension quiz submission, API service (auth header, error mapping, 401 handling), design style conversion, and **schema parity with the backend**.
 - **Real-browser checks** (`tests/e2e/`): full user journey and the unpacked extension in Chromium, including pairing and revocation.
 
 ## Troubleshooting
@@ -225,7 +233,7 @@ Key and JWT secret only in `backend/.env` (git-ignored; `.env.example` has none)
 
 ## Future database integration
 
-All persistence goes through `backend/src/services/storage.js` (`users.findById/findByEmail/create/update/remove`, `evaluations.add/list`). The default is a JSON-file store (`backend/storage`, atomic writes). To move to PostgreSQL / MongoDB / Supabase, implement the same two repositories and pass them to `createApp({ storage })` – no controller or service changes are needed. Sessions, pairing codes and token revocation are in-memory today; move them to the database/Redis when running more than one server instance.
+All persistence goes through `backend/src/services/storage.js` (`users.findById/findByEmail/create/update/remove`, `evaluations.add/list`). The current repository does not configure MongoDB or Mongoose, so the existing JSON-file store (`backend/storage`, atomic writes) remains the storage implementation. User reading history, completed quiz summaries, and active account-scoped quizzes are saved with the user record. To move to PostgreSQL / MongoDB / Supabase, extend the storage adapter and pass it to `createApp({ storage })`. Pairing codes and token revocation remain in-memory today; use a shared database/Redis store before running multiple backend instances.
 
 ## Limitations
 

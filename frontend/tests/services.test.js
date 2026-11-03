@@ -1,12 +1,26 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { s } from '../src/utils/css.js';
-import { api, tokenStore, AI_DOWN_MESSAGE, ApiError } from '../src/services/api.js';
+import { api, tokenStore, AI_NETWORK_MESSAGE, ApiError } from '../src/services/api.js';
+import { compareReadAloudLocal } from '../src/pages/AITools.jsx';
 
 describe('s() – design inline styles are converted verbatim', () => {
   it('converts kebab-case properties, keeps custom properties and complex values', () => {
     expect(s('display:flex;gap:14px;flex-wrap:wrap')).toEqual({ display: 'flex', gap: '14px', flexWrap: 'wrap' });
     expect(s('background:linear-gradient(135deg,var(--neurosync-dark) 50%,var(--neurosync-teal) 50%);--x:1')).toEqual({ background: 'linear-gradient(135deg,var(--neurosync-dark) 50%,var(--neurosync-teal) 50%)', '--x': '1' });
     expect(s('box-shadow:0 1px 3px rgba(17,24,39,.08),0 8px 24px rgba(17,24,39,.04);')).toEqual({ boxShadow: '0 1px 3px rgba(17,24,39,.08),0 8px 24px rgba(17,24,39,.04)' });
+  });
+});
+
+describe('read-aloud comparison', () => {
+  it('does not count repeated words or reordered words as correct', () => {
+    const repeated = compareReadAloudLocal('the the cat', 'the cat');
+    expect(repeated.accuracy).toBe(67);
+    expect(repeated.differences).toContainEqual({ type: 'missing', expected: 'the' });
+
+    const reordered = compareReadAloudLocal('red blue green', 'blue red green');
+    expect(reordered.accuracy).toBe(67);
+    expect(reordered.differences).toContainEqual({ type: 'missing', expected: 'red' });
+    expect(reordered.differences).toContainEqual({ type: 'extra', heard: 'red' });
   });
 });
 
@@ -35,7 +49,7 @@ describe('API service', () => {
 
   it('network failure on an AI call gives the specified friendly message', async () => {
     vi.spyOn(globalThis, 'fetch').mockRejectedValue(new TypeError('Failed to fetch'));
-    await expect(api.ai.simplify('some text')).rejects.toMatchObject({ message: AI_DOWN_MESSAGE });
+    await expect(api.ai.simplify('some text')).rejects.toMatchObject({ message: AI_NETWORK_MESSAGE, code: 'BACKEND_UNREACHABLE' });
     await expect(api.dashboard()).rejects.toMatchObject({ message: expect.stringContaining("couldn't reach") });
   });
 

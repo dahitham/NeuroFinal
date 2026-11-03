@@ -17,6 +17,7 @@
 
   const AI_DOWN = 'AI assistance is temporarily unavailable. Your local accessibility tools are still available.';
   const MAX_TEXT = 5000;
+  const MIN_QUIZ_TEXT = 80;
 
   function normalizeWord(raw) {
     const w = String(raw || '')
@@ -73,12 +74,13 @@
   const CSS = `
   :host{all:initial}
   *{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  .bar{position:fixed;z-index:2147483647;display:flex;gap:4px;padding:6px;background:#264653;border-radius:12px;box-shadow:0 8px 28px rgba(17,24,39,.35)}
+  .bar{position:fixed;z-index:2147483647;display:flex;flex-wrap:wrap;gap:4px;padding:6px;max-width:min(520px,calc(100vw - 16px));background:#264653;border-radius:12px;box-shadow:0 8px 28px rgba(17,24,39,.35)}
   .bar button{all:unset;cursor:pointer;color:#fff;font-size:13px;font-weight:600;padding:7px 11px;border-radius:8px;line-height:1}
   .bar button:hover,.bar button:focus-visible{background:#1F7F73;outline:2px solid #fff}
   .bar button[disabled]{opacity:.45;cursor:not-allowed}
   .panel{position:fixed;z-index:2147483647;width:min(360px,calc(100vw - 24px));max-height:60vh;overflow:auto;background:#fff;color:#264653;border:1px solid #e5e7eb;border-radius:14px;padding:14px 16px;box-shadow:0 14px 40px rgba(17,24,39,.25);font-size:15px;line-height:1.55}
-  .panel h4{margin:0 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#1F7F73}
+  .panel h4{margin:0 0 8px;padding-right:22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#1F7F73;cursor:grab;touch-action:none;user-select:none}
+  .panel h4:active{cursor:grabbing}
   .panel p,.panel ul{margin:0 0 8px}.panel ul{padding-left:18px}
   .panel .x{all:unset;position:absolute;top:8px;right:10px;cursor:pointer;font-size:18px;color:#6B7280}
   .panel dt{font-weight:700;margin-top:6px}.panel dd{margin:0 0 4px}
@@ -107,6 +109,7 @@
     doc.documentElement.appendChild(host);
 
     let selectedText = '';
+    let lastSimplified = null;
     let requestId = 0;
 
     const clear = () => {
@@ -137,13 +140,14 @@
       bar.setAttribute('role', 'toolbar');
       bar.setAttribute('aria-label', 'NeuroSync assistance');
       bar.style.top = Math.min(win.innerHeight - 56, rect.bottom + 8) + 'px';
-      bar.style.left = Math.max(8, Math.min(win.innerWidth - 340, rect.left)) + 'px';
+      bar.style.left = Math.max(8, Math.min(win.innerWidth - 528, rect.left)) + 'px';
       bar.addEventListener('mousedown', (e) => e.preventDefault()); // keep the selection alive
       const singleWord = !!normalizeWord(text);
       [
         ['Simplify', 'simplify', true],
         ['Summarize', 'summarize', true],
         ['Explain Word', 'word', singleWord],
+        ['Check understanding', 'comprehension', selectedText.length >= MIN_QUIZ_TEXT],
         ['Listen', 'listen', true],
       ].forEach(([label, kind, enabled]) => {
         const b = doc.createElement('button');
@@ -151,12 +155,20 @@
         b.textContent = label;
         if (!enabled) {
           b.disabled = true;
-          b.title = 'Select a single word to use this';
+          b.title = kind === 'word' ? 'Select a single word to use this' : `Select at least ${MIN_QUIZ_TEXT} characters to make a quiz`;
         }
         b.addEventListener('click', () => run(kind, bar));
         bar.appendChild(b);
       });
       mount.appendChild(bar);
+    }
+
+    function clampPanelPosition(p, left = parseFloat(p.style.left), top = parseFloat(p.style.top)) {
+      const margin = 8;
+      const maxLeft = Math.max(margin, win.innerWidth - p.offsetWidth - margin);
+      const maxTop = Math.max(margin, win.innerHeight - p.offsetHeight - margin);
+      p.style.left = Math.max(margin, Math.min(maxLeft, left)) + 'px';
+      p.style.top = Math.max(margin, Math.min(maxTop, top)) + 'px';
     }
 
     function panel(anchorBar, title) {
@@ -167,7 +179,7 @@
       p.setAttribute('role', 'dialog');
       p.setAttribute('aria-label', title);
       const top = parseFloat(anchorBar.style.top) + 48;
-      p.style.top = Math.min(win.innerHeight - 120, top) + 'px';
+      p.style.top = top + 'px';
       p.style.left = anchorBar.style.left;
       const h = doc.createElement('h4');
       h.textContent = title;
@@ -178,6 +190,25 @@
       x.addEventListener('click', clear);
       p.append(x, h);
       mount.appendChild(p);
+      clampPanelPosition(p);
+
+      let drag = null;
+      h.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return;
+        const rect = p.getBoundingClientRect();
+        drag = { pointerId: e.pointerId, x: e.clientX, y: e.clientY, left: rect.left, top: rect.top };
+        h.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      h.addEventListener('pointermove', (e) => {
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        clampPanelPosition(p, drag.left + e.clientX - drag.x, drag.top + e.clientY - drag.y);
+      });
+      const stopDragging = (e) => {
+        if (drag && drag.pointerId === e.pointerId) drag = null;
+      };
+      h.addEventListener('pointerup', stopDragging);
+      h.addEventListener('pointercancel', stopDragging);
       return p;
     }
 
@@ -194,21 +225,32 @@
         if (cfg.speak) cfg.speak(selectedText);
         return;
       }
-      const titles = { simplify: 'Simplified text', summarize: 'Summary', word: 'Word help' };
+      const titles = { simplify: 'Simplified text', summarize: 'Summary', word: 'Word help', comprehension: 'Check understanding' };
       const p = panel(bar, titles[kind]);
       const id = ++requestId;
+      const sourceText = selectedText;
       add(p, 'p', 'Working on it…', 'muted').setAttribute('role', 'status');
       try {
         let result;
-        if (kind === 'word') result = await assistant.assist(selectedText, selectionContext());
-        else result = await cfg.request(kind, { text: selectedText });
+        if (kind === 'word') result = await assistant.assist(sourceText, selectionContext());
+        else if (kind === 'comprehension') {
+          const simplified = lastSimplified && lastSimplified.original === sourceText ? lastSimplified.text : null;
+          result = await cfg.request(kind, { text: simplified || sourceText, source: simplified ? 'simplified' : 'original' });
+        } else {
+          result = await cfg.request(kind, { text: sourceText });
+          if (kind === 'simplify' && typeof result.simplified === 'string' && result.simplified.trim()) {
+            lastSimplified = { original: sourceText, text: result.simplified };
+          }
+        }
         if (id !== requestId) return;
         render(p, kind, result);
+        clampPanelPosition(p);
       } catch (e) {
         if (id !== requestId || (e && e.superseded)) return;
         p.querySelector('.muted') && p.querySelector('.muted').remove();
         const msg = e && e.userMessage ? e.userMessage : e && e.message && kind === 'word' && /single word/.test(e.message) ? e.message : AI_DOWN;
         add(p, 'p', msg, 'err').setAttribute('role', 'alert');
+        clampPanelPosition(p);
       }
     }
 
@@ -226,6 +268,8 @@
         const bullets = r.bullets && r.bullets.length ? r.bullets : [r.summary || ''];
         const ul = add(p, 'ul', '');
         bullets.forEach((b) => add(ul, 'li', b));
+      } else if (kind === 'comprehension') {
+        renderQuiz(p, r);
       } else {
         const dl = add(p, 'dl', '');
         add(dl, 'dt', 'Simple meaning');
@@ -252,6 +296,67 @@
       if (kind !== 'word') add(p, 'p', 'Generated by AI — double-check important details.', 'muted');
     }
 
+    function renderQuiz(p, quiz) {
+      const validQuestions = quiz && Array.isArray(quiz.questions) && quiz.questions.length > 0
+        && quiz.questions.every((question) => question
+          && typeof question.question === 'string'
+          && question.question.trim()
+          && Array.isArray(question.options)
+          && question.options.length === 4
+          && question.options.every((option) => typeof option === 'string' && option.trim()));
+      if (!quiz || typeof quiz.quizId !== 'string' || !quiz.quizId || !validQuestions) {
+        add(p, 'p', 'The quiz response was incomplete or invalid. Please try again.', 'err').setAttribute('role', 'alert');
+        return;
+      }
+      if (quiz.source === 'simplified') add(p, 'p', 'Questions use the simplified text you requested.', 'muted');
+      else add(p, 'p', 'Questions use the text you selected.', 'muted');
+      const form = add(p, 'div', '');
+      const submit = add(p, 'button', 'Submit answers');
+      submit.type = 'button';
+      submit.className = 'row';
+      submit.style.marginTop = '12px';
+      const choices = [];
+      quiz.questions.forEach((question, index) => {
+        const fieldset = add(form, 'fieldset', '');
+        const legend = add(fieldset, 'legend', `${index + 1}. ${question.question}`);
+        legend.style.fontWeight = '700';
+        const selected = { value: null };
+        question.options.forEach((option, optionIndex) => {
+          const label = add(fieldset, 'label', '');
+          label.style.display = 'flex';
+          label.style.gap = '6px';
+          label.style.alignItems = 'flex-start';
+          const input = doc.createElement('input');
+          input.type = 'radio';
+          input.name = `ns-quiz-${quiz.quizId}-${index}`;
+          input.value = String(optionIndex);
+          input.addEventListener('change', () => { selected.value = option; });
+          label.append(input, doc.createTextNode(option));
+        });
+        choices.push(selected);
+      });
+      form.appendChild(submit);
+      submit.addEventListener('click', async () => {
+        if (submit.disabled) return;
+        submit.disabled = true;
+        try {
+          const answers = Object.fromEntries(choices.flatMap((choice, index) => choice.value === null ? [] : [[index, choice.value]]));
+          const result = await cfg.request('quizSubmit', { quizId: quiz.quizId, answers });
+          form.textContent = '';
+          add(form, 'strong', result.message || `${result.correct} of ${result.total} correct (${result.percentage}%).`);
+          add(form, 'p', result.summary || 'This score describes this passage only.');
+          if (Array.isArray(result.details)) {
+            const list = add(form, 'ol', '');
+            result.details.forEach((detail) => add(list, 'li', `${detail.isCorrect ? 'Correct' : 'Review'}: ${detail.explanation}${detail.evidence ? ` Evidence: ${detail.evidence}` : ''}`));
+          }
+          add(form, 'p', 'AI-generated questions may be imperfect. This result is for this passage only.', 'muted');
+        } catch (error) {
+          submit.disabled = false;
+          add(form, 'p', error && error.userMessage ? error.userMessage : 'The quiz could not be submitted. Please try again.', 'err').setAttribute('role', 'alert');
+        }
+      });
+    }
+
     let selTimer = null;
     const onUp = (e) => {
       if (e.composedPath && e.composedPath().includes(host)) return;
@@ -265,10 +370,15 @@
     const onKey = (e) => {
       if (e.key === 'Escape') clear();
     };
+    const onResize = () => {
+      const p = mount.querySelector('.panel');
+      if (p) clampPanelPosition(p);
+    };
     doc.addEventListener('mouseup', onUp);
     doc.addEventListener('keyup', (e) => e.shiftKey && onUp(e));
     doc.addEventListener('mousedown', onDown);
     doc.addEventListener('keydown', onKey);
+    win.addEventListener('resize', onResize);
 
     return {
       assistant,
@@ -276,6 +386,7 @@
         doc.removeEventListener('mouseup', onUp);
         doc.removeEventListener('mousedown', onDown);
         doc.removeEventListener('keydown', onKey);
+        win.removeEventListener('resize', onResize);
         host.remove();
       },
     };

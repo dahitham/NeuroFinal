@@ -262,6 +262,10 @@ test('dashboard shows real state only (no data → nulls, then results, settings
     assert.equal(d.accessibility.summary, null);
     assert.equal(d.preferences, null);
     assert.equal(d.extension.connected, false);
+    assert.equal(d.readingProgress.totalSeconds, 0);
+    assert.equal(d.readingProgress.quizzes, 0);
+    assert.equal(d.readingProgress.averageComprehension, null);
+    assert.deepEqual(d.readingProgress.recentResults, []);
 
     const q = await api.get('/assessment/questions', { token });
     await api.post('/assessment/answer', { part: 'core', stepId: q.data.step.id, value: q.data.step.options[0].id, timeMs: 9000 }, { token });
